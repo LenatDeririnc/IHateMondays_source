@@ -1,0 +1,18 @@
+{
+    "name": "SceneManagerEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:53dcd9212bd87f141ae2d4b593fea9f2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

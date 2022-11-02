@@ -1,0 +1,18 @@
+{
+    "name": "UVariableSystemEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f85aad6ffee0de8409eb714252644eae"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
