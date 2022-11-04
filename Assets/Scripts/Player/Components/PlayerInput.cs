@@ -1,35 +1,56 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using System;
+using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
+using Services;
 using UnityEngine;
 
 namespace Characters.Components
 {
     public class PlayerInput : UpdateGetter, ISelfDeps
     {
+        [SerializeField] private PlayerMovementBase _playerMovement;
+        [SerializeField] private PlayerGravityBase _playerGravityBase;
+        [SerializeField] private PlayerLook _playerLook;
+        
+        private InputBridgeService InputBridgeService;
+        private GameService GameService;
 
-        [SerializeField] private PlayerBase PlayerBase;
+        private void Awake()
+        {
+            InputBridgeService = ServiceLocator.Get<InputBridgeService>();
+            GameService = ServiceLocator.Get<GameService>();
+        }
+
+        public void SetupDeps()
+        {
+            _playerMovement = GetComponent<PlayerMovementBase>();
+            _playerGravityBase = GetComponent<PlayerGravityBase>();
+            _playerLook = GetComponent<PlayerLook>();
+        }
 
         private void JumpInputUpdate()
         {
-            if (PlayerBase.InputBridgeService.IsJumpUp)
+            if (InputBridgeService.IsJumpUp)
             {
-                PlayerBase.PlayerGravityBase.SetJumpCommand(false);
-                PlayerBase.PlayerGravityBase.CutoffJump();
+                _playerGravityBase.SetJumpCommand(false);
+                _playerGravityBase.CutoffJump();
             }
 
-            if (PlayerBase.InputBridgeService.IsJumpDown)
+            if (InputBridgeService.IsJumpDown)
             {
-                PlayerBase.PlayerGravityBase.SetJumpCommand(true);
+                _playerGravityBase.SetJumpCommand(true);
             }
         }
 
         private void MovementInputUpdate()
         {
-            PlayerBase.PlayerMovement.SetMovement(new Vector3(PlayerBase.InputBridgeService.Movement.x, 0, PlayerBase.InputBridgeService.Movement.y));
+            var movement = InputBridgeService.Movement;
+            _playerMovement.SetMovement(new Vector3(movement.x, 0, movement.y));
         }
 
         private void RotationInputUpdate()
         {
-            PlayerBase.PlayerLook.SetRotateDelta(new Vector3(PlayerBase.InputBridgeService.Look.x, PlayerBase.InputBridgeService.Look.y, 0));
+            _playerLook.SetRotateDelta(new Vector3(InputBridgeService.Look.x, InputBridgeService.Look.y, 0));
         }
 
         protected override void SentUpdate()
@@ -37,7 +58,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!PlayerBase.GameService.IsPaused)
+            if (!GameService.IsPaused)
             {
                 MovementInputUpdate();
                 RotationInputUpdate();
@@ -51,15 +72,10 @@ namespace Characters.Components
 
         public void PausedUpdate()
         {
-            PlayerBase.PlayerMovement.SetMovement(Vector3.zero);
-            PlayerBase.PlayerLook.SetRotateDelta(Vector3.zero);
-            PlayerBase.PlayerGravityBase.SetJumpCommand(false);
-            PlayerBase.PlayerGravityBase.CutoffJump();
-        }
-
-        public void SetupDeps()
-        {
-            PlayerBase = GetComponent<PlayerBase>();
+            _playerMovement.SetMovement(Vector3.zero);
+            _playerLook.SetRotateDelta(Vector3.zero);
+            _playerGravityBase.SetJumpCommand(false);
+            _playerGravityBase.CutoffJump();
         }
     }
 }

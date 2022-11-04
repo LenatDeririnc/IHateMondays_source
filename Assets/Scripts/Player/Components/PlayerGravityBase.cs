@@ -1,23 +1,35 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using System;
+using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
+using Services;
 using UnityEngine;
 
 namespace Characters.Components
 {
     public abstract class PlayerGravityBase : UpdateGetter, ISelfDeps
     {
-        [SerializeField] protected PlayerBase PlayerBase;
+        [SerializeField] private PlayerTransform PlayerTransform;
+        
         [SerializeField] protected float GroundCheckRadius = 0.5f;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] protected float jumpModifierOnButtonUp = 0.5f;
+        [SerializeField] protected float JumpHeight = 5f;
 
         protected bool _groundCheckEnabled = true;
         protected bool _jumpCommand;
-        [SerializeField] protected float JumpHeight = 5f;
+
+        private GameService GameService;
+        
         public bool IsGrounded { get; protected set; } = false;
         
         public abstract void CutoffJump();
 
         protected abstract void ApplyGravity();
+
+        private void Awake()
+        { 
+            ServiceLocator.Get(ref GameService);
+        }
 
         public void SetJumpCommand(bool value)
         {
@@ -28,13 +40,13 @@ namespace Characters.Components
         {
             hit = new RaycastHit();
             
-            var position = PlayerBase.PlayerTransform.position;
+            var position = PlayerTransform.Value.position;
 
             var sphereCheck = Physics.CheckSphere(position, GroundCheckRadius, groundMask);
             var boxCheck = Physics.CheckBox(
-                position + PlayerBase.PlayerTransform.up * GroundCheckRadius / 2, 
+                position + PlayerTransform.Value.up * GroundCheckRadius / 2, 
                 new Vector3(GroundCheckRadius, GroundCheckRadius/2, GroundCheckRadius), 
-                PlayerBase.PlayerTransform.rotation, 
+                PlayerTransform.Value.rotation, 
                 groundMask);
 
             var isGround = _groundCheckEnabled &&
@@ -43,7 +55,7 @@ namespace Characters.Components
 
             if (isGround)
             {
-                Physics.Raycast(position + PlayerBase.PlayerTransform.up * GroundCheckRadius / 2, 
+                Physics.Raycast(position + PlayerTransform.Value.up * GroundCheckRadius / 2, 
                     Vector3.down * (GroundCheckRadius / 2), out hit, (GroundCheckRadius / 2), groundMask);
             }
 
@@ -52,7 +64,7 @@ namespace Characters.Components
 
         protected override void SentFixedUpdate()
         {
-            if (PlayerBase.GameService.IsPaused)
+            if (GameService.IsPaused)
                 return;
             ApplyGravity();
         }
@@ -72,9 +84,9 @@ namespace Characters.Components
             Gizmos.DrawWireSphere(position, GroundCheckRadius);
         }
 
-        public void SetupDeps()
+        public virtual void SetupDeps()
         {
-            PlayerBase = GetComponent<PlayerBase>();
+            PlayerTransform = GetComponent<PlayerTransform>();
         }
     }
 }

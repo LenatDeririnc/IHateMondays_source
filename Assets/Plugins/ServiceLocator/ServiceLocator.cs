@@ -24,5 +24,11 @@ namespace Plugins.ServiceLocator
 		        return (T) _services[typeof(T)];
             return null;
         }
+
+        public static void Get<T>(ref T val)
+        {
+            if (_services.ContainsKey(typeof(T)))
+                val = (T) _services[typeof(T)];
+        }
     }
 }

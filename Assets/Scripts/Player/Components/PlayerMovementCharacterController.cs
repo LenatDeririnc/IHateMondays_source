@@ -1,20 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Plugins.ServiceLocator;
+using Services;
 using TransformTools;
 using UnityEngine;
+using UnityOverrides;
 
 namespace Characters.Components
 {
     public class PlayerMovementCharacterController : PlayerMovementBase
     {
+        [SerializeField] private CharacterControllerDecorator CharacterController;
         [SerializeField] private float impulseScaleModifier = 0.01f;
         [SerializeField] private float impulseScaleGroundModifier = 0.5f;
 
         [SerializeField] private Vector3 _impulse;
 
         [SerializeField] private TransformVelocity _groundVelocity;
+        
+        private GameService GameService;
+        
         public TransformVelocity GroundVelocity => _groundVelocity;
 
         private bool isIgnoreFrame = false;
+
+        private void Awake()
+        {
+            ServiceLocator.Get(ref GameService);
+        }
+
+        public override void SetupDeps()
+        {
+            base.SetupDeps();
+            CharacterController = GetComponent<CharacterControllerDecorator>();
+        }
 
         protected override void OnEnable()
         {
@@ -70,7 +89,7 @@ namespace Characters.Components
 
         protected override void Move(Vector3 velocity)
         {
-            PlayerBase.CharacterController.Move(velocity);
+            CharacterController.Move(velocity);
         }
 
         protected override void SentUpdate()
@@ -78,7 +97,7 @@ namespace Characters.Components
             if (isIgnoreFrame)
                 return;
             
-            if (PlayerBase.GameService.IsPaused)
+            if (GameService.IsPaused)
                 return;
             
             var delta = Time.deltaTime;
@@ -91,7 +110,7 @@ namespace Characters.Components
             if (isIgnoreFrame)
                 return;
             
-            if (PlayerBase.GameService.IsPaused)
+            if (GameService.IsPaused)
                 return;
 
             var delta = Time.fixedDeltaTime;

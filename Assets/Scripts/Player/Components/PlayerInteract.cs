@@ -1,25 +1,36 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using System;
+using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
 using Props;
+using Services;
 using UnityEngine;
 
 namespace Characters.Components
 {
     public class PlayerInteract : UpdateGetter
     {
-        [SerializeField] private PlayerBase _playerBase;
         [SerializeField] private Transform _raycastForward;
         [SerializeField] private float _maxDistance = 1f;
         [SerializeField] private LayerMask _layerMask;
+
+        private GameService GameService;
+        private InputBridgeService InputBridgeService;
+
+        private void Awake()
+        {
+            ServiceLocator.Get(ref GameService);
+            ServiceLocator.Get(ref InputBridgeService);
+        }
 
         protected override void SentUpdate()
         {
             if (!enabled)
                 return;
             
-            if (_playerBase.GameService.IsPaused)
+            if (GameService.IsPaused)
                 return;
             
-            if (!_playerBase.InputBridgeService.IsActionDown)
+            if (!InputBridgeService.IsActionDown)
                 return;
 
             var isRaycast = Physics.Raycast(

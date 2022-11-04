@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
+using Services;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,15 +10,33 @@ namespace Characters.Components
 {
     public class PlayerWalksteps : UpdateGetter, ISelfDeps
     {
-        [SerializeField] private PlayerBase PlayerBase;
+        [SerializeField] private PlayerSound PlayerSound;
+        [SerializeField] private PlayerMovementBase  PlayerMovement;
+        [SerializeField] private PlayerGravityBase PlayerGravityBase;
+        
         [SerializeField] private float walkStepsTime = 1;
-        // [SerializeField] [Range(0, 1)] private float volume = 1;
         [SerializeField] [Range(0, 1)] private float walkInputSoundOffsetMovement = 1f;
         [SerializeField] private bool showDebugPlaySteps = false;
         [SerializeField] private bool showDebugVelocityMagnitude = false;
 
         private Coroutine walkCoroutine;
         
+        private AudioSourcesService AudioSourcesService;
+        private GameService GameService;
+
+        private void Awake()
+        {
+            GameService = ServiceLocator.Get<GameService>();
+            AudioSourcesService = ServiceLocator.Get<AudioSourcesService>();
+        }
+
+        public void SetupDeps()
+        {
+            PlayerSound = GetComponent<PlayerSound>();
+            PlayerMovement = GetComponent<PlayerMovementBase>();
+            PlayerGravityBase = GetComponent<PlayerGravityBase>();
+        }
+
         private void StartWalkStepsCoroutine()
         {
             if (walkCoroutine != null)
@@ -46,48 +67,48 @@ namespace Characters.Components
             if (showDebugPlaySteps)
                 Debug.Log("Step");
             
-            float floatrand = Random.value * (PlayerBase.PlayerSound.walkSteps.Length - 1);
+            float floatrand = Random.value * (PlayerSound.walkSteps.Length - 1);
             int rand = (int)floatrand;
 
-            var shot = PlayerBase.PlayerSound.walkSteps[rand];
+            var shot = PlayerSound.walkSteps[rand];
             
             if (shot == null)
                 return;
         
-            PlayerBase.AudioSourcesService.Sounds.PlayOneShot(shot, PlayerBase.PlayerSound.volume * PlayerBase.PlayerMovement.MoveVector.magnitude);
+            AudioSourcesService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveVector.magnitude);
         }
 
         public void PlayJump()
         {
             if (!enabled)
                 return;
-            if (PlayerBase.PlayerSound.Jump != null) PlayerBase.AudioSourcesService.Sounds.PlayOneShot(PlayerBase.PlayerSound.Jump, PlayerBase.PlayerSound.volume);
+            if (PlayerSound.Jump != null) AudioSourcesService.Sounds.PlayOneShot(PlayerSound.Jump, PlayerSound.volume);
         }
 
         public void PlayGrounded()
         {
             if (!enabled)
                 return;
-            if (PlayerBase.PlayerSound.Grounding != null) PlayerBase.AudioSourcesService.Sounds.PlayOneShot(PlayerBase.PlayerSound.Grounding,  PlayerBase.PlayerSound.volume);
+            if (PlayerSound.Grounding != null) AudioSourcesService.Sounds.PlayOneShot(PlayerSound.Grounding,  PlayerSound.volume);
         }
 
         protected override void SentUpdate()
         {
-            if (PlayerBase.GameService.IsPaused)
+            if (GameService.IsPaused)
             {
                 EndWalkStepsCoroutine();
                 return;
             }
             
-            var velocity = PlayerBase.PlayerMovement.MoveVector;
+            var velocity = PlayerMovement.MoveVector;
             velocity.y = 0;
 
             if (showDebugVelocityMagnitude)
             {
-                Debug.Log($"Player Velocity: {velocity.magnitude}, grounded: {PlayerBase.PlayerGravityBase.IsGrounded}");
+                Debug.Log($"Player Velocity: {velocity.magnitude}, grounded: {PlayerGravityBase.IsGrounded}");
             }
             
-            if (velocity.magnitude > walkInputSoundOffsetMovement && PlayerBase.PlayerGravityBase.IsGrounded)
+            if (velocity.magnitude > walkInputSoundOffsetMovement && PlayerGravityBase.IsGrounded)
             {
                 StartWalkStepsCoroutine();
             }
@@ -95,11 +116,6 @@ namespace Characters.Components
             {
                 EndWalkStepsCoroutine();
             }
-        }
-
-        public void SetupDeps()
-        {
-            PlayerBase = GetComponent<PlayerBase>();
         }
     }
 }

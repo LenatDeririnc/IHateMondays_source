@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using TransformTools;
+﻿using TransformTools;
 using UnityEngine;
+using UnityOverrides;
 
 namespace Characters.Components
 {
     public class PlayerGravityCharacterController : PlayerGravityBase
     {
-        PlayerMovementCharacterController PlayerMovement =>
-            (PlayerMovementCharacterController)PlayerBase.PlayerMovement;
-        
+        [SerializeField] private PlayerMovementCharacterController PlayerMovement;
+        [SerializeField] private PlayerWalksteps PlayerWalksteps;
+        [SerializeField] private CharacterControllerDecorator CharacterController;
+
         [SerializeField] private float maxFallSpeed = 8;
         [SerializeField] private float TimeScale = 1;
         [SerializeField] private float _groundedFallSpeed = -1f;
@@ -53,7 +54,7 @@ namespace Characters.Components
 
                     if (previousGround != hit.collider)
                     {
-                        PlayerBase.PlayerWalksteps.PlayGrounded();
+                        PlayerWalksteps.PlayGrounded();
                         previousGround = hit.collider;
                     }
                 }
@@ -73,7 +74,7 @@ namespace Characters.Components
                 _yVelocity = JumpHeight;
                 _jumpCommand = false;
                 _groundCheckEnabled = false;
-                PlayerBase.PlayerWalksteps.PlayJump();
+                PlayerWalksteps.PlayJump();
                 previousGround = null;
             }
             else
@@ -91,12 +92,20 @@ namespace Characters.Components
 
         protected override void ApplyGravity()
         {
-            PlayerBase.CharacterController.Move(Gravity(Time.fixedDeltaTime) * Time.fixedDeltaTime);
+            CharacterController.Move(Gravity(Time.fixedDeltaTime) * Time.fixedDeltaTime);
         }
 
         public void SetVelocityY(float velocity)
         {
             _yVelocity = velocity;
+        }
+
+        public override void SetupDeps()
+        {
+            base.SetupDeps();
+            PlayerMovement = GetComponent<PlayerMovementCharacterController>();
+            PlayerWalksteps = GetComponent<PlayerWalksteps>();
+            CharacterController = GetComponent<CharacterControllerDecorator>();
         }
     }
 }
