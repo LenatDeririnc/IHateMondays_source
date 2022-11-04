@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMovement: {fileID: 7219627776912397649}
   PlayerGravityBase: {fileID: 1368401259009251082}
-  PlayerInput: {fileID: 1466958770612396112}
+  playerInputFPS: {fileID: 1466958770612396112}
   PlayerLook: {fileID: 3165047518305884271}
   PlayerWalksteps: {fileID: 35816566887867664}
   PlayerInteract: {fileID: 7263573082251869923}
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4ca9b8cade41f290739e2b16ef7e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 3379342652002020676}
   MoveSpeed: 7
-  _movement: {x: 0, y: 0, z: 0}
+  _movementInput: {x: 0, y: 0, z: 0}
+  playerForwardTransform: {fileID: 3379342652002020676}
   CharacterController: {fileID: 8537891967229406591}
   impulseScaleModifier: 0.01
   impulseScaleGroundModifier: 0.9
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061bec383cda4dcc8f898a1e3479d3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 3379342652002020676}
+  playerForwardTransform: {fileID: 3379342652002020676}
   GroundCheckRadius: 0.2
   groundMask:
     serializedVersion: 2
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed1ca5abd4b4b25a1f07ca0fd1af48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 3379342652002020676}
+  playerForwardTransform: {fileID: 3379342652002020676}
   CameraTransform: {fileID: 7130685909192247296}
 --- !u!114 &4282098389203159228
 MonoBehaviour:

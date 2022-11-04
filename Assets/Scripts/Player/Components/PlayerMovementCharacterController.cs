@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using TransformTools;
@@ -8,8 +9,9 @@ using UnityOverrides;
 
 namespace Characters.Components
 {
-    public class PlayerMovementCharacterController : PlayerMovementBase
+    public class PlayerMovementCharacterController : PlayerMovementBase, ISelfDeps
     {
+        [SerializeField] protected PlayerForwardTransform playerForwardTransform;
         [SerializeField] private CharacterControllerDecorator CharacterController;
         [SerializeField] private float impulseScaleModifier = 0.01f;
         [SerializeField] private float impulseScaleGroundModifier = 0.5f;
@@ -29,27 +31,32 @@ namespace Characters.Components
             ServiceLocator.Get(ref GameService);
         }
 
-        public override void SetupDeps()
+        public void SetupDeps()
         {
-            base.SetupDeps();
+            playerForwardTransform = GetComponent<PlayerForwardTransform>();
             CharacterController = GetComponent<CharacterControllerDecorator>();
+        }
+        
+        protected override Vector3 MovementInput()
+        {
+            return playerForwardTransform.Value.forward * _movementInput.z + playerForwardTransform.Value.right * _movementInput.x;
         }
 
         protected override void OnEnable()
         {
             _impulse = Vector3.zero;
-            _movement = Vector3.zero;
+            _movementInput = Vector3.zero;
         }
 
-        public override void SetMovement(Vector3 movement)
+        public override void SetMovementInput(Vector3 movement)
         {
-            base.SetMovement(movement);
+            base.SetMovementInput(movement);
             StopImpulse();
         }
 
         public void StopImpulse()
         {
-            var dot = Vector3.Dot(Movement().normalized, _impulse.normalized);
+            var dot = Vector3.Dot(MovementInput().normalized, _impulse.normalized);
 
             if (dot <= 0)
             {
@@ -73,13 +80,6 @@ namespace Characters.Components
                 return;
 
             Move(_groundVelocity.Velocity * deltaTime);
-        }
-
-        private void MovePlayer(float deltaTime)
-        {
-            Velocity = Movement();
-            MoveVector = Velocity / MoveSpeed;
-            Move(Velocity * deltaTime);
         }
 
         private void MovementImpulse(float deltaTime)

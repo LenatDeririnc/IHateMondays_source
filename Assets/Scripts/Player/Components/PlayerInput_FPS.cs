@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Characters.Components
 {
-    public class PlayerInput : UpdateGetter, ISelfDeps
+    public class PlayerInput_FPS : UpdateGetter, ISelfDeps
     {
         [SerializeField] private PlayerMovementBase _playerMovement;
         [SerializeField] private PlayerGravityBase _playerGravityBase;
@@ -45,7 +45,7 @@ namespace Characters.Components
         private void MovementInputUpdate()
         {
             var movement = InputBridgeService.Movement;
-            _playerMovement.SetMovement(new Vector3(movement.x, 0, movement.y));
+            _playerMovement.SetMovementInput(new Vector3(movement.x, 0, movement.y));
         }
 
         private void RotationInputUpdate()
@@ -72,7 +72,7 @@ namespace Characters.Components
 
         public void PausedUpdate()
         {
-            _playerMovement.SetMovement(Vector3.zero);
+            _playerMovement.SetMovementInput(Vector3.zero);
             _playerLook.SetRotateDelta(Vector3.zero);
             _playerGravityBase.SetJumpCommand(false);
             _playerGravityBase.CutoffJump();

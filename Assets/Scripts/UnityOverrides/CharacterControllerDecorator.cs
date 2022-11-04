@@ -6,6 +6,9 @@ namespace UnityOverrides
     public class CharacterControllerDecorator : MonoBehaviour
     {
         [SerializeField] private CharacterController _characterController;
+
+        public CharacterController CharacterController => _characterController;
+
         [SerializeField] private Transform _characterTransform;
         private bool _isIgnoreFrame;
         private Coroutine _isIgnoreFrameCoroutine;

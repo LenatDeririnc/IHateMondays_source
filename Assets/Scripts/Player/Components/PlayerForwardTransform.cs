@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Characters.Components
 {
-    public class PlayerTransform : MonoBehaviour, ISelfDeps
+    public class PlayerForwardTransform : MonoBehaviour, ISelfDeps
     {
         [SerializeField] private Transform value;
 

@@ -1,29 +1,40 @@
 ﻿using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
+using Services;
 using UnityEngine;
 
 namespace Characters.Components
 {
-    public abstract class PlayerMovementBase : UpdateGetter, ISelfDeps
+    public abstract class PlayerMovementBase : UpdateGetter
     {
-        [SerializeField] private PlayerTransform PlayerTransform;
+        
         [SerializeField] protected float MoveSpeed = 2f;
-        [SerializeField] protected Vector3 _movement;
+        [SerializeField] protected Vector3 _movementInput;
         public Vector3 MoveVector { get; protected set; } = Vector3.zero;
         public Vector3 Velocity { get; protected set; } = Vector3.zero;
 
-        public virtual void SetupDeps()
+        private InputBridgeService InputBridgeService;
+        
+        protected virtual void Awake()
         {
-            PlayerTransform = GetComponent<PlayerTransform>();
+            ServiceLocator.Get(ref InputBridgeService);
         }
 
-        protected Vector3 Movement()
+        protected virtual Vector3 MovementInput()
         {
-            return PlayerTransform.Value.forward * _movement.z + PlayerTransform.Value.right * _movement.x;
+            return Vector3.forward * _movementInput.z + Vector3.right * _movementInput.x;
         }
 
-        public virtual void SetMovement(Vector3 movement)
+        public virtual void SetMovementInput(Vector3 movement)
         {
-            _movement = movement * MoveSpeed;
+            _movementInput = movement * MoveSpeed;
+        }
+        
+        protected virtual void MovePlayer(float deltaTime)
+        {
+            Velocity = MovementInput();
+            MoveVector = Velocity / MoveSpeed;
+            Move(Velocity * deltaTime);
         }
 
         protected abstract void Move(Vector3 velocity);

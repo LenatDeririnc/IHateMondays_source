@@ -7,11 +7,11 @@ using UnityOverrides;
 
 namespace Characters.Components
 {
-    public class PlayerBase_FPSController : PlayerBase, ISelfDeps
+    public class FPSController : PlayerBase, ISelfDeps
     {
         public PlayerMovementBase PlayerMovement;
         public PlayerGravityBase PlayerGravityBase;
-        public PlayerInput PlayerInput;
+        public PlayerInput_FPS playerInputFPS;
         public PlayerLook PlayerLook;
         public PlayerWalksteps PlayerWalksteps;
         public PlayerInteract PlayerInteract;
@@ -28,7 +28,7 @@ namespace Characters.Components
         public void Update()
         {
             PlayerWalksteps.UpdateInvoke();
-            PlayerInput.UpdateInvoke();
+            playerInputFPS.UpdateInvoke();
             PlayerMovement.UpdateInvoke();
             PlayerLook.UpdateInvoke();
             PlayerGravityBase.UpdateInvoke();
@@ -46,7 +46,7 @@ namespace Characters.Components
             CharacterControllerDecorator = GetComponent<CharacterControllerDecorator>();
             PlayerMovement = GetComponent<PlayerMovementBase>();
             PlayerGravityBase = GetComponent<PlayerGravityBase>();
-            PlayerInput = GetComponent<PlayerInput>();
+            playerInputFPS = GetComponent<PlayerInput_FPS>();
             PlayerLook = GetComponent<PlayerLook>();
             PlayerWalksteps = GetComponent<PlayerWalksteps>();
         }

@@ -8,7 +8,7 @@ namespace Characters.Components
 {
     public abstract class PlayerGravityBase : UpdateGetter, ISelfDeps
     {
-        [SerializeField] private PlayerTransform PlayerTransform;
+        [SerializeField] private PlayerForwardTransform playerForwardTransform;
         
         [SerializeField] protected float GroundCheckRadius = 0.5f;
         [SerializeField] private LayerMask groundMask;
@@ -18,6 +18,7 @@ namespace Characters.Components
         protected bool _groundCheckEnabled = true;
         protected bool _jumpCommand;
 
+        private InputBridgeService InputBridgeService;
         private GameService GameService;
         
         public bool IsGrounded { get; protected set; } = false;
@@ -29,6 +30,12 @@ namespace Characters.Components
         private void Awake()
         { 
             ServiceLocator.Get(ref GameService);
+            ServiceLocator.Get(ref InputBridgeService);
+        }
+
+        public virtual void SetupDeps()
+        {
+            playerForwardTransform = GetComponent<PlayerForwardTransform>();
         }
 
         public void SetJumpCommand(bool value)
@@ -40,13 +47,13 @@ namespace Characters.Components
         {
             hit = new RaycastHit();
             
-            var position = PlayerTransform.Value.position;
+            var position = playerForwardTransform.Value.position;
 
             var sphereCheck = Physics.CheckSphere(position, GroundCheckRadius, groundMask);
             var boxCheck = Physics.CheckBox(
-                position + PlayerTransform.Value.up * GroundCheckRadius / 2, 
+                position + playerForwardTransform.Value.up * GroundCheckRadius / 2, 
                 new Vector3(GroundCheckRadius, GroundCheckRadius/2, GroundCheckRadius), 
-                PlayerTransform.Value.rotation, 
+                playerForwardTransform.Value.rotation, 
                 groundMask);
 
             var isGround = _groundCheckEnabled &&
@@ -55,7 +62,7 @@ namespace Characters.Components
 
             if (isGround)
             {
-                Physics.Raycast(position + PlayerTransform.Value.up * GroundCheckRadius / 2, 
+                Physics.Raycast(position + playerForwardTransform.Value.up * GroundCheckRadius / 2, 
                     Vector3.down * (GroundCheckRadius / 2), out hit, (GroundCheckRadius / 2), groundMask);
             }
 
@@ -84,9 +91,18 @@ namespace Characters.Components
             Gizmos.DrawWireSphere(position, GroundCheckRadius);
         }
 
-        public virtual void SetupDeps()
+        private void JumpInputUpdate()
         {
-            PlayerTransform = GetComponent<PlayerTransform>();
+            if (InputBridgeService.IsJumpUp)
+            {
+                SetJumpCommand(false);
+                CutoffJump();
+            }
+
+            if (InputBridgeService.IsJumpDown)
+            {
+                SetJumpCommand(true);
+            }
         }
     }
 }

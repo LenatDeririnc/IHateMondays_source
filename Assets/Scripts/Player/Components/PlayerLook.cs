@@ -1,20 +1,30 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using System;
+using Plugins.MonoBehHelpers;
+using Plugins.ServiceLocator;
+using Services;
 using UnityEngine;
 
 namespace Characters.Components
 {
     public class PlayerLook : UpdateGetter, ISelfDeps
     {
-        [SerializeField] private PlayerTransform PlayerTransform;
+        [SerializeField] private PlayerForwardTransform playerForwardTransform;
         [SerializeField] private CameraTransform CameraTransform;
         
         private float _xRotation = 0f;
 
         private Vector3 _rotateDelta;
 
+        private InputBridgeService InputBridgeService;
+        
+        private void Awake()
+        {
+            ServiceLocator.Get(ref InputBridgeService);
+        }
+
         public void SetupDeps()
         {
-            PlayerTransform = GetComponent<PlayerTransform>();
+            playerForwardTransform = GetComponent<PlayerForwardTransform>();
             CameraTransform = GetComponent<CameraTransform>();
         }
 
@@ -25,7 +35,7 @@ namespace Characters.Components
 
         private void RotateCamera(Vector3 rotateDelta)
         {
-            PlayerTransform.Value.Rotate(Vector3.up, rotateDelta.x);
+            playerForwardTransform.Value.Rotate(Vector3.up, rotateDelta.x);
 
             _xRotation -= rotateDelta.y;
             _xRotation = Mathf.Clamp(_xRotation, -90, 90);
