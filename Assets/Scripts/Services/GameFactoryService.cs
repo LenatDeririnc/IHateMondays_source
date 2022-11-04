@@ -8,10 +8,10 @@ namespace Services
     {
         [SerializeField] private GameObject PlayerPrefab;
         
-        public PlayerInfo SpawnPlayer(Transform spawn)
+        public PlayerBase SpawnPlayer(Transform spawn)
         {
             var GO = Instantiate(PlayerPrefab, spawn.position, spawn.rotation);
-            var info = GO.GetComponent<PlayerInfo>();
+            var info = GO.GetComponent<PlayerBase>();
             return info;
         }
     }

@@ -1,13 +1,13 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using Player;
+using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using TransformTools;
-using UnityEngine;
 using UnityOverrides;
 
 namespace Characters.Components
 {
-    public class PlayerBase_FPSController : MonoBehaviour, ISelfDeps
+    public class PlayerBase_FPSController : PlayerBase, ISelfDeps
     {
         public PlayerMovementBase PlayerMovement;
         public PlayerGravityBase PlayerGravityBase;

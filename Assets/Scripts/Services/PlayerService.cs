@@ -7,7 +7,7 @@ namespace Services
 {
     public class PlayerService : Service, IAwakeService
     {
-        public PlayerInfo Player { get; private set; }
+        public PlayerBase Player { get; private set; }
 
         [SerializeField] private Transform defaultPlayerSpawn;
         private GameFactoryService _factoryService;
