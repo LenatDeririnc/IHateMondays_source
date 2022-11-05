@@ -1,4 +1,5 @@
 ﻿using System;
+using Player.Custom;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -11,6 +12,7 @@ namespace Characters.Components
         [SerializeField] private PlayerMovementBase _playerMovement;
         [SerializeField] private PlayerGravityBase _playerGravityBase;
         [SerializeField] private PlayerLook _playerLook;
+        [SerializeField] private HLFlashlight _flashlight;
         
         private InputBridgeService InputBridgeService;
         private GameService GameService;
@@ -63,10 +65,18 @@ namespace Characters.Components
                 MovementInputUpdate();
                 RotationInputUpdate();
                 JumpInputUpdate();
+                FlashlightUpdate();
             }
             else
             {
                 PausedUpdate();
+            }
+        }
+
+        private void FlashlightUpdate()
+        {
+            if (InputBridgeService.IsFlashlightDown) {
+                _flashlight.SwitchActive();
             }
         }
 

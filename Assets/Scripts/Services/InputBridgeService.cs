@@ -21,6 +21,8 @@ namespace Services
         public bool IsJumpUp { get; private set; }
         public bool IsJumpDown { get; private set; }
         public bool IsActionDown { get; private set; }
+        
+        public bool IsFlashlightDown { get; private set; }
 
         public void InitSensitivityOption(SetSensitivity setSensitivityOption)
         {
@@ -65,6 +67,7 @@ namespace Services
             IsJumpDown = Input.GetButtonDown("Jump");
             IsJumpUp = Input.GetButtonUp("Jump");
             IsActionDown = Input.GetButtonDown("Fire1");
+            IsFlashlightDown = Input.GetButtonDown("Fire2");
         }
     }
 }

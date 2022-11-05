@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Plugins/MainMenu/MainMenuTemplate.unity
     guid: 19feda2a4ba62424f8106947579e816b
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Zelda/Zelda.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
