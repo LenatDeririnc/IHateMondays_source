@@ -9,13 +9,15 @@ namespace Characters.Components
     {
         [SerializeField] private PlayerMovementBase _playerMovement;
 
-        private InputBridgeService InputBridgeService;
-        private GameService GameService;
+        private InputBridgeService _inputBridgeService;
+        private GameService _gameService;
+        private CameraService _cameraService;
 
         private void Awake()
         {
-            InputBridgeService = ServiceLocator.Get<InputBridgeService>();
-            GameService = ServiceLocator.Get<GameService>();
+            _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
+            _gameService = ServiceLocator.Get<GameService>();
+            _cameraService = ServiceLocator.Get<CameraService>();
         }
 
         public void SetupDeps()
@@ -25,7 +27,7 @@ namespace Characters.Components
 
         private void MovementInputUpdate()
         {
-            var movement = InputBridgeService.Movement;
+            var movement = _inputBridgeService.Movement;
             _playerMovement.SetMovementInput(new Vector3(movement.x, 0, movement.y));
         }
 
@@ -34,7 +36,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!GameService.IsPaused)
+            if (!_gameService.IsPaused && !_cameraService.Brain.IsBlending)
             {
                 MovementInputUpdate();
             }

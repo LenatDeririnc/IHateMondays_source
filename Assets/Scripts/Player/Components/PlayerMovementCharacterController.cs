@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Player.Components;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -12,7 +13,7 @@ namespace Characters.Components
     public class PlayerMovementCharacterController : PlayerMovementBase, ISelfDeps
     {
         [SerializeField] protected PlayerForwardTransform playerForwardTransform;
-        [SerializeField] private CharacterControllerDecorator CharacterController;
+        [SerializeField] private CharacterControllerAccelerator CharacterController;
         [SerializeField] private float impulseScaleModifier = 0.01f;
         [SerializeField] private float impulseScaleGroundModifier = 0.5f;
 
@@ -34,7 +35,7 @@ namespace Characters.Components
         public void SetupDeps()
         {
             playerForwardTransform = GetComponent<PlayerForwardTransform>();
-            CharacterController = GetComponent<CharacterControllerDecorator>();
+            CharacterController = GetComponent<CharacterControllerAccelerator>();
         }
         
         protected override Vector3 MovementInput()
