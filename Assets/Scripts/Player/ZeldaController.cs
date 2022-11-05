@@ -9,7 +9,8 @@ namespace Player
     {
         public PlayerMovementBase PlayerMovement;
         public PlayerInput_Zelda PlayerInput;
-        
+        public PlayerInteract PlayerInteract;
+
         private SceneLoadingService SceneLoadingService;
 
         private void Awake()
@@ -27,6 +28,7 @@ namespace Player
         {
             PlayerInput.UpdateInvoke();
             PlayerMovement.UpdateInvoke();
+            PlayerInteract.UpdateInvoke();
         }
         
         public void FixedUpdate()

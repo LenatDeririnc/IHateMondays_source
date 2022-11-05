@@ -1,21 +1,21 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using Player.Components;
+using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
-using UnityOverrides;
 
 namespace Characters.Components
 {
     public class PlayerMovementZelda : PlayerMovementBase, ISelfDeps
     {
-        [SerializeField] protected CharacterControllerDecorator characterController;
+        [SerializeField] protected CharacterControllerAccelerator characterController;
         [SerializeField] protected Transform mesh;
         private GameService _gameService;
         private CameraService _cameraService;
 
         public void SetupDeps()
         {
-            characterController = GetComponent<CharacterControllerDecorator>();
+            characterController = GetComponent<CharacterControllerAccelerator>();
         }
 
         protected override void Awake()
@@ -29,8 +29,13 @@ namespace Characters.Components
         {
             characterController.Move(velocity);
             Vector3 controllerVelocity = characterController.CharacterController.velocity; 
-            if (controllerVelocity.magnitude > 0) {
-                mesh.rotation = Quaternion.LookRotation(controllerVelocity);
+            switch (controllerVelocity.magnitude) {
+                case > 0:
+                    mesh.rotation = Quaternion.LookRotation(controllerVelocity);
+                    return;
+                case <= 0 when _movementInput.magnitude > 0:
+                    mesh.rotation = Quaternion.LookRotation(_movementInput);
+                    break;
             }
         }
         
