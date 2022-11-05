@@ -3,6 +3,7 @@ using UnityEngine;
 public class EndGameTrigger : MonoBehaviour
 {
     public GameObject[] Buttons;
+
     [SerializeField] private GameController _gameController;
 
     private void OnEnable()

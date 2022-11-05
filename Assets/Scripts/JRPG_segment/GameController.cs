@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private DialogueObject[] _playerDialogue;
     [SerializeField] private DialogueObject[] _bossDialogue;
     [SerializeField] private GameObject _nextButton;
+    [SerializeField] private HpContainer _playerHP;
 
     [Header("Settings")]
     [SerializeField] private int _endGameCounterCondition;
