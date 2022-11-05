@@ -12,7 +12,7 @@ namespace Characters.Components
         [SerializeField] private PlayerMovementBase _playerMovement;
         [SerializeField] private PlayerGravityBase _playerGravityBase;
         [SerializeField] private PlayerLook _playerLook;
-        [SerializeField] private HLFlashlight _flashlight;
+        [SerializeField] private Flashlight _flashlight;
         
         private InputBridgeService InputBridgeService;
         private GameService GameService;
@@ -64,7 +64,7 @@ namespace Characters.Components
             {
                 MovementInputUpdate();
                 RotationInputUpdate();
-                JumpInputUpdate();
+                // JumpInputUpdate();
                 FlashlightUpdate();
             }
             else

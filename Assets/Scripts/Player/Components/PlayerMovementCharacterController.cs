@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Player.Components;
+﻿using Player.Components;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -12,15 +10,16 @@ namespace Characters.Components
 {
     public class PlayerMovementCharacterController : PlayerMovementBase, ISelfDeps
     {
-        [SerializeField] protected PlayerForwardTransform playerForwardTransform;
-        [SerializeField] private CharacterControllerAccelerator CharacterController;
+        [SerializeField] protected PlayerForwardTransform _playerForwardTransform;
+        [SerializeField] private CharacterControllerDecorator _characterControllerAccelerator;
         [SerializeField] private float impulseScaleModifier = 0.01f;
         [SerializeField] private float impulseScaleGroundModifier = 0.5f;
 
         [SerializeField] private Vector3 _impulse;
 
         [SerializeField] private TransformVelocity _groundVelocity;
-        
+        public CharacterController CharacterController => _characterControllerAccelerator.CharacterController;
+
         private GameService GameService;
         
         public TransformVelocity GroundVelocity => _groundVelocity;
@@ -34,13 +33,13 @@ namespace Characters.Components
 
         public void SetupDeps()
         {
-            playerForwardTransform = GetComponent<PlayerForwardTransform>();
-            CharacterController = GetComponent<CharacterControllerAccelerator>();
+            _playerForwardTransform = GetComponent<PlayerForwardTransform>();
+            _characterControllerAccelerator = GetComponent<CharacterControllerDecorator>();
         }
         
         protected override Vector3 MovementInput()
         {
-            return playerForwardTransform.Value.forward * _movementInput.z + playerForwardTransform.Value.right * _movementInput.x;
+            return _playerForwardTransform.Value.forward * _movementInput.z + _playerForwardTransform.Value.right * _movementInput.x;
         }
 
         protected override void OnEnable()
@@ -90,7 +89,7 @@ namespace Characters.Components
 
         protected override void Move(Vector3 velocity)
         {
-            CharacterController.Move(velocity);
+            _characterControllerAccelerator.Move(velocity);
         }
 
         protected override void SentUpdate()
@@ -118,7 +117,6 @@ namespace Characters.Components
 
             GroundMovement(delta);
             MovementImpulse(delta);
-            // MovePlayer(delta);
         }
 
         public void SetImpulse(Vector3 force)

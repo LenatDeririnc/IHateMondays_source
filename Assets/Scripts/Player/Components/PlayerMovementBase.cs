@@ -8,7 +8,7 @@ namespace Characters.Components
     public abstract class PlayerMovementBase : UpdateGetter
     {
         
-        [SerializeField] protected float MoveSpeed = 2f;
+        [SerializeField] protected float _moveSpeed = 2f;
         [SerializeField] protected Vector3 _movementInput;
         public Vector3 MoveVector { get; protected set; } = Vector3.zero;
         public Vector3 Velocity { get; protected set; } = Vector3.zero;
@@ -27,13 +27,13 @@ namespace Characters.Components
 
         public virtual void SetMovementInput(Vector3 movement)
         {
-            _movementInput = movement * MoveSpeed;
+            _movementInput = movement * _moveSpeed;
         }
         
         protected virtual void MovePlayer(float deltaTime)
         {
             Velocity = MovementInput();
-            MoveVector = Velocity / MoveSpeed;
+            MoveVector = Velocity / _moveSpeed;
             Move(Velocity * deltaTime);
         }
 

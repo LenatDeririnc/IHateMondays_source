@@ -28,7 +28,7 @@ namespace Characters.Components
         protected override void Move(Vector3 velocity)
         {
             characterController.Move(velocity);
-            Vector3 controllerVelocity = characterController.CharacterController.velocity; 
+            Vector3 controllerVelocity = characterController.CharacterController.velocity;
             switch (controllerVelocity.magnitude) {
                 case > 0:
                     mesh.rotation = Quaternion.LookRotation(controllerVelocity);

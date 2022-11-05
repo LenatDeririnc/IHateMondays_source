@@ -17,7 +17,7 @@ namespace Characters.Components
         public PlayerWalksteps PlayerWalksteps;
         public PlayerInteract PlayerInteract;
         public CharacterControllerDecorator CharacterControllerDecorator;
-        public HLFlashlight HLFlashlight;
+        public FlashlightMovement FlashlightMovement;
         
         private SceneLoadingService SceneLoadingService;
 
@@ -35,7 +35,7 @@ namespace Characters.Components
             PlayerLook.UpdateInvoke();
             PlayerGravityBase.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
-            HLFlashlight.UpdateInvoke();
+            FlashlightMovement.UpdateInvoke();
         }
 
         public void FixedUpdate()
