@@ -11,6 +11,7 @@ namespace Characters.Components
         [SerializeField] protected CharacterControllerDecorator characterController;
         [SerializeField] protected Transform mesh;
         private GameService _gameService;
+        private CameraService _cameraService;
 
         public void SetupDeps()
         {
@@ -20,7 +21,8 @@ namespace Characters.Components
         protected override void Awake()
         {
             base.Awake();
-            ServiceLocator.Get(ref _gameService);
+            _gameService = ServiceLocator.Get<GameService>();
+            _cameraService = ServiceLocator.Get<CameraService>();
         }
 
         protected override void Move(Vector3 velocity)
@@ -35,6 +37,9 @@ namespace Characters.Components
         protected override void SentUpdate()
         {
             if (_gameService.IsPaused)
+                return;
+            
+            if (_cameraService.Brain.IsBlending)
                 return;
             
             var delta = Time.deltaTime;
