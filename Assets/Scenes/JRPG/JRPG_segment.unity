@@ -917,6 +917,8 @@ MonoBehaviour:
   _dialogueText: {fileID: 982168843}
   _name: {fileID: 863130742}
   _gameController: {fileID: 374480547}
+  isUseTypeEffect: 1
+  _typeDuration: 0.05
 --- !u!1 &384933155
 GameObject:
   m_ObjectHideFlags: 0
