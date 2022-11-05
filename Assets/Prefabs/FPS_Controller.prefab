@@ -59,7 +59,7 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 7130685909192247296}
   - component: {fileID: 8537891967229406591}
   - component: {fileID: 2863216020953008612}
+  - component: {fileID: 1907185079346297225}
   - component: {fileID: 7219627776912397649}
   - component: {fileID: 1368401259009251082}
   - component: {fileID: 1466958770612396112}
@@ -333,6 +334,21 @@ MonoBehaviour:
   PlayerInteract: {fileID: 7263573082251869923}
   CharacterControllerDecorator: {fileID: 8537891967229406591}
   HLFlashlight: {fileID: 3974611936637187761}
+--- !u!114 &1907185079346297225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124018375931319641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d768ef814b423089f5a2a6373fad37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 8537891967229406591}
+  Sensitivity: 1
+  Gravity: 0.5
 --- !u!114 &7219627776912397649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +364,7 @@ MonoBehaviour:
   MoveSpeed: 7
   _movementInput: {x: 0, y: 0, z: 0}
   playerForwardTransform: {fileID: 3379342652002020676}
-  CharacterController: {fileID: 8537891967229406591}
+  CharacterController: {fileID: 1907185079346297225}
   impulseScaleModifier: 0.01
   impulseScaleGroundModifier: 0.9
   _impulse: {x: 0, y: 0, z: 0}

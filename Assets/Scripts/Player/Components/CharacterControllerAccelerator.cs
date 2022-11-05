@@ -8,7 +8,7 @@ namespace Player.Components
     {
         [SerializeField] protected CharacterControllerDecorator characterController;
         [SerializeField] protected float Sensitivity = 1;
-        [SerializeField] protected float Gravity = 0.001f;
+        [SerializeField] protected float Gravity = 0.5f;
         private Vector3 _input;
         private Vector3 _currentInput;
 
