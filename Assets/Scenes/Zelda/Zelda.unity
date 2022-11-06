@@ -1433,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 3971062864609344094, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: defaultPlayerSpawn
       value: 
-      objectReference: {fileID: 1494949838}
+      objectReference: {fileID: 1494949837}
     - target: {fileID: 8698786597783193823, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: orthographic
       value: 1

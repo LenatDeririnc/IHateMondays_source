@@ -52,7 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _servicesList:
   - {fileID: 3971062864582311421}
-  - {fileID: 0}
   - {fileID: 3971062864609344094}
   - {fileID: 3971062864195996322}
   - {fileID: 787943969369038105}
@@ -191,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79860287a9fe42c0817faa597ccefbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnPlayer: 1
   defaultPlayerSpawn: {fileID: 0}
 --- !u!1 &4483630944882506253
 GameObject:
@@ -335,10 +335,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6955410084125425655}
     m_Modifications:
-    - target: {fileID: 2378367857693868427, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
-      propertyPath: field of view
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 2378367857693868427, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: orthographic size
       value: 10
