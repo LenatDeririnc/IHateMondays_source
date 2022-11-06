@@ -1099,6 +1099,7 @@ MonoBehaviour:
   - {fileID: 742600086}
   - {fileID: 742600091}
   _nextButton: {fileID: 1203936948}
+  _playerHP: {fileID: 1264898975}
   _endGameCounterCondition: 5
 --- !u!4 &374480548
 Transform:
@@ -1138,6 +1139,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _current: 0
+  _playerHP: {fileID: 1264898975}
+  _bossHP: {fileID: 567894735}
 --- !u!1 &384933155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1177,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: Player
+    DialogueDamage: 100
     Sentences:
     - 4
 --- !u!114 &384933157
@@ -1190,6 +1195,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: Player
+    DialogueDamage: 20
     Sentences:
     - 3
 --- !u!114 &384933158
@@ -1207,6 +1213,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: Player
+    DialogueDamage: 5
     Sentences:
     - 2
 --- !u!114 &384933159
@@ -1224,6 +1231,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: Player
+    DialogueDamage: 15
     Sentences:
     - 1
     - God dam
@@ -1655,6 +1663,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 0
     Sentences:
     - "AAAWWWWWWWW SHIT \nHere we go again"
     - FOCK
@@ -1710,6 +1719,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 10
     Sentences:
     - 4 b
 --- !u!114 &742600087
@@ -1727,6 +1737,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 10
     Sentences:
     - 3 b
 --- !u!114 &742600088
@@ -1744,6 +1755,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 10
     Sentences:
     - 2 b
 --- !u!114 &742600089
@@ -1761,6 +1773,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 25
     Sentences:
     - 1 b - you are son of a bitch
     - Not a mario
@@ -1794,6 +1807,7 @@ MonoBehaviour:
   TextController: {fileID: 374480549}
   Dialogue:
     Name: The BOSS
+    DialogueDamage: 100
     Sentences:
     - YOU FIRED
 --- !u!1 &846188978

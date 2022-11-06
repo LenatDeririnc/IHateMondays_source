@@ -11,10 +11,14 @@ public class TextController : MonoBehaviour
     [SerializeField] private bool isUseTypeEffect;
     [SerializeField] private float _typeDuration;
     [SerializeField] private AnimationCurve _animationCurve;
+    [SerializeField] private Turn _current;
+    [SerializeField] HpContainer _playerHP;
+    [SerializeField] HpContainer _bossHP;
     
     public Queue<string> GameDialog;
 
     private Coroutine _coroutine;
+    private int _damage;
 
     private void Start()
     {
@@ -25,6 +29,8 @@ public class TextController : MonoBehaviour
     {
         _dialogueText.text = dialogue.Sentences[0];
         _name.text = dialogue.Name;
+        _damage = dialogue.DialogueDamage;
+        _current = _gameController._currentTurn;
         GameDialog.Clear();
 
         foreach (string text in dialogue.Sentences)
@@ -73,6 +79,15 @@ public class TextController : MonoBehaviour
 
     private void EndDialogue()
     {
+        if(_current == Turn.Player)
+        {
+            _bossHP.TakeDamage(_damage);
+        }
+        else if(_current == Turn.Boss)
+        {
+            _playerHP.TakeDamage(_damage);
+        }
+
         _gameController.NextTurn();
     }
 }
