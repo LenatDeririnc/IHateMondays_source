@@ -18,8 +18,9 @@ namespace Services
         {
             _factoryService = ServiceLocator.Get<GameFactoryService>();
             
-            if (_spawnPlayer)
-                Player = _factoryService.SpawnPlayer(defaultPlayerSpawn.transform);
+            if (_spawnPlayer) {
+                Player = _factoryService.SpawnPlayer(defaultPlayerSpawn.playerType, defaultPlayerSpawn.transform);
+            }
         }
     }
 }

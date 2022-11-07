@@ -1,4 +1,5 @@
 ﻿using Scenes.PlayerSpawner;
+using Services;
 using UnityEngine;
 
 namespace Scenes
@@ -7,6 +8,8 @@ namespace Scenes
     {
         [SerializeField] PlayerSpawnPointInfo spawnInfo;
         public PlayerSpawnPointInfo SpawnInfo => spawnInfo;
+
+        public GameFactoryService.EntityType playerType = GameFactoryService.EntityType.Default;
 
         private void OnDrawGizmos()
         {

@@ -443,8 +443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b723def39ed4417ae577c78518426a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 6152145843526342913}
   _characterControllerDecorator: {fileID: 6820008798889748137}
   moveSpeed: 10
+  _damageSeconds: 5
 --- !u!1 &8509710117985810332
 GameObject:
   m_ObjectHideFlags: 0
