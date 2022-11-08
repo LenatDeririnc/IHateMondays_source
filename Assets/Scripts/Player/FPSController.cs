@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using System;
+using Player;
 using Player.Custom;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
@@ -26,7 +27,12 @@ namespace Characters.Components
             SceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             SceneLoadingService.OnLoadingStart += OnLoading;
         }
-        
+
+        private void OnDestroy()
+        {
+            SceneLoadingService.OnLoadingStart -= OnLoading;
+        }
+
         public void Update()
         {
             PlayerWalksteps.UpdateInvoke();

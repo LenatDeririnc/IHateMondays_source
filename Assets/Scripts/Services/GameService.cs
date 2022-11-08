@@ -27,6 +27,7 @@ namespace Services
         {
             if (_inputBridgeService.IsPauseButtonDown && CanPressPause) {
                 _isPaused = !_isPaused;
+                _inputBridgeService.SetCursorLocked(!_isPaused);
             }
         }
     }

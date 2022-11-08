@@ -1,4 +1,5 @@
-﻿using Characters.Components;
+﻿using System;
+using Characters.Components;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -17,6 +18,11 @@ namespace Player
         {
             SceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             SceneLoadingService.OnLoadingStart += OnLoading;
+        }
+
+        private void OnDestroy()
+        {
+            SceneLoadingService.OnLoadingStart -= OnLoading;
         }
 
         public void OnLoading()

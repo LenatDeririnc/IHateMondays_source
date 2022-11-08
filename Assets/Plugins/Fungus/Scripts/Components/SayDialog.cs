@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fungus.Services;
+using TMPro;
 
 namespace Fungus
 {
@@ -14,6 +16,8 @@ namespace Fungus
     /// </summary>
     public class SayDialog : MonoBehaviour
     {
+        protected static FungusFactoryService factoryService;
+        
         [Tooltip("Duration to fade dialogue in/out")]
         [SerializeField] protected float fadeDuration = 0.25f;
 
@@ -41,7 +45,7 @@ namespace Fungus
         }
 
         [Tooltip("The story text UI object")]
-        [SerializeField] protected Text storyText;
+        [SerializeField] protected TMP_Text storyText;
         [Tooltip("TextAdapter will search for appropriate output on this GameObject if storyText is null")]
         [SerializeField] protected GameObject storyTextGO;
         protected TextAdapter storyTextAdapter = new TextAdapter();
@@ -95,6 +99,11 @@ namespace Fungus
 		// Cache active Say Dialogs to avoid expensive scene search
 		protected static List<SayDialog> activeSayDialogs = new List<SayDialog>();
 
+        public static void Construct(FungusFactoryService service)
+        {
+            factoryService = service;
+        }
+        
 		protected virtual void Awake()
 		{
 			if (!activeSayDialogs.Contains(this))
@@ -267,17 +276,8 @@ namespace Fungus
                     ActiveSayDialog = sd;
                 }
 
-                if (ActiveSayDialog == null)
-                {
-                    // Auto spawn a say dialog object from the prefab
-                    GameObject prefab = Resources.Load<GameObject>("Prefabs/SayDialog");
-                    if (prefab != null)
-                    {
-                        GameObject go = Instantiate(prefab) as GameObject;
-                        go.SetActive(false);
-                        go.name = "SayDialog";
-                        ActiveSayDialog = go.GetComponent<SayDialog>();
-                    }
+                if (ActiveSayDialog == null) {
+                    ActiveSayDialog = factoryService.CreateDialogPrefab();
                 }
             }
 

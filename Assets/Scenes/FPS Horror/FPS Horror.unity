@@ -618,6 +618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInfo: {fileID: 11400000, guid: 221e3e803142a5f4b9838b54889dd67c, type: 2}
+  playerType: 0
 --- !u!4 &1494949838
 Transform:
   m_ObjectHideFlags: 0
@@ -737,6 +738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2788441872730514660, guid: c0210408f653a554c91911de1200fea4, type: 3}
+      propertyPath: _currentDialogIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 79.42956

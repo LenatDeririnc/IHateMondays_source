@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zelda/Zelda.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Runner/Runner.unity
+    guid: 14d516a2caab59a49b5db6e858c79467
+  - enabled: 1
+    path: Assets/Scenes/Visual Novel/Visual Novel.unity
+    guid: 750e51fe21a9cb7469dd5e3e3b4b10ef
+  - enabled: 1
+    path: Assets/Scenes/PoinAndClick/PointAndClick_segment.unity
+    guid: 64e63474c6e8e8b4a8fe8b97b098b062
+  - enabled: 1
+    path: Assets/Scenes/JRPG/JRPG_segment.unity
+    guid: 119254d8688991b4a8fe49391baebaf8
+  - enabled: 1
+    path: Assets/Scenes/FPS Horror/FPS Horror.unity
+    guid: 63d95126cec7a5044b88751b9244e632
   m_configObjects: {}
