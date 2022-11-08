@@ -3,6 +3,7 @@ using UnityEngine;
 public class PickUp : InteractElement
 {
     [SerializeField] private Inventory _inventory;
+    [SerializeField] public Sprite _sprite;
 
     public override void Use()
     {
@@ -12,6 +13,7 @@ public class PickUp : InteractElement
     private void AddItemToInventory()
     {
         _inventory.interactElements.Add(this);
+        _inventory.InventoryPanelUpdate();
         gameObject.SetActive(false);
     }
 
