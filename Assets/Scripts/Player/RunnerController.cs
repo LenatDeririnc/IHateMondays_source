@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using Plugins.ServiceLocator;
 using Services;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityOverrides;
 
@@ -8,12 +9,11 @@ namespace Player
 {
     public class RunnerController : PlayerBase
     {
-        [SerializeField] private CharacterControllerDecorator _characterTransform;
-        [SerializeField] public Transform CameraView;
-        [SerializeField] public Transform CameraPosition;
+        [SerializeField] private RunnerControllerDecorator _characterTransform;
         [SerializeField] private float moveDistance = 10f;
 
         private int _currentRoadIndex = 0;
+        private float _splinePosition = 0f;
         
         private InputBridgeService _inputBridgeService;
         private RunnerService _runnerService;
@@ -35,8 +35,11 @@ namespace Player
             if (_inputBridgeService.RightMoveIsDown) {
                 MoveRight();
             }
-            
-            _characterTransform.Move(_characterTransform.transform.forward * (Time.deltaTime * _runnerService.CurrentSpeed));
+
+            _splinePosition += _runnerService.CurrentSpeed * Time.deltaTime * 0.005f;
+            Vector3 rotation = _runnerService.Spline.EvaluateTangent(_splinePosition);
+            _characterTransform.mainTransform.forward = rotation; 
+            _characterTransform.mainTransform.position = _runnerService.Spline.EvaluatePosition(_splinePosition);
         }
 
         private void MoveLeft()
@@ -45,7 +48,7 @@ namespace Player
                 return;
             
             _currentRoadIndex -= 1;
-            _characterTransform.Move(-_characterTransform.transform.right * moveDistance);
+            _characterTransform.bodyTransform.DOLocalMoveX(moveDistance * _currentRoadIndex, 0.1f);
         }
 
         private void MoveRight()
@@ -54,14 +57,13 @@ namespace Player
                 return;
             
             _currentRoadIndex += 1;
-            _characterTransform.Move(_characterTransform.transform.right * moveDistance);
+            _characterTransform.bodyTransform.DOLocalMoveX(moveDistance * _currentRoadIndex, 0.1f);
         }
 
-        public void Rotate(Transform aroundWhat, int angle)
-        {
-            var resultPosition = aroundWhat.position + aroundWhat.right * _currentRoadIndex * moveDistance;
-            _characterTransform.SetPosition(resultPosition);
-            _characterTransform.Rotate(_characterTransform.transform.up, angle);
-        }
+        // public void Rotate(Transform aroundWhat, int angle)
+        // {
+        //     _characterTransform.Rotate(angle);
+        //     _currentRoadIndex = 0;
+        // }
     }
 }

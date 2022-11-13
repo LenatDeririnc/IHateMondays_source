@@ -7,6 +7,8 @@ namespace UnityOverrides
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _forward;
 
+        public Transform Transform => _forward;
+
         public CharacterController CharacterController => _characterController;
 
 

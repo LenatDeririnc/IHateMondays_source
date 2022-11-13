@@ -29,27 +29,27 @@ namespace Scenes.Props
             _playerService = ServiceLocator.Get<PlayerService>();
             _runerService = ServiceLocator.Get<RunnerService>();
             _player = _runerService.RunnerController;
-            _trigger.OnEnter += OnEnter;
+            // _trigger.OnEnter += OnEnter;
         }
 
-        private void OnEnter(Collider obj)
-        {
-            if (obj != _playerService.Player.Collider)
-                return;
-
-            switch (_moveAction) {
-                case MoveDirection.Forward:
-                    break;
-                case MoveDirection.Left:
-                    _player.Rotate(_transform, -90);
-                    break;
-                case MoveDirection.Right:
-                    _player.Rotate(_transform, 90);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
+        // private void OnEnter(Collider obj)
+        // {
+        //     if (obj != _playerService.Player.Collider)
+        //         return;
+        //
+        //     switch (_moveAction) {
+        //         case MoveDirection.Forward:
+        //             break;
+        //         case MoveDirection.Left:
+        //             _player.Rotate(_transform, -90);
+        //             break;
+        //         case MoveDirection.Right:
+        //             _player.Rotate(_transform, 90);
+        //             break;
+        //         default:
+        //             throw new ArgumentOutOfRangeException();
+        //     }
+        // }
 
         private void OnDrawGizmos()
         {

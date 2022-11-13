@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using Cinemachine;
 using Player;
 using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
 using UnityEngine;
+using UnityEngine.Splines;
 
 namespace Services
 {
@@ -12,7 +12,10 @@ namespace Services
         [SerializeField] private float _defaultSpeed;
         [SerializeField] private float _slowDownSpeed;
         [SerializeField] private float _damageSeconds = 5f;
-        [SerializeField] private CinemachineVirtualCamera _cinemachineVirtual;
+        [SerializeField] private SplineContainer _spline;
+
+        public SplineContainer Spline => _spline;
+
         public float CurrentSpeed => _currentSpeed;
         public float DamageSeconds => _damageSeconds;
 
@@ -27,8 +30,6 @@ namespace Services
         {
             _playerService = ServiceLocator.Get<PlayerService>();
             _runnerController = (RunnerController)_playerService.Player;
-            _cinemachineVirtual.LookAt = _runnerController.CameraView;
-            _cinemachineVirtual.Follow = _runnerController.CameraPosition;
             SetDefaultSpeed();
         }
 
