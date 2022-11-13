@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ca252be098746598f12a1f6a11336b8, type: 3}
-  m_Name: MainCameraId 1
+  m_Name: MainCameraId 2
   m_EditorClassIdentifier: 
-  _id: 103869a8-5903-45fd-ab57-38f1f927a59f
+  _id: 688f0a8c-5af6-46af-8b82-0f8e457c8e80
