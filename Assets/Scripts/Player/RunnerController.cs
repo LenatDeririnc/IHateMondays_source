@@ -36,7 +36,7 @@ namespace Player
                 MoveRight();
             }
 
-            _splinePosition += _runnerService.CurrentSpeed * Time.deltaTime * 0.005f;
+            _splinePosition += _runnerService.CurrentSpeed * Time.deltaTime / _runnerService.Spline.CalculateLength();
             Vector3 rotation = _runnerService.Spline.EvaluateTangent(_splinePosition);
             _characterTransform.mainTransform.forward = rotation; 
             _characterTransform.mainTransform.position = _runnerService.Spline.EvaluatePosition(_splinePosition);
