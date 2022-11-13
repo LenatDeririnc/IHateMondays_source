@@ -6,17 +6,17 @@ namespace Scenes.Props
 {
     public class RunnerDamageTrigger : MonoBehaviour
     {
-        private PlayerService _playerService;
-        
+        private RunnerService _playerService;
+
         private void Awake()
         {
-            _playerService = ServiceLocator.Get<PlayerService>();
+            _playerService = ServiceLocator.Get<RunnerService>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other == _playerService.Player.Collider) {
-                _playerService.Player.ReceiveDamage();
+            if (other == _playerService.RunnerController.Collider) {
+                _playerService.ReceiveDamage();
             }
         }
     }

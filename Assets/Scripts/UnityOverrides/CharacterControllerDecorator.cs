@@ -1,49 +1,35 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UnityOverrides
 {
     public class CharacterControllerDecorator : MonoBehaviour
     {
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Transform _forward;
 
         public CharacterController CharacterController => _characterController;
 
-        [SerializeField] private Transform _characterTransform;
-        private bool _isIgnoreFrame;
-        private Coroutine _isIgnoreFrameCoroutine;
+
+        private Vector3 _setPosition;
 
         public void SetPosition(Vector3 position)
         {
-            _characterTransform.position = position;
-            WaitOneFrame();
+            _characterController.Move(position - _characterController.transform.position);
         }
 
         public void SetRotation(Quaternion rotation)
         {
-            _characterTransform.rotation = rotation;
-            WaitOneFrame();
+            _forward.rotation = rotation;
         }
 
         public void Move(Vector3 move)
         {
-            if (_isIgnoreFrame)
-                return;
-            
             _characterController.Move(move);
         }
 
-        private void WaitOneFrame()
+        public void Rotate(Vector3 transformUp, int angle)
         {
-            _isIgnoreFrameCoroutine ??= StartCoroutine(IgnoreOneFrame());
-        }
-
-        protected IEnumerator IgnoreOneFrame()
-        {
-            _isIgnoreFrame = true;
-            yield return null;
-            _isIgnoreFrame = false;
-            _isIgnoreFrameCoroutine = null;
+            _forward.Rotate(transformUp, angle);
         }
     }
 }

@@ -14,13 +14,13 @@ namespace Tools
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEnter.Invoke(other);
+            OnEnter?.Invoke(other);
             _colliders.Add(other);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            OnExit.Invoke(other);
+            OnExit?.Invoke(other);
             if (_colliders.Contains(other))
                 _colliders.Remove(other);
         }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3345819086050093865}
   - component: {fileID: 2378981157869293423}
   - component: {fileID: 7058662292345138496}
-  - component: {fileID: 7399485755787911511}
   - component: {fileID: 2111623843360487217}
   m_Layer: 0
   m_Name: DamageBox
@@ -99,19 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7399485755787911511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526005023480720555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4cc6b5eeaf43beaa861d05c00d1492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 5752928848945219821}
 --- !u!114 &2111623843360487217
 MonoBehaviour:
   m_ObjectHideFlags: 0
