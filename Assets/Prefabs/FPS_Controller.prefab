@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aa6a8026094c279b1177abed60f336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 9059542952821035735}
   PlayerMovement: {fileID: 7219627776912397649}
   PlayerGravityBase: {fileID: 1368401259009251082}
   playerInputFPS: {fileID: 1466958770612396112}
@@ -293,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 9059542952821035735}
-  _characterTransform: {fileID: 2055064373295434006}
+  _forward: {fileID: 0}
 --- !u!114 &1907185079346297225
 MonoBehaviour:
   m_ObjectHideFlags: 0

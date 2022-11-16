@@ -18,9 +18,8 @@ namespace Characters.Components
             characterController = GetComponent<CharacterControllerAccelerator>();
         }
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             _gameService = ServiceLocator.Get<GameService>();
             _cameraService = ServiceLocator.Get<CameraService>();
         }

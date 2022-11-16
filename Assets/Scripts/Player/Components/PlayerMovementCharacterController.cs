@@ -1,5 +1,4 @@
-﻿using Player.Components;
-using Plugins.MonoBehHelpers;
+﻿using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using TransformTools;
@@ -26,7 +25,7 @@ namespace Characters.Components
 
         private bool isIgnoreFrame = false;
 
-        private void Awake()
+        protected void Awake()
         {
             ServiceLocator.Get(ref GameService);
         }

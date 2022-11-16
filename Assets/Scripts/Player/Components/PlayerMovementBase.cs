@@ -13,13 +13,6 @@ namespace Characters.Components
         public Vector3 MoveVector { get; protected set; } = Vector3.zero;
         public Vector3 Velocity { get; protected set; } = Vector3.zero;
 
-        private InputBridgeService InputBridgeService;
-        
-        protected virtual void Awake()
-        {
-            ServiceLocator.Get(ref InputBridgeService);
-        }
-
         protected virtual Vector3 MovementInput()
         {
             return Vector3.forward * _movementInput.z + Vector3.right * _movementInput.x;
