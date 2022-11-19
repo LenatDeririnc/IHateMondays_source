@@ -145,12 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52448b178f94ce884793cafd898f709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8124018375931319641, guid: e7befcbff319165459874c2acd8496a2, type: 3}
-  FPSControllerPrefab: {fileID: 8124018375931319641, guid: e7befcbff319165459874c2acd8496a2, type: 3}
+  PlayerPrefab: {fileID: 5743965133035871426, guid: 2f8331837c106cd429d940d738ed9632, type: 3}
+  FPSControllerPrefab: {fileID: 5743965133035871426, guid: 2f8331837c106cd429d940d738ed9632, type: 3}
   ZeldaControllerPrefab: {fileID: 8124018375931319641, guid: ed0a879ad64165b4ca842cf7d6b8722a, type: 3}
   RunnerControllerPrefab: {fileID: 6370176711637851791, guid: 764f54deec8aa6a4ba1ffc2c0bdbdc2e, type: 3}
-  RoadVariants:
-  - {fileID: 3173470310033603976, guid: 9bf6212883859d340bac15679d3a1a26, type: 3}
   DamageTriggerVariants:
   - {fileID: 8526005023480720555, guid: d8596695832bc904daa5c6307c4b39fa, type: 3}
   _spawnDamageTriggerProbability: 0.5
@@ -363,7 +361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2378367857693868427, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: field of view
-      value: 40
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2378367857693868427, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: orthographic size
@@ -379,15 +377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622112313038707489, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.42956
+      value: 1.0796039
       objectReference: {fileID: 0}
     - target: {fileID: 8622112313038707489, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30.080704
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8622112313038707489, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -96.54147
+      value: 0.32285714
       objectReference: {fileID: 0}
     - target: {fileID: 8622112313038707489, guid: 0a44146a55266de46b5119ec6336528d, type: 3}
       propertyPath: m_LocalRotation.w

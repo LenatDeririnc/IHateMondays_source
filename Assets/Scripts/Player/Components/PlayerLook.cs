@@ -43,6 +43,13 @@ namespace Characters.Components
             CameraTransform.Value.localRotation = Quaternion.Euler(_xRotation, 0, 0);
         }
 
+        public void SetRotation(float x, float y)
+        {
+            playerForwardTransform.Value.rotation = Quaternion.AngleAxis(y, Vector3.up);
+            _xRotation = x;
+            CameraTransform.Value.localRotation = Quaternion.Euler(_xRotation, 0, 0);
+        }
+
         protected override void SentUpdate()
         {
             RotateCamera(_rotateDelta);

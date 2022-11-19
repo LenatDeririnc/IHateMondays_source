@@ -1,4 +1,5 @@
-﻿using Player.Components;
+﻿using System;
+using Player.Components;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -10,7 +11,6 @@ namespace Characters.Components
     {
         [SerializeField] protected CharacterControllerAccelerator characterController;
         [SerializeField] protected Transform mesh;
-        private GameService _gameService;
         private CameraService _cameraService;
 
         public void SetupDeps()
@@ -18,15 +18,15 @@ namespace Characters.Components
             characterController = GetComponent<CharacterControllerAccelerator>();
         }
 
-        protected void Awake()
+        protected override void Awake()
         {
-            _gameService = ServiceLocator.Get<GameService>();
+            base.Awake();
             _cameraService = ServiceLocator.Get<CameraService>();
         }
 
-        protected override void Move(Vector3 velocity)
+        protected override void MoveProcess(float delta)
         {
-            characterController.Move(velocity);
+            characterController.Move(Velocity * delta);
             Vector3 controllerVelocity = characterController.CharacterController.velocity;
             switch (controllerVelocity.magnitude) {
                 case > 0:
@@ -37,18 +37,16 @@ namespace Characters.Components
                     break;
             }
         }
-        
-        protected override void SentUpdate()
+
+        private void Update()
         {
-            if (_gameService.IsPaused)
-                return;
-            
-            if (_cameraService.Brain.IsBlending)
-                return;
-            
-            var delta = Time.deltaTime;
-            
-            MovePlayer(delta);
+            UpdateMovementInput();
+            MoveProcess(Time.deltaTime);
+        }
+
+        public override void SetPosition(Vector3 position)
+        {
+            characterController.transform.position = position;
         }
     }
 }

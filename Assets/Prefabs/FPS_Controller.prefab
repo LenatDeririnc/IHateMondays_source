@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 9059542952821035735}
+  _transform: {fileID: 2055064373295434006}
   PlayerMovement: {fileID: 7219627776912397649}
   PlayerGravityBase: {fileID: 1368401259009251082}
   playerInputFPS: {fileID: 1466958770612396112}
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _movementInput: {x: 0, y: 0, z: 0}
+  _transform: {fileID: 2055064373295434006}
   _playerForwardTransform: {fileID: 3379342652002020676}
   _characterControllerAccelerator: {fileID: 8537891967229406591}
   impulseScaleModifier: 0.01

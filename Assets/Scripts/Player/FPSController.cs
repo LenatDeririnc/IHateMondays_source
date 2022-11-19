@@ -1,23 +1,18 @@
-﻿using System;
-using Player;
+﻿using Player;
 using Player.Custom;
-using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
-using TransformTools;
-using UnityOverrides;
+using UnityEngine;
 
 namespace Characters.Components
 {
-    public class FPSController : PlayerBase, ISelfDeps
+    public class FPSController : PlayerBase
     {
-        public PlayerMovementBase PlayerMovement;
-        public PlayerGravityBase PlayerGravityBase;
+        public PlayerMovementBase PlayerMovementBase;
         public PlayerInput_FPS playerInputFPS;
         public PlayerLook PlayerLook;
         public PlayerWalksteps PlayerWalksteps;
         public PlayerInteract PlayerInteract;
-        public CharacterControllerDecorator CharacterControllerDecorator;
         public FlashlightMovement FlashlightMovement;
         
         private SceneLoadingService SceneLoadingService;
@@ -37,40 +32,33 @@ namespace Characters.Components
         {
             PlayerWalksteps.UpdateInvoke();
             playerInputFPS.UpdateInvoke();
-            PlayerMovement.UpdateInvoke();
             PlayerLook.UpdateInvoke();
-            PlayerGravityBase.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
             FlashlightMovement.UpdateInvoke();
         }
 
-        public void FixedUpdate()
-        {
-            PlayerMovement.FixedUpdateInvoke();
-            PlayerGravityBase.FixedUpdateInvoke();
-        }
-
-        public void SetupDeps()
-        {
-            CharacterControllerDecorator = GetComponent<CharacterControllerDecorator>();
-            PlayerMovement = GetComponent<PlayerMovementBase>();
-            PlayerGravityBase = GetComponent<PlayerGravityBase>();
-            playerInputFPS = GetComponent<PlayerInput_FPS>();
-            PlayerLook = GetComponent<PlayerLook>();
-            PlayerWalksteps = GetComponent<PlayerWalksteps>();
-        }
-
-        public void SetTransformData(TransformData spawnPoint)
-        {
-            CharacterControllerDecorator.SetPosition(spawnPoint.position);
-            CharacterControllerDecorator.SetRotation(spawnPoint.rotation);
-        }
-
         public void OnLoading()
         {
-            PlayerMovement.enabled = false;
+            PlayerMovementBase.enabled = false;
             PlayerInteract.enabled = false;
             PlayerLook.enabled = false;
+        }
+
+        public override void SetPositionAndRotation(Transform positionToRespawn)
+        {
+            SetPosition(positionToRespawn.position);
+            SetRotation(positionToRespawn.rotation);
+        }
+
+        public override void SetPosition(Vector3 position)
+        {
+            PlayerMovementBase.SetPosition(position);
+        }
+
+        public override void SetRotation(Quaternion rotation)
+        {
+            Vector3 euler = rotation.eulerAngles;
+            PlayerLook.SetRotation(euler.x, euler.y);
         }
     }
 }

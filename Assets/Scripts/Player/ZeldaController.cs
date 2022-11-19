@@ -33,15 +33,9 @@ namespace Player
         public void Update()
         {
             PlayerInput.UpdateInvoke();
-            PlayerMovement.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
         }
-        
-        public void FixedUpdate()
-        {
-            PlayerMovement.FixedUpdateInvoke();
-        }
-        
+
         public void SetupDeps()
         {
             PlayerMovement = GetComponent<PlayerMovementBase>();

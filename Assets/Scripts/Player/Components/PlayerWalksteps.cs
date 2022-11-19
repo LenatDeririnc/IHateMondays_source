@@ -12,7 +12,7 @@ namespace Characters.Components
     {
         [SerializeField] private PlayerSound PlayerSound;
         [SerializeField] private PlayerMovementBase  PlayerMovement;
-        [SerializeField] private PlayerGravityBase PlayerGravityBase;
+        [SerializeField] private GroundCheckComponent groundCheckComponent;
         
         [SerializeField] private float walkStepsTime = 1;
         [SerializeField] [Range(0, 1)] private float walkInputSoundOffsetMovement = 1f;
@@ -34,7 +34,7 @@ namespace Characters.Components
         {
             PlayerSound = GetComponent<PlayerSound>();
             PlayerMovement = GetComponent<PlayerMovementBase>();
-            PlayerGravityBase = GetComponent<PlayerGravityBase>();
+            groundCheckComponent = GetComponent<GroundCheckComponent>();
         }
 
         private void StartWalkStepsCoroutine()
@@ -75,7 +75,7 @@ namespace Characters.Components
             if (shot == null)
                 return;
         
-            AudioSourcesService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveVector.magnitude);
+            AudioSourcesService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveDirection.magnitude);
         }
 
         public void PlayJump()
@@ -100,15 +100,15 @@ namespace Characters.Components
                 return;
             }
             
-            var velocity = PlayerMovement.MoveVector;
+            var velocity = PlayerMovement.MoveDirection;
             velocity.y = 0;
 
             if (showDebugVelocityMagnitude)
             {
-                Debug.Log($"Player Velocity: {velocity.magnitude}, grounded: {PlayerGravityBase.IsGrounded}");
+                Debug.Log($"Player Velocity: {velocity.magnitude}, grounded: {groundCheckComponent.IsGrounded}");
             }
             
-            if (velocity.magnitude > walkInputSoundOffsetMovement && PlayerGravityBase.IsGrounded)
+            if (velocity.magnitude > walkInputSoundOffsetMovement && groundCheckComponent.IsGrounded)
             {
                 StartWalkStepsCoroutine();
             }

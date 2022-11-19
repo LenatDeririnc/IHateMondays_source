@@ -1,5 +1,4 @@
-﻿using System;
-using Player.Custom;
+﻿using Player.Custom;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -10,7 +9,6 @@ namespace Characters.Components
     public class PlayerInput_FPS : UpdateGetter, ISelfDeps
     {
         [SerializeField] private PlayerMovementBase _playerMovement;
-        [SerializeField] private PlayerGravityBase _playerGravityBase;
         [SerializeField] private PlayerLook _playerLook;
         [SerializeField] private Flashlight _flashlight;
         
@@ -26,22 +24,7 @@ namespace Characters.Components
         public void SetupDeps()
         {
             _playerMovement = GetComponent<PlayerMovementBase>();
-            _playerGravityBase = GetComponent<PlayerGravityBase>();
             _playerLook = GetComponent<PlayerLook>();
-        }
-
-        private void JumpInputUpdate()
-        {
-            if (InputBridgeService.IsJumpUp)
-            {
-                _playerGravityBase.SetJumpCommand(false);
-                _playerGravityBase.CutoffJump();
-            }
-
-            if (InputBridgeService.IsJumpDown)
-            {
-                _playerGravityBase.SetJumpCommand(true);
-            }
         }
 
         private void MovementInputUpdate()
@@ -64,7 +47,6 @@ namespace Characters.Components
             {
                 MovementInputUpdate();
                 RotationInputUpdate();
-                // JumpInputUpdate();
                 FlashlightUpdate();
             }
             else
@@ -84,8 +66,6 @@ namespace Characters.Components
         {
             _playerMovement.SetMovementInput(Vector3.zero);
             _playerLook.SetRotateDelta(Vector3.zero);
-            _playerGravityBase.SetJumpCommand(false);
-            _playerGravityBase.CutoffJump();
         }
     }
 }

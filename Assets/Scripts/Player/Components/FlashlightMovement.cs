@@ -11,7 +11,7 @@ namespace Player.Custom
         private static readonly int Speed = Animator.StringToHash(MovementSpeed);
 
         [SerializeField] private Animator cameraAnimator;
-        [SerializeField] private PlayerMovementCharacterController _characterController;
+        [SerializeField] private PlayerMovementBase _characterController;
         private int _index;
 
         private void Awake()
@@ -21,8 +21,8 @@ namespace Player.Custom
 
         protected override void SentUpdate()
         {
-            cameraAnimator.SetFloat(Speed, _characterController.MoveVector.magnitude);
-            cameraAnimator.SetLayerWeight(_index, _characterController.MoveVector.magnitude);
+            cameraAnimator.SetFloat(Speed, _characterController.MoveDirection.magnitude);
+            cameraAnimator.SetLayerWeight(_index, _characterController.MoveDirection.magnitude);
         }
     }
 }
