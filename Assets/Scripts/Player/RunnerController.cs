@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using Plugins.ServiceLocator;
 using Services;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityOverrides;
 
@@ -10,7 +9,6 @@ namespace Player
     public class RunnerController : PlayerBase
     {
         [SerializeField] private RunnerControllerDecorator _characterTransform;
-        [SerializeField] private float moveDistance = 10f;
 
         private int _currentRoadIndex = 0;
         private float _splinePosition = 0f;
@@ -48,7 +46,7 @@ namespace Player
                 return;
             
             _currentRoadIndex -= 1;
-            _characterTransform.bodyTransform.DOLocalMoveX(moveDistance * _currentRoadIndex, 0.1f);
+            _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
         }
 
         private void MoveRight()
@@ -57,13 +55,7 @@ namespace Player
                 return;
             
             _currentRoadIndex += 1;
-            _characterTransform.bodyTransform.DOLocalMoveX(moveDistance * _currentRoadIndex, 0.1f);
+            _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
         }
-
-        // public void Rotate(Transform aroundWhat, int angle)
-        // {
-        //     _characterTransform.Rotate(angle);
-        //     _currentRoadIndex = 0;
-        // }
     }
 }
