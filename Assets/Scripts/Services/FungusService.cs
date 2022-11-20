@@ -1,4 +1,5 @@
-﻿using Fungus;
+﻿using System;
+using Fungus;
 using Fungus.Services;
 using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
@@ -9,14 +10,18 @@ namespace Services
     public class FungusService : Service, IAwakeService, ITerminateService
     {
         [SerializeField] private FungusFactoryService _factoryService;
-        
         private GameService _gameService;
+        public event BlockSignals.BlockStartHandler OnBlockStart;
+        public event BlockSignals.BlockEndHandler OnBlockEnd;
+        
         public void AwakeService()
         {
             _gameService = ServiceLocator.Get<GameService>();
-            
+
             BlockSignals.OnBlockStart += OnBlockStart;
+            BlockSignals.OnBlockStart += OnBlockStartAction;
             BlockSignals.OnBlockEnd += OnBlockEnd;
+            BlockSignals.OnBlockEnd += OnBlockEndAction;
             
             SayDialog.Construct(_factoryService);
         }
@@ -27,12 +32,12 @@ namespace Services
             BlockSignals.OnBlockEnd -= OnBlockEnd;
         }
 
-        private void OnBlockStart(Block block)
+        private void OnBlockStartAction(Block block)
         {
             _gameService.SetDialogueState(true);
         }
 
-        private void OnBlockEnd(Block block)
+        private void OnBlockEndAction(Block block)
         {
             _gameService.SetDialogueState(false);
         }

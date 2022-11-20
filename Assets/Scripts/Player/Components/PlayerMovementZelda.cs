@@ -24,7 +24,7 @@ namespace Characters.Components
             _cameraService = ServiceLocator.Get<CameraService>();
         }
 
-        protected override void MoveProcess(float delta)
+        protected void MoveProcess(float delta)
         {
             characterController.Move(Velocity * delta);
             Vector3 controllerVelocity = characterController.CharacterController.velocity;

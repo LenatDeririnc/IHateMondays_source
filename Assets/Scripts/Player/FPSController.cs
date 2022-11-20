@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Fungus;
+using Player;
 using Player.Custom;
 using Plugins.ServiceLocator;
 using Services;
@@ -15,17 +16,39 @@ namespace Characters.Components
         public PlayerInteract PlayerInteract;
         public FlashlightMovement FlashlightMovement;
         
-        private SceneLoadingService SceneLoadingService;
+        private SceneLoadingService _sceneLoadingService;
+        private FungusService _fungusService;
 
         public void Awake()
         {
-            SceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
-            SceneLoadingService.OnLoadingStart += OnLoading;
+            _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
+            
+            _sceneLoadingService.OnLoadingStart += OnLoadingStart;
+            _fungusService.OnBlockStart += OnBlockStart;
+            _fungusService.OnBlockEnd += OnBlockEnd;
         }
 
         private void OnDestroy()
         {
-            SceneLoadingService.OnLoadingStart -= OnLoading;
+            _sceneLoadingService.OnLoadingStart -= OnLoadingStart;
+            _fungusService.OnBlockStart -= OnBlockStart;
+            _fungusService.OnBlockEnd -= OnBlockEnd;
+        }
+
+        private void OnBlockStart(Block block)
+        {
+            SetActive(false);
+        }
+
+        private void OnBlockEnd(Block block)
+        {
+            SetActive(true);
+        }
+
+        private void OnLoadingStart()
+        {
+            SetActive(false);
         }
 
         public void Update()
@@ -37,11 +60,11 @@ namespace Characters.Components
             FlashlightMovement.UpdateInvoke();
         }
 
-        public void OnLoading()
+        public void SetActive(bool value)
         {
-            PlayerMovementBase.enabled = false;
-            PlayerInteract.enabled = false;
-            PlayerLook.enabled = false;
+            PlayerMovementBase.enabled = value;
+            PlayerInteract.enabled = value;
+            PlayerLook.enabled = value;
         }
 
         public override void SetPositionAndRotation(Transform positionToRespawn)

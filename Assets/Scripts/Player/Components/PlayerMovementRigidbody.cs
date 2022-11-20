@@ -13,6 +13,12 @@ namespace Player.Components
             _transform.position = position;
         }
 
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            MoveProcess();
+        }
+
         private void Update()
         {
             UpdateMovementInput();
@@ -20,7 +26,7 @@ namespace Player.Components
 
         private void FixedUpdate()
         {
-            MoveProcess(Time.fixedDeltaTime);
+            MoveProcess();
         }
 
         private void UpdateKinematic(bool value)
@@ -33,7 +39,7 @@ namespace Player.Components
             }
         }
 
-        protected override void MoveProcess(float delta)
+        protected void MoveProcess()
         {
             if (_groundCheckComponent.IsGrounded && Velocity.magnitude <= 0) {
                 UpdateKinematic(true);

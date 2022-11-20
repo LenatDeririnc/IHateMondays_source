@@ -8,7 +8,8 @@ namespace Characters.Components
     {
         [SerializeField] protected Transform _forwardVector;
         [SerializeField] protected float _moveSpeed = 2f;
-        [SerializeField] protected Vector3 _movementInput;
+        
+        protected Vector3 _movementInput;
         public Vector3 MoveDirection { get; protected set; } = Vector3.zero;
         public Vector3 Velocity { get; protected set; } = Vector3.zero;
 
@@ -17,6 +18,13 @@ namespace Characters.Components
         protected virtual void Awake()
         {
             _gameService = ServiceLocator.Get<GameService>();
+        }
+        
+        protected virtual void OnDisable()
+        {
+            _movementInput = Vector3.zero;
+            MoveDirection = Vector3.zero;
+            Velocity = Vector3.zero;
         }
         
         protected virtual void UpdateMovementInput()
@@ -40,8 +48,6 @@ namespace Characters.Components
         {
             _movementInput = movement * _moveSpeed;
         }
-
-        protected abstract void MoveProcess(float delta);
 
         public abstract void SetPosition(Vector3 position);
     }
