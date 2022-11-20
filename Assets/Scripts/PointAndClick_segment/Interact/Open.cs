@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Open : InteractElement
 {
+    [SerializeField] private Animator _animator;
+    [Header("эта хуета заполняется если 2 двери")]
+    [SerializeField] private Open _open;
     public override void Use()
     {
         OpenClose();
@@ -13,12 +16,19 @@ public class Open : InteractElement
     {
         IsUsed = !IsUsed;
 
+        if(_open != null)
+        {
+            _open.IsUsed = IsUsed;
+        }
+
         if (IsUsed)
         {
+            _animator.SetBool("Switch", true);
             Debug.Log("OpenAnimation");
         }
         else
         {
+            _animator.SetBool("Switch", false);
             Debug.Log("CloseAnimation");
         }
     }
