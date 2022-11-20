@@ -26,6 +26,7 @@ namespace Services
         private PlayerService _playerService;
         private RunnerController _runnerController;
         private Coroutine _damageCoroutine;
+        private static readonly int InjuredProperty = Animator.StringToHash("Injured");
 
         public RunnerController RunnerController => _runnerController;
 
@@ -39,11 +40,13 @@ namespace Services
         public void SetDefaultSpeed()
         {
             _currentSpeed = _defaultSpeed;
+            _runnerController.Animator.SetBool(InjuredProperty, false);
         }
 
         public void SetSlownDownSpeed()
         {
             _currentSpeed = _slowDownSpeed;
+            _runnerController.Animator.SetBool(InjuredProperty, true);
         }
 
         public void ReceiveDamage()
