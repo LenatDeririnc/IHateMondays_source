@@ -1,10 +1,11 @@
-﻿using Plugins.ServiceLocator;
+﻿using System;
+using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
 
 namespace Scenes.Props
 {
-    public class RunnerDamageTrigger : MonoBehaviour
+    public class RunnerDamageObject : MonoBehaviour
     {
         private RunnerService _playerService;
 
@@ -15,9 +16,10 @@ namespace Scenes.Props
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other == _playerService.RunnerController.Collider) {
-                _playerService.ReceiveDamage();
-            }
+            if (other != _playerService.RunnerController.Collider)
+                return;
+            
+            _playerService.ReceiveDamage();
         }
     }
 }

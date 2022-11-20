@@ -13,6 +13,9 @@ namespace Services
         [SerializeField] private float _slowDownSpeed;
         [SerializeField] private float _damageSeconds = 5f;
         [SerializeField] private SplineContainer _spline;
+        [SerializeField] private float _moveDistance = 10f;
+
+        public float MoveDistance => _moveDistance;
 
         public SplineContainer Spline => _spline;
 
