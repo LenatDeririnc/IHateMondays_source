@@ -21,4 +21,9 @@ public class PickUp : InteractElement
     {
         _inventory = FindObjectOfType<Inventory>();
     }
+
+    private void Start()
+    {
+        
+    }
 }
