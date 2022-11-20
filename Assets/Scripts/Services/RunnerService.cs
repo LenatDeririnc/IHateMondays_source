@@ -57,5 +57,10 @@ namespace Services
             yield return new WaitForSeconds(DamageSeconds);
             SetDefaultSpeed();
         }
+
+        public void SetCurrentSpeed(float value)
+        {
+            _currentSpeed = value;
+        }
     }
 }

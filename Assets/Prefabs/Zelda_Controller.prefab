@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab929ae4b5c64931a172306a2efffefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   PlayerMovement: {fileID: 3712283978884625550}
   PlayerInput: {fileID: 1294629305105212283}
   PlayerInteract: {fileID: 5447134123586445573}
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 9059542952821035735}
-  _characterTransform: {fileID: 2055064373295434006}
+  _forward: {fileID: 0}
 --- !u!114 &1294629305105212283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,8 +624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7992d2c4e42470a8ce0196db21c91a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forwardVector: {fileID: 0}
   _moveSpeed: 5
-  _movementInput: {x: 0, y: 0, z: 0}
   characterController: {fileID: 1580918053782668255}
   mesh: {fileID: 6100013963241766076}
 --- !u!114 &5447134123586445573
