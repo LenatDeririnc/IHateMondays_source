@@ -57,7 +57,7 @@ namespace Characters.Components
             playerInputFPS.UpdateInvoke();
             PlayerLook.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
-            FlashlightMovement.UpdateInvoke();
+            FlashlightMovement?.UpdateInvoke();
         }
 
         public void SetActive(bool value)

@@ -58,7 +58,7 @@ namespace Characters.Components
         private void FlashlightUpdate()
         {
             if (InputBridgeService.IsFlashlightDown) {
-                _flashlight.SwitchActive();
+                _flashlight?.SwitchActive();
             }
         }
 
