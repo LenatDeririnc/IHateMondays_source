@@ -9,6 +9,9 @@ namespace Player
     public class RunnerController : PlayerBase
     {
         [SerializeField] private RunnerControllerDecorator _characterTransform;
+        [SerializeField] private Animator _animator;
+
+        public Animator Animator => _animator;
 
         private int _currentRoadIndex = 0;
         private float _splinePosition = 0f;
