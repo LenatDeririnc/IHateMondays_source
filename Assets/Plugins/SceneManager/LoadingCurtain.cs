@@ -24,18 +24,32 @@ namespace SceneManager
             }
         }
 
-        public void Show(Action loadSceneAction)
+        public void Hide(Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeOut(loadSceneAction));
+            _coroutine = StartCoroutine(FadeIn(fadeSpeed, loadSceneAction));
         }
 
-        public void Hide()
+        public void Show(Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeIn());
+            _coroutine = StartCoroutine(FadeOut(fadeSpeed, loadSceneAction));
+        }
+
+        public void Hide(float speed, Action loadSceneAction = null)
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+            _coroutine = StartCoroutine(FadeIn(speed, loadSceneAction));
+        }
+
+        public void Show(float speed, Action loadSceneAction = null)
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+            _coroutine = StartCoroutine(FadeOut(speed, loadSceneAction));
         }
 
         public void SetTransparency(float value)
@@ -49,7 +63,7 @@ namespace SceneManager
             Enabled = value;
         }
 
-        private IEnumerator FadeOut(Action loadSceneAction)
+        private IEnumerator FadeOut(float speed, Action loadSceneAction)
         {
             Enable(true);
             
@@ -57,27 +71,28 @@ namespace SceneManager
             
             while (canvasGroup.alpha < 1)
             {
-                canvasGroup.alpha += fadeSpeed * Time.deltaTime;
+                canvasGroup.alpha += speed * Time.deltaTime;
                 yield return null;
             }
 
             SetTransparency(1);
 
-            loadSceneAction();
+            loadSceneAction?.Invoke();
         }
 
-        private IEnumerator FadeIn()
+        private IEnumerator FadeIn(float speed, Action loadSceneAction)
         {
             SetTransparency(1);
             
             while (canvasGroup.alpha > 0)
             {
-                canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
+                canvasGroup.alpha -= speed * Time.deltaTime;
                 yield return null;
             }
             
             SetTransparency(0);
 
+            loadSceneAction?.Invoke();
             Enable(false);
         }
     }

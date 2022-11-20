@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Scenes.Props
 {
-    public class SwitchSceneInteractable: MonoBehaviour, IInteractable
+    public class SwitchSceneInteractable: MonoBehaviour
     {
         [SerializeField] private SceneLink _switchScene;
         private SceneLoadingService _sceneLoadingService;
