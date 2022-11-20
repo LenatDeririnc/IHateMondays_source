@@ -575,14 +575,15 @@ namespace Fungus
                 textAdapter.RevealedCharacters = startingReveal;
                 yield return null;
 
-                while (textAdapter.RevealedCharacters < Mathf.Min(readAheadStartIndex, textAdapter.CharactersToReveal))
+                int min = Mathf.Min(readAheadStartIndex, textAdapter.CharactersToReveal);
+                while (textAdapter.RevealedCharacters < min)
                 {
                     // No delay if user has clicked and Instant Complete is enabled
                     if (instantComplete && inputFlag)
                     {
                         textAdapter.RevealedCharacters = textAdapter.CharactersToReveal;
                     }
-
+                    
                     textAdapter.RevealedCharacters++;
 
                     NotifyGlyph();

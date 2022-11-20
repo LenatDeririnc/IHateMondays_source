@@ -1,6 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Reflection;
@@ -238,8 +239,9 @@ namespace Fungus
             get
             {
 #if UNITY_2018_1_OR_NEWER
-                if(tmpro != null)
-                {
+                if(tmpro != null) {
+                    if (tmpro.maxVisibleCharacters >= tmpro.textInfo.characterInfo.Length)
+                        return (char)0;
                     return tmpro.textInfo.characterInfo[tmpro.maxVisibleCharacters].character;
                 }
 #endif
