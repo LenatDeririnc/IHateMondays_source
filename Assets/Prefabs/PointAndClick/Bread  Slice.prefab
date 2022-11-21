@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6340182727961719175}
   - component: {fileID: 2939380598598129639}
   - component: {fileID: 5580306016673590214}
+  - component: {fileID: -2963326041800009657}
   m_Layer: 0
   m_Name: Bread  Slice
   m_TagString: Untagged
@@ -83,3 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-2963326041800009657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2639230387746951045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: 
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  IsThrowFromInventory: 0
+  _inventory: {fileID: 0}
+  _sprite: {fileID: 0}

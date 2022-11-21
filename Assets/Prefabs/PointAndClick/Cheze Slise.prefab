@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9064327944137221345}
   - component: {fileID: 5034307228875477382}
   - component: {fileID: 6247778519972506054}
+  - component: {fileID: 6933780226692550023}
   m_Layer: 0
   m_Name: Cheze Slise
   m_TagString: Untagged
@@ -83,3 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6933780226692550023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769318740422504323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: 
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  IsThrowFromInventory: 0
+  _inventory: {fileID: 0}
+  _sprite: {fileID: 0}

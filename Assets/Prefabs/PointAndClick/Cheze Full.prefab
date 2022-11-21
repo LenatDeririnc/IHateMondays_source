@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5261810328320835867}
   - component: {fileID: -88556374560193448}
   - component: {fileID: 1069049032273936243}
+  - component: {fileID: 1007590508}
   m_Layer: 0
   m_Name: Cheze Full
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2863929280266588282, guid: 38097448d7f32a845839f7e893475d0b, type: 3}
+  - {fileID: 2100000, guid: 3fe35c96705d43f40bc748cafc66a5d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +111,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PropName>k__BackingField: 
+  <PropName>k__BackingField: ChezeF
   <IsUsed>k__BackingField: 0
+  IsPickUpOff: 1
+  IsThrowFromInventory: 1
   _inventory: {fileID: 0}
   _sprite: {fileID: 21300000, guid: 061fcd6caac25954287291fffde7cd2c, type: 3}
+--- !u!114 &1007590508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407993500922182372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6898f0c90bfe0944aa98b0275ecbeaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: Knife
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  _interactedItem: 
+  _switchToGO: {fileID: 0}
+  _mouseTarget: {fileID: 0}
