@@ -5533,6 +5533,7 @@ MonoBehaviour:
   - 
   _spawnAnchor: {fileID: 638385092}
   _mouseTarget: {fileID: 376274319}
+  _defaultPanelKey: {fileID: 0}
 --- !u!33 &3469287836804527192
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5644,6 +5645,7 @@ MonoBehaviour:
   _interactArray: []
   _spawnAnchor: {fileID: 1805701448}
   _mouseTarget: {fileID: 376274319}
+  _defaultPanelKey: {fileID: 0}
 --- !u!33 &3469287837639058982
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5689,6 +5691,7 @@ MonoBehaviour:
   - 
   _spawnAnchor: {fileID: 1133112626}
   _mouseTarget: {fileID: 376274319}
+  _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!33 &3469287838473743853
 MeshFilter:
   m_ObjectHideFlags: 0
