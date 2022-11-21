@@ -15,12 +15,14 @@ public class PickUp : InteractElement
     public override void Use()
     {
         if(IsLocked) { return; }
+
         AddItemToInventory();
     }
 
     private void AddItemToInventory()
     {
         _inventory.interactElements.Add(this);
+        _inventory.InventoryPanelUpdate();
         _inventory.InventoryPanelUpdate();
         gameObject.SetActive(false);
     }

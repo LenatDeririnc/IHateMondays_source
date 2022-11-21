@@ -1582,6 +1582,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8213664764401238858, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
   m_PrefabInstance: {fileID: 646025836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &646025838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8077438277961547156, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
+  m_PrefabInstance: {fileID: 646025836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646025837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &646025842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2539,7 +2550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100352017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.368, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4931,6 +4942,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1769318740422504323, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
   m_PrefabInstance: {fileID: 2094656487}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2094656489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6933780226692550023, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
+  m_PrefabInstance: {fileID: 2094656487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094656488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2094656493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4944,6 +4966,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22231245, y: 0.016572565, z: 0.2223122}
   m_Center: {x: -0.0043685436, y: 0.20134443, z: 0.005528927}
+--- !u!114 &2094656494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094656488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: 
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  _ingridient: {fileID: 646025838}
+  _isFinal: 1
+  _result: {fileID: 1100352018}
+  _target: {fileID: 376274319}
 --- !u!1 &2102909087
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,6 +5015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsInventoryFull>k__BackingField: 0
+  _sandwichArray:
+  - {fileID: 1746971119340180002}
+  - {fileID: 2094656489}
+  - {fileID: 646025838}
+  _desk: {fileID: 3469287837639058984}
   interactElements: []
   Buttons:
   - {fileID: 1540517825}
@@ -6699,8 +6745,8 @@ MonoBehaviour:
   _spawnAnchor: {fileID: 1805701448}
   _mouseTarget: {fileID: 376274319}
   _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  IsOverrideOffsetsByProp: 0
-  _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
+  IsOverrideOffsetsByProp: 1
+  _thisItemOffsetPosition: {x: 0, y: 0.2, z: 0}
   _thisItemRotation: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837639058982
 MeshFilter:
@@ -7623,6 +7669,7 @@ GameObject:
   - component: {fileID: 7355677010190278018}
   - component: {fileID: 265537082552099235}
   - component: {fileID: 1746971119340180002}
+  - component: {fileID: 7673628391604028898}
   - component: {fileID: 7673628391604028897}
   m_Layer: 0
   m_Name: Bread  Slice Zharenii
@@ -7644,6 +7691,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2494974, y: 0.2918151, z: 0.059624687}
   m_Center: {x: 0.0015890077, y: 0.0056705414, z: -0.16619803}
+--- !u!114 &7673628391604028898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673628391604028896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: 
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  _ingridient: {fileID: 2094656489}
+  _isFinal: 0
+  _result: {fileID: 0}
+  _target: {fileID: 376274319}
 --- !u!23 &7767098847841627703
 MeshRenderer:
   m_ObjectHideFlags: 0

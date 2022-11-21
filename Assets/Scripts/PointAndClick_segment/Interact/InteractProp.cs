@@ -15,6 +15,7 @@ public class InteractProp : InteractElement
     [SerializeField] bool IsOverrideOffsetsByProp;
     public Vector3 _thisItemOffsetPosition;
     public Vector3 _thisItemRotation;
+    private bool _changed;
 
     public override void Use()
     {
@@ -31,7 +32,12 @@ public class InteractProp : InteractElement
                 obj.transform.Rotate(_thisItemRotation);
                 obj.gameObject.SetActive(true);
 
-                if(_isLockerProp && obj.GetComponent<PickUp>().IsLockedForTime)
+                if (_changed)
+                {
+                    obj.gameObject.AddComponent<Deletion>();
+                }
+
+                if (_isLockerProp && obj.GetComponent<PickUp>().IsLockedForTime)
                 {
                     StartCoroutine(obj.GetComponent<PickUp>().Timer(_lockTime));
                     Debug.Log($"{ obj.name} locked for {_lockTime}");
@@ -52,7 +58,6 @@ public class InteractProp : InteractElement
                             _inventory.Buttons[i].GetComponent<Image>().sprite = _defaultPanelKey;
                             _mouseTarget.InventoryPicked = null;
                             _inventory.InventoryPanelUpdate();
-
                         }
 
                         i++;
@@ -60,5 +65,12 @@ public class InteractProp : InteractElement
                 }
             }
         }
+    }
+
+    public void ChangeDeskArray()
+    {
+        _changed = true;
+        _interactArray = new string[1];
+        _interactArray[0] = "breadZhar";
     }
 }
