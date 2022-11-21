@@ -20,6 +20,7 @@ namespace Player
         private RunnerService _runnerService;
         
         private Coroutine _damageCoroutine;
+        private static readonly int Jump = Animator.StringToHash("Jump");
 
         private void Awake()
         {
@@ -48,6 +49,7 @@ namespace Player
             if (_currentRoadIndex < 0)
                 return;
             
+            _animator.SetTrigger(Jump);
             _currentRoadIndex -= 1;
             _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
         }
@@ -57,6 +59,7 @@ namespace Player
             if (_currentRoadIndex > 0)
                 return;
             
+            _animator.SetTrigger(Jump);
             _currentRoadIndex += 1;
             _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
         }

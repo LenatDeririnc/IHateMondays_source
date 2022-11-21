@@ -2,15 +2,30 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Trunk_03
-  m_Shader: {fileID: 4800000, guid: 88e05d1d051dbe14da3257013071561a, type: 3}
-  m_ShaderKeywords: _DETALUSEUV3_ON _HEIGHT_BASED_BLEND _MASKMAP0 _MASKMAP1 _NORMALMAP0
-    _NORMALMAP1 _NORMALMAP_TANGENT_SPACE0 _NORMALMAP_TANGENT_SPACE1 _NORMALMAP_TANGENT_SPACE2
-    _NORMALMAP_TANGENT_SPACE3 _REQUIRE_UV3 _TESSELLATION_PHONG _VERTEX_WIND
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _DETAIL_MULX2
+  - _NORMALMAP
+  m_InvalidKeywords:
+  - _DETALUSEUV3_ON
+  - _HEIGHT_BASED_BLEND
+  - _MASKMAP0
+  - _MASKMAP1
+  - _NORMALMAP0
+  - _NORMALMAP1
+  - _NORMALMAP_TANGENT_SPACE0
+  - _NORMALMAP_TANGENT_SPACE1
+  - _NORMALMAP_TANGENT_SPACE2
+  - _NORMALMAP_TANGENT_SPACE3
+  - _REQUIRE_UV3
+  - _TESSELLATION_PHONG
+  - _VERTEX_WIND
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -133,6 +148,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -201,6 +220,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 159e46e5e68cb0646b90ee53c9cce4c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -238,6 +261,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -305,6 +336,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AORemapMax: 1
     - _AORemapMax0: 1
@@ -382,6 +414,9 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnableWind: 1
     - _EnergyConservingSpecularColor: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.058
+    - _GlossyReflections: 1
     - _HeightAmplitude: 0.02
     - _HeightAmplitude0: 0.02
     - _HeightAmplitude1: 0.02
@@ -460,6 +495,7 @@ Material:
     - _Metallic2: 0
     - _Metallic3: 0
     - _MetallicPower: 0
+    - _Mode: 0
     - _NormalMapSpace: 0
     - _NormalMapSpace0: 0
     - _NormalMapSpace1: 0
@@ -471,6 +507,7 @@ Material:
     - _NormalScale2: 1
     - _NormalScale3: 1
     - _ObjectScaleAffectTile: 0
+    - _OcclusionStrength: 1
     - _OpacityAsDensity0: 0
     - _OpacityAsDensity1: 0
     - _OpacityAsDensity2: 0
@@ -480,6 +517,7 @@ Material:
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
+    - _Parallax: 0.02
     - _PreRefractionPass: 0
     - _RefractionMode: 0
     - _ShiverDirectionality: 0.369
@@ -505,7 +543,9 @@ Material:
     - _SmoothnessRemapMin1: 0
     - _SmoothnessRemapMin2: 0
     - _SmoothnessRemapMin3: 0
+    - _SmoothnessTextureChannel: 0
     - _SmothnessPower: 1
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefMV: 128
@@ -556,6 +596,7 @@ Material:
     - _UVDetail2: 0
     - _UVDetail3: 0
     - _UVEmissive: 0
+    - _UVSec: 0
     - _UseDensityMode: 0
     - _UseHeightBasedBlend: 1
     - _UseMainLayerInfluence: 0
@@ -571,7 +612,7 @@ Material:
     - _BaseColor1: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
     - _BaseColor2: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor3: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.8014706, g: 0.8014706, b: 0.8014706, a: 1}
+    - _Color: {r: 0.26415092, g: 0.2174012, b: 0.09818439, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 1, g: 1, b: 1, a: 1}
@@ -596,3 +637,4 @@ Material:
     - _UVMappingMask3: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskBlendMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
