@@ -467,7 +467,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 368655994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &368655994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
+  <InventoryPicked>k__BackingField: {fileID: 0}
+  <IsInteractionDone>k__BackingField: 0
+  <IsInteractionSucess>k__BackingField: 0
 --- !u!4 &376274320
 Transform:
   m_ObjectHideFlags: 0
@@ -762,7 +777,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 433485042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &433485042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,7 +910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 445396285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &445396285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +1043,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468295803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468295803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,6 +1094,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468295800}
   m_CullTransparentMesh: 1
+--- !u!1 &638385092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638385093}
+  m_Layer: 0
+  m_Name: Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638385093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638385092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.325, y: 0.098, z: -0.111}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450652837657648}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639433079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1405,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684156858}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &684156858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,7 +2055,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128642259}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1128642259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,6 +2106,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128642256}
   m_CullTransparentMesh: 1
+--- !u!1 &1133112626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133112627}
+  m_Layer: 0
+  m_Name: SpawnAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133112627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133112626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.117, y: 0.032, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651640736131}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180347034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1180347037}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1180347037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,7 +2458,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1236753115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1236753115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3168,7 +3329,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1540517828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1540517828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3472,7 +3645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1763623774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2102909088}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: PickItemFromInventory
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1763623774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3511,6 +3696,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763623771}
   m_CullTransparentMesh: 1
+--- !u!1 &1805701448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1805701449}
+  m_Layer: 0
+  m_Name: Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1805701449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805701448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.298, y: 0.0817, z: 0.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651702920395}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1877124559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +4071,7 @@ MonoBehaviour:
   - {fileID: 1236753112}
   - {fileID: 433485039}
   - {fileID: 468295800}
+  _mouseTarget: {fileID: 376274319}
 --- !u!4 &2102909089
 Transform:
   m_ObjectHideFlags: 0
@@ -3947,7 +4164,8 @@ Transform:
   m_LocalPosition: {x: 2.46, y: 2.178, z: 9.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1133112627}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0.056, y: 0, z: 0}
@@ -3964,6 +4182,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2989906164090384647}
+  - {fileID: 1805701449}
   m_Father: {fileID: 994768764}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -31.689, z: 0}
@@ -4008,7 +4227,8 @@ Transform:
   m_LocalPosition: {x: 3.97399, y: 1.974, z: 9.937613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 638385093}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -75.834, z: 0}
@@ -4201,6 +4421,8 @@ GameObject:
   - component: {fileID: 3469287837633481582}
   - component: {fileID: 1711813854979882916}
   - component: {fileID: 3469287837633481583}
+  - component: {fileID: 3469287837633481585}
+  - component: {fileID: 3469287837633481584}
   m_Layer: 0
   m_Name: MicroVape
   m_TagString: Untagged
@@ -4220,6 +4442,7 @@ GameObject:
   - component: {fileID: 3469287837639058982}
   - component: {fileID: 1711813854920430316}
   - component: {fileID: 3469287837639058983}
+  - component: {fileID: 3469287837639058984}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -4293,6 +4516,7 @@ GameObject:
   - component: {fileID: 3469287836754686869}
   - component: {fileID: 1711813855980046175}
   - component: {fileID: 3469287836754686870}
+  - component: {fileID: 3469287836754686871}
   m_Layer: 0
   m_Name: Toster
   m_TagString: Untagged
@@ -5095,6 +5319,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: IsThrowFromInventory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: <PropName>k__BackingField
+      value: ChezeF
+      objectReference: {fileID: 0}
     - target: {fileID: 1407993500922182372, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
       propertyPath: m_Name
       value: Cheze Full
@@ -5282,6 +5514,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.86067086, y: 0.62718374, z: 0.60749286}
   m_Center: {x: -0.26010236, y: 0.3846793, z: -0.18555686}
+--- !u!114 &3469287836754686871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148851009162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbe22c4f08a64f42863f88db49d9b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: Toster
+  <IsUsed>k__BackingField: 0
+  _inventory: {fileID: 2102909088}
+  _interactArray:
+  - 
+  _spawnAnchor: {fileID: 638385092}
+  _mouseTarget: {fileID: 376274319}
 --- !u!33 &3469287836804527192
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5362,6 +5613,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &3469287837633481584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147963747953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3812218, y: 0.767931, z: 0.7249505}
+  m_Center: {x: -8.146295, y: 0.3433895, z: 0.11517888}
+--- !u!114 &3469287837633481585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147963747953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbe22c4f08a64f42863f88db49d9b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: Micro
+  <IsUsed>k__BackingField: 0
+  _inventory: {fileID: 2102909088}
+  _interactArray: []
+  _spawnAnchor: {fileID: 1805701448}
+  _mouseTarget: {fileID: 376274319}
 --- !u!33 &3469287837639058982
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5383,6 +5665,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8968096, y: 0.06618903, z: 0.518631}
   m_Center: {x: -0.080429554, y: 0.00000039860606, z: 0.00000022351742}
+--- !u!114 &3469287837639058984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147991737145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbe22c4f08a64f42863f88db49d9b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: Desk
+  <IsUsed>k__BackingField: 0
+  _inventory: {fileID: 2102909088}
+  _interactArray:
+  - ChezeF
+  - BreadF
+  - SausageF
+  - 
+  - 
+  - 
+  _spawnAnchor: {fileID: 1133112626}
+  _mouseTarget: {fileID: 376274319}
 --- !u!33 &3469287838473743853
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5511,6 +5817,7 @@ MonoBehaviour:
   _animator: {fileID: 3469287837567141782}
   _open: {fileID: 7556567965485562456}
   _inventory: {fileID: 2102909088}
+  _mouseTarget: {fileID: 376274319}
 --- !u!65 &4148582167914671665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5736,6 +6043,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: IsThrowFromInventory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: <PropName>k__BackingField
+      value: SausageF
+      objectReference: {fileID: 0}
     - target: {fileID: 3933857312251553923, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5956,6 +6271,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: IsThrowFromInventory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: <PropName>k__BackingField
+      value: BreadF
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
 --- !u!1 &7328045389594795639
@@ -6091,6 +6414,7 @@ MonoBehaviour:
   _animator: {fileID: 3469287837567141782}
   _open: {fileID: 4148582167914671664}
   _inventory: {fileID: 2102909088}
+  _mouseTarget: {fileID: 376274319}
 --- !u!65 &7556567965485562457
 BoxCollider:
   m_ObjectHideFlags: 0

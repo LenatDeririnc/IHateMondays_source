@@ -3,6 +3,9 @@ using UnityEngine;
 public class MouseTarget : MonoBehaviour
 {
     [field: SerializeField] public InteractElement Target { get; private set; }
+    [field: SerializeField] public InteractElement InventoryPicked { get; set; }
+    [field: SerializeField] public bool IsInteractionDone { get; private set; }
+    [field: SerializeField] public bool IsInteractionSucess { get; private set; }
 
     Ray ray;
     RaycastHit hit;
@@ -15,6 +18,11 @@ public class MouseTarget : MonoBehaviour
         {
             GetTarget();
         }
+
+        if (IsInteractionSucess)
+        {
+            IsInteractionSucess = false;
+        }
     }
 
     private void GetTarget()
@@ -26,7 +34,7 @@ public class MouseTarget : MonoBehaviour
             if (hit.collider != null)
             {
                 hit.collider.gameObject.TryGetComponent(out InteractElement interactElement);
-                if(interactElement == null) { return; }
+                if (interactElement == null) { return; }
 
                 Target = interactElement;
                 Target.Use();

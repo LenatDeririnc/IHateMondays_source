@@ -5,6 +5,7 @@ using UnityEngine;
 public class Locker : Open
 {
     [SerializeField] protected Inventory _inventory;
+    [SerializeField] protected MouseTarget _mouseTarget;
 
     public override void Use()
     {
@@ -13,9 +14,10 @@ public class Locker : Open
 
     protected override void OpenClose()
     {
-        if (_inventory.FindInventoryItem("LockerKey"))
+        if (_mouseTarget.InventoryPicked?.PropName == "LockerKey")
         {
             base.OpenClose();
+            _mouseTarget.InventoryPicked = null;
         }
         else
         {

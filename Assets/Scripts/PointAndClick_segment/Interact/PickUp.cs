@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PickUp : InteractElement
 {
+    public bool IsThrowFromInventory;
     [SerializeField] private Inventory _inventory;
     [SerializeField] public Sprite _sprite;
 
