@@ -1,8 +1,3 @@
-fileFormatVersion: 2
-guid: 0ee6d3a674a15c1499c79780c542ec75
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: '{"GUIDArray":["","","",""]}'
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:a0d98a7ee2afbe44267746a00cdd360005f749c83aa8698a509bac075d1b086c
+size 225
