@@ -1,5 +1,4 @@
-﻿using System;
-using Characters.Components;
+﻿using Characters.Components;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -8,7 +7,7 @@ namespace Player
 {
     public class ZeldaController : PlayerBase, ISelfDeps
     {
-        public PlayerMovementBase PlayerMovement;
+        public PlayerMovementZelda PlayerMovement;
         public PlayerInput_Zelda PlayerInput;
         public PlayerInteract PlayerInteract;
 
@@ -38,7 +37,7 @@ namespace Player
 
         public void SetupDeps()
         {
-            PlayerMovement = GetComponent<PlayerMovementBase>();
+            PlayerMovement = GetComponent<PlayerMovementZelda>();
             PlayerInput = GetComponent<PlayerInput_Zelda>();
         }
     }

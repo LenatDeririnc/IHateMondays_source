@@ -27,7 +27,7 @@ namespace Characters.Components
 
         private void MovementInputUpdate()
         {
-            var movement = _inputBridgeService.Movement;
+            var movement = Vector2.ClampMagnitude(_inputBridgeService.Movement + _inputBridgeService.DPad, 1);
             _playerMovement.SetMovementInput(new Vector3(movement.x, 0, movement.y));
         }
 

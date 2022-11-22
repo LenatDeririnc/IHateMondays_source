@@ -16,6 +16,7 @@ namespace Services
         public float LookSensitivity;
 
         public Vector2 Movement { get; private set; }
+        public Vector2 DPad { get; private set; }
         public Vector2 Look { get; private set; }
         public bool IsPauseButtonDown { get; private set; }
         public bool IsJumpUp { get; private set; }
@@ -64,6 +65,7 @@ namespace Services
         public void UpdateService()
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            DPad = new Vector2(Input.GetAxis("DPad X"), Input.GetAxis("DPad Y"));
             Look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * LookSensitivity;
             IsPauseButtonDown = Input.GetKeyDown(KeyCode.Escape);
             IsJumpDown = Input.GetButtonDown("Jump");

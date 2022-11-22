@@ -1,8 +1,5 @@
-﻿using System;
-using Player.Components;
+﻿using Player.Components;
 using Plugins.MonoBehHelpers;
-using Plugins.ServiceLocator;
-using Services;
 using UnityEngine;
 
 namespace Characters.Components
@@ -11,17 +8,13 @@ namespace Characters.Components
     {
         [SerializeField] protected CharacterControllerAccelerator characterController;
         [SerializeField] protected Transform mesh;
-        private CameraService _cameraService;
+        [SerializeField] protected Animator animator;
+        private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+        private static readonly int Walkspeed = Animator.StringToHash("WalkSpeed");
 
         public void SetupDeps()
         {
             characterController = GetComponent<CharacterControllerAccelerator>();
-        }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            _cameraService = ServiceLocator.Get<CameraService>();
         }
 
         protected void MoveProcess(float delta)
@@ -42,6 +35,13 @@ namespace Characters.Components
         {
             UpdateMovementInput();
             MoveProcess(Time.deltaTime);
+            UpdateAnimation();
+        }
+
+        private void UpdateAnimation()
+        {
+            animator.SetBool(IsWalking, Velocity.magnitude > 0);
+            animator.SetFloat(Walkspeed, MoveDirection.magnitude);
         }
 
         public override void SetPosition(Vector3 position)
