@@ -13,14 +13,31 @@ public class Inventory : MonoBehaviour
     public List<GameObject> Buttons;
 
     [SerializeField] private MouseTarget _mouseTarget;
+     public Sprite _spriteDefault;
 
     public void PickItemFromInventory(int index)
     {
         if (index < interactElements.Count)
+        {
             _mouseTarget.InventoryPicked = interactElements[index];
+        }
     }
 
-    public void InventoryPanelUpdate()
+    public void InventoryPanelUpdate(bool isTrow = false, InteractElement interact = null)
+    {
+        if (!isTrow)
+        {
+            InventUp();
+        }
+        else
+        {
+            interactElements.Remove(interact);
+            InventUp(true);
+        }
+        CheckIngridients();
+    }
+
+    private void InventUp(bool withNull = false)
     {
         int i = 0;
 
@@ -29,7 +46,21 @@ public class Inventory : MonoBehaviour
             Buttons[i].GetComponent<Image>().sprite = element._sprite;
             i++;
         }
-        CheckIngridients();
+
+        if (withNull)
+        {
+            for (int j = 0; j < interactElements.Count + 1; j++)
+            {
+                try
+                {
+                    Buttons[j].GetComponent<Image>().sprite = interactElements[j].GetComponent<PickUp>()._sprite;
+                }
+                catch
+                {
+                    Buttons[j].GetComponent<Image>().sprite = _spriteDefault;
+                }
+            }
+        }
     }
 
     private void CheckIngridients()

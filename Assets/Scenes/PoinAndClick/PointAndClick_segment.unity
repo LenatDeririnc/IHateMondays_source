@@ -1606,6 +1606,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.21004057, y: 0.20453349, z: 0.08734894}
   m_Center: {x: 0.000000014901161, y: 0.00245348, z: 0.0028665066}
+--- !u!114 &646025846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646025837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: 
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  _inventory: {fileID: 2102909088}
+  _ingridient: {fileID: 0}
+  _isFinal: 0
+  _result: {fileID: 0}
+  _target: {fileID: 376274319}
 --- !u!1 &652092211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,6 +5001,7 @@ MonoBehaviour:
   <PropName>k__BackingField: 
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
+  _inventory: {fileID: 2102909088}
   _ingridient: {fileID: 646025838}
   _isFinal: 1
   _result: {fileID: 1100352018}
@@ -5033,6 +5054,7 @@ MonoBehaviour:
   - {fileID: 433485039}
   - {fileID: 468295800}
   _mouseTarget: {fileID: 376274319}
+  _spriteDefault: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &2102909089
 Transform:
   m_ObjectHideFlags: 0
@@ -7706,6 +7728,7 @@ MonoBehaviour:
   <PropName>k__BackingField: 
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
+  _inventory: {fileID: 2102909088}
   _ingridient: {fileID: 2094656489}
   _isFinal: 0
   _result: {fileID: 0}

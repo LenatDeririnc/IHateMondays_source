@@ -23,7 +23,6 @@ public class PickUp : InteractElement
     {
         _inventory.interactElements.Add(this);
         _inventory.InventoryPanelUpdate();
-        _inventory.InventoryPanelUpdate();
         gameObject.SetActive(false);
     }
 

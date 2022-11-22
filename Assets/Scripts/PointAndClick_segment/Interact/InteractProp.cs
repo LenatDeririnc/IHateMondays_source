@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InteractProp : InteractElement
 {
@@ -16,6 +17,7 @@ public class InteractProp : InteractElement
     public Vector3 _thisItemOffsetPosition;
     public Vector3 _thisItemRotation;
     private bool _changed;
+    private InteractElement _cash;
 
     public override void Use()
     {
@@ -54,12 +56,11 @@ public class InteractProp : InteractElement
                     {
                         if (obj.PropName == item.PropName)
                         {
-                            _inventory.interactElements.Remove(item);
+                            _cash = item;
                             _inventory.Buttons[i].GetComponent<Image>().sprite = _defaultPanelKey;
                             _mouseTarget.InventoryPicked = null;
-                            _inventory.InventoryPanelUpdate();
+                            _inventory.InventoryPanelUpdate(true, _cash);
                         }
-
                         i++;
                     }
                 }

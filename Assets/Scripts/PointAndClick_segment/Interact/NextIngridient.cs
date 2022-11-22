@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening.Core.Easing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NextIngridient : InteractElement
 {
+    [SerializeField] Inventory _inventory;
     [SerializeField] private InteractElement _ingridient;
     [SerializeField] private bool _isFinal;
     [SerializeField] private InteractElement _result;
@@ -28,6 +31,17 @@ public class NextIngridient : InteractElement
             if (_target.InventoryPicked.PropName == _ingridient.PropName)
             {
                 var obj = Instantiate(_ingridient, transform.position, Quaternion.identity);
+                int i = 0;
+                foreach (var item in _inventory.interactElements.ToArray())
+                {
+                    if (obj.PropName == item.PropName)
+                    {
+                        _inventory.Buttons[i].GetComponent<Image>().sprite = _inventory._spriteDefault;
+                        _target.InventoryPicked = null;
+                        _inventory.InventoryPanelUpdate(true, item);
+                    }
+                    i++;
+                }
                 Destroy(obj.GetComponent<PickUp>());
                 obj.gameObject.AddComponent<Deletion>();
             }
