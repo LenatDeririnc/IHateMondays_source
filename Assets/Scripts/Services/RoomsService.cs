@@ -13,7 +13,6 @@ namespace Services
         [SerializeField] public float RoomEnterDuration = 1f;
         [SerializeField] public Ease RoomEnterEase;
         [SerializeField] public Ease RoomExitEase;
-        [SerializeField] public float RoomEnterEndValue = -10f;
 
         public Room[] rooms;
 
