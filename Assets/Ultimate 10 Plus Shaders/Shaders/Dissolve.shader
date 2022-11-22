@@ -36,6 +36,8 @@ Shader "Ultimate 10+ Shaders/Dissolve"
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _NoiseTex ("Noise", 2D) = "white" {}
+        _Metalic ("Metalic", 2D) = "white" {}
+        _NormalMap ("NormalMap", 2D) = "bump" {}
 
         _Cutoff ("Cut off", Range(0, 1)) = 0.25
         _EdgeWidth ("Edge Width", Range(0, 1)) = 0.05
@@ -45,7 +47,7 @@ Shader "Ultimate 10+ Shaders/Dissolve"
     }
     SubShader
     {
-        Tags { "RenderType"="Geometry" "Queue"="Transparent" }
+        Tags { "RenderType"="Geometry" "Queue"="Opaque" }
         LOD 200
         Cull [_Cull]
 
@@ -61,6 +63,8 @@ Shader "Ultimate 10+ Shaders/Dissolve"
 
         sampler2D _MainTex;
         sampler2D _NoiseTex;
+        sampler2D _Metalic;
+        sampler2D _NormalMap;
 
         half _Cutoff;
         half _EdgeWidth;
@@ -81,13 +85,18 @@ Shader "Ultimate 10+ Shaders/Dissolve"
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
 
-        fixed4 noisePixel, pixel;
+        fixed4 noisePixel, pixel, metalic, normalmap;
         half cutoff;
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             pixel = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            metalic = tex2D (_Metalic, IN.uv_MainTex);
+            normalmap = tex2D (_NormalMap, IN.uv_MainTex);
 
             o.Albedo = pixel.rgb;
+            o.Metallic = metalic.rgb;
+            o.Smoothness = metalic.a;
+            o.Normal = UnpackNormal(normalmap);
 
             noisePixel = tex2D (_NoiseTex, IN.uv_NoiseTex);
 
