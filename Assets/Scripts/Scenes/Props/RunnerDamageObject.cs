@@ -1,5 +1,4 @@
-﻿using System;
-using Plugins.ServiceLocator;
+﻿using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
 
