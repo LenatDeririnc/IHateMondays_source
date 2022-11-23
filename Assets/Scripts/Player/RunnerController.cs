@@ -2,6 +2,7 @@
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
+using UnityEngine.Splines;
 using UnityOverrides;
 
 namespace Player
@@ -26,6 +27,9 @@ namespace Player
         {
             _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
             _runnerService = ServiceLocator.Get<RunnerService>();
+
+            var spline = _runnerService.Spline;
+            SplineUtility.GetNearestPoint(spline.Spline,spline.transform.InverseTransformPoint(transform.position), out var nearest, out _splinePosition);
         }
 
         private void Update()

@@ -11,17 +11,17 @@ namespace Player
         public PlayerInput_Zelda PlayerInput;
         public PlayerInteract PlayerInteract;
 
-        private SceneLoadingService SceneLoadingService;
+        private SceneLoadingService _sceneLoadingService;
 
         private void Awake()
         {
-            SceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
-            SceneLoadingService.OnLoadingStart += OnLoading;
+            _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
+            _sceneLoadingService.OnLoadingStart += OnLoading;
         }
 
         private void OnDestroy()
         {
-            SceneLoadingService.OnLoadingStart -= OnLoading;
+            _sceneLoadingService.OnLoadingStart -= OnLoading;
         }
 
         public void OnLoading()

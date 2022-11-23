@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using Player;
 using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
@@ -14,6 +15,7 @@ namespace Services
         [SerializeField] private float _damageSeconds = 5f;
         [SerializeField] private SplineContainer _spline;
         [SerializeField] private float _moveDistance = 10f;
+        [SerializeField][Range(0,1)] private float _speedPercentOnPlayTriedAnimation = 0.3f;
 
         public float MoveDistance => _moveDistance;
 
@@ -27,8 +29,12 @@ namespace Services
         private RunnerController _runnerController;
         private Coroutine _damageCoroutine;
         private static readonly int InjuredProperty = Animator.StringToHash("Injured");
+        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+        private static readonly int Tried = Animator.StringToHash("Tried");
 
         public RunnerController RunnerController => _runnerController;
+        public bool IsEnding = false;
+        private bool _isPlayingFail = false;
 
         public void AwakeService()
         {
@@ -66,7 +72,28 @@ namespace Services
 
         public void SetCurrentSpeed(float value)
         {
+            if (_isPlayingFail)
+                return;
+            
             _currentSpeed = value;
+            _runnerController.Animator.SetFloat(MoveSpeed, _currentSpeed / _defaultSpeed);
+
+            if (IsEnding && !_isPlayingFail && _currentSpeed / _defaultSpeed < _speedPercentOnPlayTriedAnimation) {
+                PlayFailAnimation();
+            }
+        }
+
+        public void PlayFailAnimation()
+        {
+            DOTween.To(
+                    () => _currentSpeed, 
+                    _ => _currentSpeed = _, 
+                    0, 
+                    0.5f);
+            
+            _isPlayingFail = true;
+            _runnerController.Animator.applyRootMotion = true;
+            _runnerController.Animator.SetTrigger(Tried);
         }
     }
 }

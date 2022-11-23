@@ -27,13 +27,21 @@ namespace Scenes
         {
             if (other != _playerService.Player.Collider)
                 return;
+
+            _runnerService.IsEnding = true;
             
             var busSequence = _busAnimation.StartMove();
-
+            var runSlowdown = 
+                DOTween.To(
+                    () => _runnerService.CurrentSpeed, 
+                    _ => _runnerService.SetCurrentSpeed(_), 
+                    0, 
+                    _runEndDuration)
+                .SetEase(_runEndEase);
+            
             var runSequence = DOTween.Sequence();
             runSequence.AppendInterval(0.5f);
-            runSequence.Append(DOTween.To(() => _runnerService.CurrentSpeed, _ => _runnerService.SetCurrentSpeed(_), 0,
-                _runEndDuration).SetEase(_runEndEase));
+            runSequence.Append(runSlowdown);
             runSequence.AppendInterval(2f);
             runSequence.onComplete += () => _sceneLoadingService.LoadScene(_nextScene);
 
