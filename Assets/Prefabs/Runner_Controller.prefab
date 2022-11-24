@@ -527,6 +527,11 @@ MonoBehaviour:
   _collider: {fileID: 1929914621905589646}
   _characterTransform: {fileID: 6980503981259809957}
   _animator: {fileID: 3242397312128515570}
+  _renderers:
+  - {fileID: 6933661070533460089}
+  - {fileID: 3006443953214793087}
+  - {fileID: 1273181325664331679}
+  _renderersGameObject: {fileID: 6720209935258506405}
 --- !u!114 &6980503981259809957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +939,16 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
+--- !u!137 &1273181325664331679 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4600236602624749973, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
+  m_PrefabInstance: {fileID: 5873699440345180660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3006443953214793087 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -559965475416421237, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
+  m_PrefabInstance: {fileID: 5873699440345180660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6199534706968628767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
@@ -964,3 +979,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!137 &6933661070533460089 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5639981707962259059, guid: 54a8867b075247a46b64baf33c96c733, type: 3}
+  m_PrefabInstance: {fileID: 5873699440345180660}
+  m_PrefabAsset: {fileID: 0}

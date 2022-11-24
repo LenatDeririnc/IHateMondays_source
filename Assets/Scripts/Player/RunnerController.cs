@@ -11,6 +11,12 @@ namespace Player
     {
         [SerializeField] private RunnerControllerDecorator _characterTransform;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Renderer[] _renderers;
+        [SerializeField] private GameObject _renderersGameObject;
+
+        public GameObject RenderersGameObject => _renderersGameObject;
+
+        public Renderer[] Renderers => _renderers;
 
         public Animator Animator => _animator;
 

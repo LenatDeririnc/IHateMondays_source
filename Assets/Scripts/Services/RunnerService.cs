@@ -1,9 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Player;
 using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
+using Tools;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Splines;
 
 namespace Services
@@ -16,6 +19,7 @@ namespace Services
         [SerializeField] private SplineContainer _spline;
         [SerializeField] private float _moveDistance = 10f;
         [SerializeField][Range(0,1)] private float _speedPercentOnPlayTriedAnimation = 0.3f;
+        [SerializeField] private float _damageSwitchInterval = 0.5f;
 
         public float MoveDistance => _moveDistance;
 
@@ -35,6 +39,9 @@ namespace Services
         public RunnerController RunnerController => _runnerController;
         public bool IsEnding = false;
         private bool _isPlayingFail = false;
+
+        private static readonly int ColorProperty = Shader.PropertyToID("_Color");
+        private static Color DamagedColor => new Color(1,1,1,0.5f);
 
         public void AwakeService()
         {
@@ -63,10 +70,57 @@ namespace Services
             _damageCoroutine = StartCoroutine(Damage());
         }
 
+        private void SetMaterialDamaged()
+        {
+            foreach (var rend in _runnerController.Renderers) {
+                rend.shadowCastingMode = ShadowCastingMode.Off;
+                StandardShaderUtils.ChangeRenderMode(rend.material, StandardShaderUtils.BlendMode.Fade);
+                rend.material.SetColor(ColorProperty, DamagedColor);
+            }
+        }
+
+        private void SetMaterialNormal()
+        {
+            foreach (var rend in _runnerController.Renderers) {
+                rend.shadowCastingMode = ShadowCastingMode.On;
+                StandardShaderUtils.ChangeRenderMode(rend.material, StandardShaderUtils.BlendMode.Opaque);
+                rend.material.SetColor(ColorProperty, Color.white);
+            }
+        }
+
+        private void SetColor(Color color)
+        {
+            foreach (var rend in _runnerController.Renderers) {
+                rend.material.SetColor(ColorProperty, color);
+            }
+        }
+        
+        private Sequence _sequence;
+        private void StartBlink()
+        {
+            _sequence = DOTween.Sequence()
+                .AppendInterval(_damageSwitchInterval)
+                .AppendCallback(() => SetColor(Color.clear))
+                .AppendInterval(_damageSwitchInterval)
+                .AppendCallback(() => SetColor(DamagedColor))
+                .SetLoops(-1);
+        }
+
+        private void StopBlink()
+        {
+            _sequence.Kill();
+        }
+
         private IEnumerator Damage()
         {
             SetSlownDownSpeed();
+            SetMaterialDamaged();
+            StartBlink();
+            
             yield return new WaitForSeconds(DamageSeconds);
+            
+            StopBlink();
+            SetMaterialNormal();
             SetDefaultSpeed();
         }
 
