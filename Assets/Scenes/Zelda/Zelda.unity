@@ -13267,7 +13267,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 81d4297ed0747554cb99104b1017f672, type: 2}
     - target: {fileID: 2788441872730514660, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: _currentDialogIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.x
