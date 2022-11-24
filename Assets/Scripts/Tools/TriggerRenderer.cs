@@ -8,6 +8,7 @@ namespace Tools
         public enum TriggerType
         {
             Box,
+            BoxOffseted,
             Sphere
         }
         
@@ -23,6 +24,12 @@ namespace Tools
                     rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
                     Gizmos.matrix = rotationMatrix;
                     Gizmos.DrawWireCube(Vector3.zero,Vector3.one);
+                    break;
+                case TriggerType.BoxOffseted:
+                    var boxCollider = GetComponent<BoxCollider>();
+                    rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation,  Vector3.Scale(transform.lossyScale, boxCollider.size));
+                    Gizmos.matrix = rotationMatrix;
+                    Gizmos.DrawWireCube(boxCollider.center, Vector3.one);
                     break;
                 case TriggerType.Sphere:
                     var sphereCollider = GetComponent<SphereCollider>();

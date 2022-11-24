@@ -1,28 +1,26 @@
-﻿using System;
-using Plugins.ServiceLocator;
-using Scenes.Props;
+﻿using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
 
 namespace Scenes
 {
-    public class RunnerMovingDamagablesTrigger : MonoBehaviour
+    public class RemoveTrigger : MonoBehaviour
     {
-        [SerializeField] private MovingObjectBase[] _movingObjects;
+        [SerializeField] private GameObject[] _objectsToRemove;
         private PlayerService _playerService;
 
         private void Awake()
         {
             _playerService = ServiceLocator.Get<PlayerService>();
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other != _playerService.Player.Collider)
                 return;
-
-            foreach (var obj in _movingObjects) {
-                obj.StartMove();
+            
+            foreach (var obj in _objectsToRemove) {
+                obj.SetActive(false);
             }
         }
     }

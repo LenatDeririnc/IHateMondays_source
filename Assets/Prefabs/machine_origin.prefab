@@ -56,8 +56,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3267350270686212467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69948, y: 0.69948, z: 0.69948}
+  m_LocalPosition: {x: 0, y: 0.024, z: 0}
+  m_LocalScale: {x: 0.52637273, y: 0.52637273, z: 0.52637273}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7946568799026674008}
@@ -94,8 +94,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936777437430236444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.69, z: 0}
-  m_LocalScale: {x: 1.4813516, y: 1.1754316, z: 3.6383}
+  m_LocalPosition: {x: 0, y: 0.444, z: 0}
+  m_LocalScale: {x: 1.1147468, y: 0.88453585, z: 2.7378936}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6936777438427651054}
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a2c74f43974c77b640648884339c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isMoving: 0
   _roadIndex: 1
   _speed: 20
   _splinePosition: 0

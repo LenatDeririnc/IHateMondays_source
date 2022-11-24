@@ -108,13 +108,17 @@ namespace Services
 
         private void StopBlink()
         {
-            _sequence.Kill();
+            if (_sequence != null) {
+                _sequence.Kill();
+                _sequence = null;
+            }
         }
 
         private IEnumerator Damage()
         {
             SetSlownDownSpeed();
             SetMaterialDamaged();
+            StopBlink();
             StartBlink();
             
             yield return new WaitForSeconds(DamageSeconds);
