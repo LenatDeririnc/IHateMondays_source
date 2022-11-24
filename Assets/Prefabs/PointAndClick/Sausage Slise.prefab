@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3433360727169052248}
   - component: {fileID: 8028511986440813772}
   - component: {fileID: 8077438277961547156}
+  - component: {fileID: 646025842}
+  - component: {fileID: 646025846}
   m_Layer: 0
   m_Name: Sausage Slise
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8213664764401238858}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -96,9 +98,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PropName>k__BackingField: sausage
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  IsThrowFromInventory: 1
+  IsLockedForTime: 0
+  _inventory: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 8d3c80dd0c2904cdbb745cf481348a76, type: 3}
+  _ifLocked_ChangeToObject: {fileID: 0}
+  _thisItemOffsetPosition: {x: 0, y: 0.01, z: 0}
+  _thisItemRotation: {x: -76.31, y: 0, z: 0}
+--- !u!65 &646025842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213664764401238858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21004057, y: 0.20453349, z: 0.08734894}
+  m_Center: {x: 0.000000014901161, y: 0.00245348, z: 0.0028665066}
+--- !u!114 &646025846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213664764401238858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   <PropName>k__BackingField: 
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
-  IsThrowFromInventory: 0
   _inventory: {fileID: 0}
-  _sprite: {fileID: 0}
+  _ingridient: {fileID: 0}
+  _isFinal: 0
+  _result: {fileID: 0}
+  _target: {fileID: 0}

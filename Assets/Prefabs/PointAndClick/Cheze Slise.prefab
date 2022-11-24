@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5034307228875477382}
   - component: {fileID: 6247778519972506054}
   - component: {fileID: 6933780226692550023}
+  - component: {fileID: 2094656493}
+  - component: {fileID: 2094656494}
   m_Layer: 0
   m_Name: Cheze Slise
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769318740422504323}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -96,9 +98,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PropName>k__BackingField: cheze
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  IsThrowFromInventory: 1
+  IsLockedForTime: 0
+  _inventory: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  _ifLocked_ChangeToObject: {fileID: 0}
+  _thisItemOffsetPosition: {x: 0, y: -0.205, z: 0}
+  _thisItemRotation: {x: 0, y: 0, z: 0}
+--- !u!65 &2094656493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769318740422504323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22231245, y: 0.016572565, z: 0.2223122}
+  m_Center: {x: -0.0043685436, y: 0.20134443, z: 0.005528927}
+--- !u!114 &2094656494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769318740422504323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   <PropName>k__BackingField: 
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
-  IsThrowFromInventory: 0
   _inventory: {fileID: 0}
-  _sprite: {fileID: 0}
+  _ingridient: {fileID: 0}
+  _isFinal: 1
+  _result: {fileID: 0}
+  _target: {fileID: 0}
