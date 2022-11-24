@@ -14,7 +14,7 @@ Material:
   - _METALLICGLOSSMAP
   - _NORMALMAP
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -79,5 +79,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.69372374, g: 0.63966733, b: 0.5180404, a: 1}
+    - _EmissionColor: {r: 6.836473, g: 6.295735, b: 5.098387, a: 1}
   m_BuildTextureStacks: []
