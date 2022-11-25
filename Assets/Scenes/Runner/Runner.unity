@@ -12123,6 +12123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8019364105224871130, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f56407e0b67c9064a981aeb6c45c8774, type: 2}
     - target: {fileID: 919132149155446097, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
       propertyPath: m_Name
       value: LCT13_07
@@ -20793,6 +20797,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.53
       objectReference: {fileID: 0}
+    - target: {fileID: -8019364105224871130, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b0cd22b0ad4497419fc1caa3d200886, type: 2}
     - target: {fileID: 919132149155446097, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
       propertyPath: m_Name
       value: LCT13_07 (2)
@@ -22172,10 +22180,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7750241975343151402, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: -7511558181221131132, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     - target: {fileID: 919132149155446097, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
       propertyPath: m_Name
       value: 'Taxi Car '
       objectReference: {fileID: 0}
+    - target: {fileID: 989875507542059739, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 5891662340095969012, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 5899949254425544250, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b100e4083e371174f96fc964c8b2e730, type: 3}
 --- !u!1001 &1339178920
@@ -25184,6 +25212,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8019364105224871130, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b0cd22b0ad4497419fc1caa3d200886, type: 2}
     - target: {fileID: 919132149155446097, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
       propertyPath: m_Name
       value: LCT13_07 (2)
@@ -25751,6 +25783,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3677643118131951878, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 3686807447000857032, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     - target: {fileID: 4306906034704018876, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
       propertyPath: _triggerType
       value: 0
@@ -25763,6 +25803,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8022589889307530727, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 8442241429586387896, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 8545812858241169898, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     - target: {fileID: 9119069886177441446, guid: b290f62c127e4b8419cccf5941f6aaef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28193,6 +28245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.703
       objectReference: {fileID: 0}
+    - target: {fileID: -8019364105224871130, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b0cd22b0ad4497419fc1caa3d200886, type: 2}
     - target: {fileID: 919132149155446097, guid: 258538d581314464498ab74cb6fb80b7, type: 3}
       propertyPath: m_Name
       value: LCT13_07 (2)

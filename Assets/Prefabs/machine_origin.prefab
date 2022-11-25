@@ -291,10 +291,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: -6010493675556220784, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: -5979300341937395110, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     - target: {fileID: 919132149155446097, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
       propertyPath: m_Name
       value: 'Civil Car '
       objectReference: {fileID: 0}
+    - target: {fileID: 1570638679926596806, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 2420504715117209620, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
+    - target: {fileID: 7627241243263944436, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a84ccfe466108e34b83772028c4e4723, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6889030aec974f4783ce2d4238808dd, type: 3}
 --- !u!4 &4358713958982498045 stripped
