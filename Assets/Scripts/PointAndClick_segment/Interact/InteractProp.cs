@@ -14,6 +14,8 @@ public class InteractProp : InteractElement
     [SerializeField] protected MouseTarget _mouseTarget;
     [SerializeField] private Sprite _defaultPanelKey;
     [SerializeField] bool IsOverrideOffsetsByProp;
+    [Header("Only for microwave")]
+    [SerializeField] private MicroStartButton _microStartButton;
     public Vector3 _thisItemOffsetPosition;
     public Vector3 _thisItemRotation;
     private bool _changed;
@@ -64,6 +66,8 @@ public class InteractProp : InteractElement
                         i++;
                     }
                 }
+
+                CheckSandvitchInMicro(PropName, interact);
             }
         }
     }
@@ -73,5 +77,14 @@ public class InteractProp : InteractElement
         _changed = true;
         _interactArray = new string[1];
         _interactArray[0] = "breadZhar";
+    }
+
+    private void CheckSandvitchInMicro(string propName, string sandvitch)
+    {
+       if(propName == "Micro" && sandvitch == "sammic")
+        {
+            _microStartButton.Use();
+            gameObject.GetComponent<Animator>().SetBool("Switch", false);
+        }
     }
 }

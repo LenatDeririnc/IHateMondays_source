@@ -2378,6 +2378,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 1268325288}
   _open: {fileID: 1429018297}
+  isLocked: 0
 --- !u!65 &1083127054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3206,6 +3207,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 1228008634}
   _open: {fileID: 1657572307}
+  isLocked: 0
 --- !u!65 &1281495698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3269,6 +3271,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281495695}
   m_Mesh: {fileID: 826980398051131412, guid: 58b8612375a6e9f40b565c87f623f701, type: 3}
+--- !u!1 &1299580933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299580934}
+  - component: {fileID: 1299580936}
+  - component: {fileID: 1299580935}
+  m_Layer: 0
+  m_Name: EndGameButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299580934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299580933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.638, y: 0.3579, z: -0.264}
+  m_LocalScale: {x: 0.31, y: 0.31, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651702920395}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1299580935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299580933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ee7277a9508514b85701e370dd4109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PropName>k__BackingField: EndGame
+  <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  _microDoor: {fileID: 5243874653650004657}
+--- !u!65 &1299580936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299580933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1327850638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3450,6 +3514,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 1268325288}
   _open: {fileID: 1083127053}
+  isLocked: 0
 --- !u!65 &1429018298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3565,6 +3630,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 2083061501}
   _open: {fileID: 0}
+  isLocked: 0
 --- !u!65 &1434510469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4214,6 +4280,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 1228008634}
   _open: {fileID: 1281495697}
+  isLocked: 0
 --- !u!65 &1657572308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5255,6 +5322,7 @@ Transform:
   m_Children:
   - {fileID: 2989906164090384647}
   - {fileID: 1805701449}
+  - {fileID: 1299580934}
   m_Father: {fileID: 994768764}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -31.689, z: 0}
@@ -6681,6 +6749,7 @@ MonoBehaviour:
   _mouseTarget: {fileID: 376274319}
   _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   IsOverrideOffsetsByProp: 1
+  _microStartButton: {fileID: 0}
   _thisItemOffsetPosition: {x: -0.17, y: 0, z: 0}
   _thisItemRotation: {x: 0, y: -76.83, z: 0}
 --- !u!33 &3469287836804527192
@@ -6800,6 +6869,7 @@ MonoBehaviour:
   _mouseTarget: {fileID: 376274319}
   _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   IsOverrideOffsetsByProp: 1
+  _microStartButton: {fileID: 1299580935}
   _thisItemOffsetPosition: {x: 0, y: 0.2, z: 0}
   _thisItemRotation: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287837639058982
@@ -6853,6 +6923,7 @@ MonoBehaviour:
   _mouseTarget: {fileID: 376274319}
   _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   IsOverrideOffsetsByProp: 0
+  _microStartButton: {fileID: 0}
   _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
   _thisItemRotation: {x: 0, y: 0, z: 0}
 --- !u!33 &3469287838473743853
@@ -6991,6 +7062,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 3469287837567141782}
   _open: {fileID: 7556567965485562456}
+  isLocked: 0
   _inventory: {fileID: 2102909088}
   _mouseTarget: {fileID: 376274319}
 --- !u!65 &4148582167914671665
@@ -7129,6 +7201,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 3469287837633481583}
   _open: {fileID: 0}
+  isLocked: 0
 --- !u!23 &5350668648778288219
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7203,6 +7276,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 7900883301725845650}
   _open: {fileID: 0}
+  isLocked: 0
 --- !u!65 &5668107057878406626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7680,6 +7754,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 3469287837567141782}
   _open: {fileID: 4148582167914671664}
+  isLocked: 0
   _inventory: {fileID: 2102909088}
   _mouseTarget: {fileID: 376274319}
 --- !u!65 &7556567965485562457
@@ -7921,6 +7996,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 3999316760649728629}
   _open: {fileID: 8876645970744968052}
+  isLocked: 0
 --- !u!33 &7900883301725845649
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8098,6 +8174,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 7996601663346230478}
   _open: {fileID: 0}
+  isLocked: 0
 --- !u!65 &8753707377081151949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8156,6 +8233,7 @@ MonoBehaviour:
   IsPickUpOff: 0
   _animator: {fileID: 3999316760649728629}
   _open: {fileID: 7858704447475107727}
+  isLocked: 0
 --- !u!1 &9063982790674604792
 GameObject:
   m_ObjectHideFlags: 0
