@@ -4,7 +4,9 @@ using DG.Tweening;
 using Player;
 using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
+using Scenes;
 using Tools;
+using UI;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Splines;
@@ -20,6 +22,8 @@ namespace Services
         [SerializeField] private float _moveDistance = 10f;
         [SerializeField][Range(0,1)] private float _speedPercentOnPlayTriedAnimation = 0.3f;
         [SerializeField] private float _damageSwitchInterval = 0.5f;
+        [SerializeField] private Timer _timer;
+        [SerializeField] private RunnerEndTrigger _runnerEndTrigger;
 
         public float MoveDistance => _moveDistance;
 
@@ -48,6 +52,9 @@ namespace Services
             _playerService = ServiceLocator.Get<PlayerService>();
             _runnerController = (RunnerController)_playerService.Player;
             SetDefaultSpeed();
+            
+            _timer.OnEndTimer += _runnerEndTrigger.PlayEnding;
+            _timer.StartTimer();
         }
 
         public void SetDefaultSpeed()
@@ -143,6 +150,8 @@ namespace Services
 
         public void PlayFailAnimation()
         {
+            _runnerController.CanMove = false;
+            
             DOTween.To(
                     () => _currentSpeed, 
                     _ => _currentSpeed = _, 

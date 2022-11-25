@@ -16,6 +16,8 @@ namespace Scenes
         [SerializeField] private SceneLink _nextScene;
         private SceneLoadingService _sceneLoadingService;
 
+        private bool isPlayingEnding = false;
+
         private void Awake()
         {
             _playerService = ServiceLocator.Get<PlayerService>();
@@ -28,17 +30,25 @@ namespace Scenes
             if (other != _playerService.Player.Collider)
                 return;
 
+            PlayEnding();
+        }
+
+        public void PlayEnding()
+        {
+            if (isPlayingEnding)
+                return;
+
+            isPlayingEnding = true;
             _runnerService.IsEnding = true;
-            
+
             var busSequence = _busAnimation.StartMove();
-            var runSlowdown = 
-                DOTween.To(
-                    () => _runnerService.CurrentSpeed, 
-                    _ => _runnerService.SetCurrentSpeed(_), 
-                    0, 
-                    _runEndDuration)
-                .SetEase(_runEndEase);
-            
+            var runSlowdown =
+                DOTween.To(() => _runnerService.CurrentSpeed,
+                        _ => _runnerService.SetCurrentSpeed(_),
+                        0,
+                        _runEndDuration)
+                    .SetEase(_runEndEase);
+
             var runSequence = DOTween.Sequence();
             runSequence.AppendInterval(0.5f);
             runSequence.Append(runSlowdown);

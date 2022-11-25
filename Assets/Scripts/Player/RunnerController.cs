@@ -19,6 +19,7 @@ namespace Player
         public Renderer[] Renderers => _renderers;
 
         public Animator Animator => _animator;
+        public bool CanMove { get; set; } = true;
 
         private int _currentRoadIndex = 0;
         private float _splinePosition = 0f;
@@ -40,12 +41,14 @@ namespace Player
 
         private void Update()
         {
-            if (_inputBridgeService.LeftMoveIsDown) {
-                MoveLeft();
-            }
+            if (CanMove) {
+                if (_inputBridgeService.LeftMoveIsDown) {
+                    MoveLeft();
+                }
 
-            if (_inputBridgeService.RightMoveIsDown) {
-                MoveRight();
+                if (_inputBridgeService.RightMoveIsDown) {
+                    MoveRight();
+                }
             }
 
             _splinePosition += _runnerService.CurrentSpeed * Time.deltaTime / _runnerService.Spline.CalculateLength();
