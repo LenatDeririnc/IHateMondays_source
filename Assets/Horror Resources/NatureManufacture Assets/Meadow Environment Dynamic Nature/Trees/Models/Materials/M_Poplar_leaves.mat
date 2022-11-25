@@ -276,7 +276,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _UVSec: 0
+    - _UVSec: 1
     - _WindColorThreshold: 0.3
     - _WindNormalInfluence: 0
     - _ZTestDepthEqualForOpaque: 3
@@ -286,7 +286,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.09848757, g: 0.6037736, b: 0, a: 1}
+    - _Color: {r: 0.1706568, g: 0.24528301, b: 0.15619437, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _DryColor: {r: 0.75735295, g: 0.7465995, b: 0.7016652, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

@@ -595,7 +595,7 @@ Material:
     - _UVDetail2: 0
     - _UVDetail3: 0
     - _UVEmissive: 0
-    - _UVSec: 0
+    - _UVSec: 1
     - _UseDensityMode: 0
     - _UseHeightBasedBlend: 0
     - _UseMainLayerInfluence: 0
