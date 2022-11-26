@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0c97d505b46bafc4bb01b18f623459a2, type: 2}
+  - {fileID: 2100000, guid: 3315ca64989174e459bb88c2768b4b81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,8 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PropName>k__BackingField: LockerKey
   <IsUsed>k__BackingField: 0
+  IsPickUpOff: 0
+  IsThrowFromInventory: 0
+  IsLockedForTime: 0
   _inventory: {fileID: 0}
   _sprite: {fileID: 21300000, guid: 62955e2782fd34c5ca3e78712625ae50, type: 3}
+  _ifLocked_ChangeToObject: {fileID: 0}
+  _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
+  _thisItemRotation: {x: 0, y: 0, z: 0}
 --- !u!65 &900273680800574674
 BoxCollider:
   m_ObjectHideFlags: 0
