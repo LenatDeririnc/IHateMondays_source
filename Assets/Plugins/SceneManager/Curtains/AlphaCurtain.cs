@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace SceneManager
 {
-    public class LoadingCurtain : MonoBehaviour
+    public class AlphaCurtain : LoadingCurtainBase
     {
+        public override CurtainType Type => CurtainType.AlphaTransition;
+        
         public CanvasGroup canvasGroup;
         public GameObject canvasGroupGameObject;
         public float fadeSpeed = 1;
@@ -24,28 +26,28 @@ namespace SceneManager
             }
         }
 
-        public void Hide(Action loadSceneAction = null)
+        public override void Hide(Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             _coroutine = StartCoroutine(FadeIn(fadeSpeed, loadSceneAction));
         }
 
-        public void Show(Action loadSceneAction = null)
+        public override void Show(Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             _coroutine = StartCoroutine(FadeOut(fadeSpeed, loadSceneAction));
         }
 
-        public void Hide(float speed, Action loadSceneAction = null)
+        public override void Hide(float speed, Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             _coroutine = StartCoroutine(FadeIn(speed, loadSceneAction));
         }
 
-        public void Show(float speed, Action loadSceneAction = null)
+        public override void Show(float speed, Action loadSceneAction = null)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
