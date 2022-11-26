@@ -7,22 +7,27 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Props 3
+  m_Name: SM_Tree_Birch 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
-  - _NORMALMAP
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 1f34916f19e76b3418a4572e63233bb0, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DamadgeTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -42,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8e494c1d642cbc144bc30d9a2059cc73, type: 3}
+        m_Texture: {fileID: 2800000, guid: d12332855600e1141abd284d6be103b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -57,25 +62,57 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ShadowWorldLookUpTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowWorldMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BumpScale: 0.25
+    - _BumpScale: 1
+    - _ColorMultiplier: 1
+    - _Cull: 0
+    - _CustomRenderQueue: 0
+    - _CustomZWrite: 0
     - _Cutoff: 0.5
+    - _DamadgeRadius: 1
+    - _Decal: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionMult: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.521
-    - _Mode: 0
+    - _LightSensibility: 0.7
+    - _Metallic: 0
+    - _Mode: 1
     - _OcclusionStrength: 1
+    - _OffsetX: 0
+    - _OffsetY: 0
     - _Parallax: 0.02
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Surface: 0
     - _UVSec: 0
+    - _VertexOffsetMult: 0.01
+    - _VertexOffsetScale: 1
+    - _VertexOffsetSpeed: 1
+    - _VertexOffsetTextureLod: 1
     - _ZWrite: 1
     m_Colors:
+    - _AmbientColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DamadgeColor: {r: 0.716, g: 0.1625, b: 0.1625, a: 1}
+    - _DamadgeOffsetVector: {r: 0, g: 0, b: 0, a: 0}
+    - _DamadgePosition: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor2: {r: 0, g: 0, b: 0, a: 1}
+    - _LightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LightDir: {r: 1, g: 0, b: 0, a: 1}
+    - _ShadowWorldColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
