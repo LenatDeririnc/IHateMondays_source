@@ -14,6 +14,10 @@ namespace Services
         public event BlockSignals.BlockStartHandler OnBlockStart;
         public event BlockSignals.BlockEndHandler OnBlockEnd;
         
+        private bool _isDialogue = false;
+
+        public bool IsDialogue => _isDialogue;
+
         public void AwakeService()
         {
             _gameService = ServiceLocator.Get<GameService>();
@@ -34,11 +38,13 @@ namespace Services
 
         private void OnBlockStartAction(Block block)
         {
+            _isDialogue = true;
             _gameService.SetDialogueState(true);
         }
 
         private void OnBlockEndAction(Block block)
         {
+            _isDialogue = false;
             _gameService.SetDialogueState(false);
         }
     }

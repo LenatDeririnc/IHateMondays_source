@@ -1,10 +1,9 @@
 ﻿using Characters.Components;
-using Plugins.MonoBehHelpers;
 using UnityEngine;
 
 namespace Player.Custom
 {
-    public class FlashlightMovement : UpdateGetter
+    public class FlashlightMovement : MonoBehaviour
     {
         private const string Movement = "Movement";
         private const string MovementSpeed = "MovementSpeed";
@@ -12,6 +11,9 @@ namespace Player.Custom
 
         [SerializeField] private Animator cameraAnimator;
         [SerializeField] private PlayerMovementBase _characterController;
+        [SerializeField] private Transform _flashlightTransform;
+        [SerializeField] private Transform _flashlightTargetTransform;
+        [SerializeField] private float _lerpFlashlightAnimation = 1000f;
         private int _index;
 
         private void Awake()
@@ -19,10 +21,16 @@ namespace Player.Custom
             _index = cameraAnimator.GetLayerIndex(Movement);
         }
 
-        protected override void SentUpdate()
+        protected void FixedUpdate()
         {
             cameraAnimator.SetFloat(Speed, _characterController.MoveDirection.magnitude);
             cameraAnimator.SetLayerWeight(_index, _characterController.MoveDirection.magnitude);
+            
+            _flashlightTransform.position = Vector3.Lerp(_flashlightTransform.position,
+                _flashlightTargetTransform.position, _lerpFlashlightAnimation * Time.fixedDeltaTime);
+            
+            _flashlightTransform.rotation = Quaternion.Lerp(_flashlightTransform.rotation,
+                _flashlightTargetTransform.rotation, _lerpFlashlightAnimation * Time.fixedDeltaTime);
         }
     }
 }
