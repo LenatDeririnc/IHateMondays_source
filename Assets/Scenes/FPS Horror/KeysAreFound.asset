@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365bd0a50f58b494d86e4b5ff78d7d11, type: 3}
-  m_Name: FPS Horror
+  m_Script: {fileID: 11500000, guid: ade8678c639c6c14f8a763ad874fdc53, type: 3}
+  m_Name: KeysAreFound
   m_EditorClassIdentifier: 
-  sceneAsset: {fileID: 102900000, guid: 63d95126cec7a5044b88751b9244e632, type: 3}
-  scenePath: Assets/Scenes/FPS Horror/FPS Horror.unity
-  sceneName: FPS Horror
+  m_context: global
+  m_defaultValue: false
+  m_defaultType: 5

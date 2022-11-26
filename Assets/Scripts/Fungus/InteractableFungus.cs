@@ -1,7 +1,7 @@
-﻿using Fungus;
+﻿using Props;
 using UnityEngine;
 
-namespace Props
+namespace Fungus
 {
     public class InteractableFungus : MonoBehaviour, IInteractable
     {
