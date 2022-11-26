@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 365bd0a50f58b494d86e4b5ff78d7d11, type: 3}
-  m_Name: FPS Horror
+  m_Name: FPS Horror 2
   m_EditorClassIdentifier: 
   sceneAsset: {fileID: 102900000, guid: 63d95126cec7a5044b88751b9244e632, type: 3}
-  scenePath: Assets/Scenes/FPS Horror/FPS Horror.unity
-  sceneName: FPS Horror
+  scenePath: Assets/Scenes/FPS Horror/FPS Horror 2.unity
+  sceneName: FPS Horror 2

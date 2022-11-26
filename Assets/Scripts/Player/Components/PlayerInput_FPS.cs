@@ -1,4 +1,5 @@
-﻿using Player.Custom;
+﻿using Player.Components;
+using Player.Custom;
 using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
@@ -47,7 +48,7 @@ namespace Characters.Components
             {
                 MovementInputUpdate();
                 RotationInputUpdate();
-                FlashlightUpdate();
+                // FlashlightUpdate();
             }
             else
             {
@@ -55,12 +56,12 @@ namespace Characters.Components
             }
         }
 
-        private void FlashlightUpdate()
-        {
-            if (InputBridgeService.IsFlashlightDown) {
-                _flashlight?.SwitchActive();
-            }
-        }
+        // private void FlashlightUpdate()
+        // {
+        //     if (InputBridgeService.IsFlashlightDown) {
+        //         _flashlight?.SwitchActive();
+        //     }
+        // }
 
         public void PausedUpdate()
         {

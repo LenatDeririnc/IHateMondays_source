@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Visual Novel
   m_EditorClassIdentifier: 
   sceneAsset: {fileID: 102900000, guid: 750e51fe21a9cb7469dd5e3e3b4b10ef, type: 3}
-  scenePath: Assets\Scenes\Visual Novel\Visual Novel
+  scenePath: Assets/Scenes/Visual Novel/Visual Novel.unity
   sceneName: Visual Novel

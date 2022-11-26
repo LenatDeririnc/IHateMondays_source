@@ -10,12 +10,14 @@ namespace Scenes.Props
     {
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private Light _light;
+        [SerializeField] private Light[] _additionalLights;
         [SerializeField] private SwitchLightTrigger _switchLightTrigger;
         [SerializeField] private HorrorPathTrigger _horrorPathTriggerToTurnOff;
         [SerializeField] public GameObject OnEnterTrigger;
 
         [Space] 
         [SerializeField] private float _maxLightValue;
+        [SerializeField] private float _maxAdditionalLightValue;
         [SerializeField][Range(0, 1)] private float _alpha = 1f;
         [SerializeField] private float _switchDuration;
 
@@ -30,15 +32,18 @@ namespace Scenes.Props
 
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
         private Color _defaultColor;
+        
+        MaterialPropertyBlock _block;
 
         private void Awake()
         {
             if (OnEnterTrigger != null)
                 OnEnterTrigger.SetActive(false);
+
+            _block = new MaterialPropertyBlock();
+            _defaultColor = _meshRenderer.sharedMaterial.GetColor(EmissionColor);
             
-            _light.intensity = _maxLightValue * _alpha;
-            _defaultColor = _meshRenderer.material.GetColor(EmissionColor);
-            _meshRenderer.material.SetColor(EmissionColor, _defaultColor * _alpha);
+            UpdateLight();
         }
 
         public void Reset()
@@ -49,10 +54,25 @@ namespace Scenes.Props
                 _horrorPathTriggerToTurnOff.SetActive(true);
         }
 
+        private float _previousAlpha;
         private void Update()
         {
+            if (Math.Abs(_previousAlpha - _alpha) < 0.01)
+                return;
+            
+            UpdateLight();
+        }
+        
+        private void UpdateLight()
+        {
             _light.intensity = _maxLightValue * _alpha;
-            _meshRenderer.material.SetColor(EmissionColor, _defaultColor * _alpha);
+            foreach (var additionalLight in _additionalLights) {
+                additionalLight.intensity = _maxAdditionalLightValue * _alpha;
+            }
+            
+            _block.SetColor(EmissionColor, _defaultColor * 0);
+            _meshRenderer.SetPropertyBlock(_block);
+            _previousAlpha = _alpha;
         }
 
         public TweenerCore<float, float, FloatOptions> Switch(float endValue)

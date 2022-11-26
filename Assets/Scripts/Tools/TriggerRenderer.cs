@@ -27,12 +27,16 @@ namespace Tools
                     break;
                 case TriggerType.BoxOffseted:
                     var boxCollider = GetComponent<BoxCollider>();
+                    if (boxCollider == null)
+                        break;
                     rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation,  Vector3.Scale(transform.lossyScale, boxCollider.size));
                     Gizmos.matrix = rotationMatrix;
                     Gizmos.DrawWireCube(boxCollider.center, Vector3.one);
                     break;
                 case TriggerType.Sphere:
                     var sphereCollider = GetComponent<SphereCollider>();
+                    if (sphereCollider == null)
+                        break;
                     var max = transform.lossyScale.x;
                     if (transform.lossyScale.y > max)
                         max = transform.lossyScale.y;

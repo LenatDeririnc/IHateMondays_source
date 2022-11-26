@@ -14,8 +14,7 @@ namespace Characters.Components
         public PlayerLook PlayerLook;
         public PlayerWalksteps PlayerWalksteps;
         public PlayerInteract PlayerInteract;
-        public FlashlightMovement FlashlightMovement;
-        
+
         private SceneLoadingService _sceneLoadingService;
         private FungusService _fungusService;
 
@@ -57,7 +56,6 @@ namespace Characters.Components
             playerInputFPS.UpdateInvoke();
             PlayerLook.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
-            FlashlightMovement?.UpdateInvoke();
         }
 
         public void SetActive(bool value)
