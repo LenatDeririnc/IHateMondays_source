@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3fe35c96705d43f40bc748cafc66a5d3, type: 2}
+  - {fileID: 2100000, guid: 5fe0648dac1b48340858cb6063703a4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,8 +115,12 @@ MonoBehaviour:
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 1
   IsThrowFromInventory: 1
+  IsLockedForTime: 0
   _inventory: {fileID: 0}
   _sprite: {fileID: 21300000, guid: ea8f56c43254d41728f5ac4e8299b6c9, type: 3}
+  _ifLocked_ChangeToObject: {fileID: 0}
+  _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
+  _thisItemRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1493352062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +139,6 @@ MonoBehaviour:
   _interactedItem: 
   _switchToGO: {fileID: 0}
   _mouseTarget: {fileID: 0}
+  _spawnTransform: {fileID: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
+  OffsetPosition: {x: 0, y: 0, z: 0}
