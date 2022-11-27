@@ -35,7 +35,6 @@ public class StateTracker : MonoBehaviour
         int currentStateIndex = 0;
         foreach (var state in _statesGroupArray)
         {
-            int len = state.states.Length;
             int count = 0;
             foreach (var element in state.states)
             {
