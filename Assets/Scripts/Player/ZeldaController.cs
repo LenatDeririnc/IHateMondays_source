@@ -16,12 +16,12 @@ namespace Player
         private void Awake()
         {
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
-            _sceneLoadingService.OnLoadingStart += OnLoading;
+            _sceneLoadingService.SceneLoader.OnStartLoad += OnLoading;
         }
 
         private void OnDestroy()
         {
-            _sceneLoadingService.OnLoadingStart -= OnLoading;
+            _sceneLoadingService.SceneLoader.OnStartLoad -= OnLoading;
         }
 
         public void OnLoading()
