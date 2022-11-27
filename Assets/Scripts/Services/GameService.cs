@@ -1,38 +1,26 @@
 ﻿using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
-using UnityEngine.Device;
+using UnityEngine;
 
 namespace Services
 {
-    public class GameService : Service, IAwakeService, IUpdateService
+    public class GameService : Service, IAwakeService
     {
         private InputBridgeService _inputBridgeService;
-
-        private bool _isPaused;
-        private bool _isPlayingDialogue;
-        public bool IsPaused => _isPaused || _isPlayingDialogue;
-        public bool CanPressPause { get; set; } = true;
+        [SerializeField] private bool _cursorEnabledInScene = true;
         
+        private bool _isPlayingDialogue;
+        public bool IsPlayingDialogue => _isPlayingDialogue;
+
         public void AwakeService()
         {
             _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
-            _inputBridgeService.SetCursorLocked(true);
+            _inputBridgeService.SetCursorLocked(!_cursorEnabledInScene);
         }
 
         public void SetDialogueState(bool value)
         {
             _isPlayingDialogue = value;
-        }
-
-        public void UpdateService()
-        {
-            if (!Application.isEditor)
-                return;
-            
-            if (_inputBridgeService.IsPauseButtonDown && CanPressPause) {
-                _isPaused = !_isPaused;
-                _inputBridgeService.SetCursorLocked(!_isPaused);
-            }
         }
     }
 }

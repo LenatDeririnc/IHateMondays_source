@@ -44,7 +44,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!GameService.IsPaused)
+            if (!GameService.IsPlayingDialogue)
             {
                 MovementInputUpdate();
                 RotationInputUpdate();

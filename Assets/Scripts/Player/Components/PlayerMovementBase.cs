@@ -29,7 +29,7 @@ namespace Characters.Components
         
         protected virtual void UpdateMovementInput()
         {
-            if (_gameService.IsPaused)
+            if (_gameService.IsPlayingDialogue)
                 return;
             
             Velocity = MovementInput();

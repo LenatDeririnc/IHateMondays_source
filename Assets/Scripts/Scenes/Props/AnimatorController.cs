@@ -16,7 +16,7 @@ namespace Props
 
         private void Update()
         {
-            Animator.speed = _gameService.IsPaused ? 0 : 1;
+            Animator.speed = _gameService.IsPlayingDialogue ? 0 : 1;
         }
     }
 }

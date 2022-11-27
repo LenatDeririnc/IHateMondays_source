@@ -7,6 +7,8 @@ public class PickUp : InteractElement
     public bool IsThrowFromInventory;
     public bool IsLockedForTime;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private SoundsContainer _soundsContainer;
+    [SerializeField] private int _soundIndex;
     [SerializeField] public Sprite _sprite;
     [SerializeField] private GameObject _ifLocked_ChangeToObject;
     public Vector3 _thisItemOffsetPosition;
@@ -14,8 +16,8 @@ public class PickUp : InteractElement
 
     public override void Use()
     {
-        if(IsLocked) { return; }
-
+        if (IsLocked) { return; }
+        _soundsContainer.PlaySound(_soundIndex);
         AddItemToInventory();
     }
 
@@ -36,7 +38,7 @@ public class PickUp : InteractElement
 
     }
 
-    public IEnumerator Timer(float lockTime, GameObject ligth = null)
+    public IEnumerator Timer(float lockTime, GameObject ligth = null, string propName = "")
     {
         IsLocked = true;
 
@@ -45,8 +47,25 @@ public class PickUp : InteractElement
             ligth.SetActive(true);
         }
 
+        if (propName !="")
+        {
+            if (propName == "Toster")
+            {
+                _soundsContainer.PlaySound(9);
+            }
+        }
+
         yield return new WaitForSeconds(lockTime);
-        Instantiate(_ifLocked_ChangeToObject,gameObject.transform.position,gameObject.transform.rotation);
+
+        if (propName !="")
+        {
+            if (propName == "Toster")
+            {
+                _soundsContainer.PlaySound(8);
+            }
+        }
+
+        Instantiate(_ifLocked_ChangeToObject, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
         IsLocked = false;
 

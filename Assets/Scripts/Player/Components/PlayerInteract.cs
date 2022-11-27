@@ -32,7 +32,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (GameService.IsPaused)
+            if (GameService.IsPlayingDialogue)
                 return;
             
             var isRaycast = Physics.Raycast(
