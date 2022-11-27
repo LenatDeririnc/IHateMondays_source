@@ -11,6 +11,7 @@ public class MicroStartButton : InteractElement
     [SerializeField] private GameObject _restartButton;
     [SerializeField] private Animator _animator;
     [SerializeField] private SceneLink _sceneLink;
+    [SerializeField] private SoundHub _soundHub;
     public override void Use()
     {
         _microDoor.isLocked = true;
@@ -20,7 +21,9 @@ public class MicroStartButton : InteractElement
 
     private IEnumerator LoadNextScene()
     {
-        _animator.SetBool("EndAnim", true);
+        _animator.SetBool("EndAnim", true); 
+        yield return new WaitForSeconds(1.5f);
+        _soundHub.PlaySound(10);
         yield return new WaitForSeconds(5);
 
         if (_sceneLink != null)
