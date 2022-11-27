@@ -5110,6 +5110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3971062864195996322, guid: c0210408f653a554c91911de1200fea4, type: 3}
+      propertyPath: _cursorEnabledInScene
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3971062864414357314, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: _defaultPlayerSpawn
       value: 
