@@ -160,6 +160,11 @@ namespace Fungus
             return null;
         }
 
+        public RectTransform GetPosition(int i)
+        {
+            return positions[i];
+        }
+
         #endregion
     }
 }

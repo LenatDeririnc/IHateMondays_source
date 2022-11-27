@@ -36,7 +36,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!_gameService.IsPaused && !_cameraService.Brain.IsBlending)
+            if (!_gameService.IsPlayingDialogue && !_cameraService.Brain.IsBlending)
             {
                 MovementInputUpdate();
             }

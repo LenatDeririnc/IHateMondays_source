@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd73cb2ec71b40529967dccc1b3db451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursorEnabledInScene: 1
 --- !u!1 &3971062864582311420
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +306,7 @@ MonoBehaviour:
   _sayDialogPrefabs:
   - {fileID: 188902, guid: 6e69f0086fdff174cb1ec16d5c52cf33, type: 3}
   - {fileID: 188902, guid: 2a7f504ddd3f188488948a3bd3da939d, type: 3}
+  - {fileID: 188902, guid: 99aa2fc0e445b78429a7c3fdd9999f46, type: 3}
 --- !u!1 &9067105910245819924
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,7 +94,7 @@ namespace Characters.Components
 
         protected override void SentUpdate()
         {
-            if (GameService.IsPaused)
+            if (GameService.IsPlayingDialogue)
             {
                 EndWalkStepsCoroutine();
                 return;
