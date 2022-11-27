@@ -36,13 +36,24 @@ public class PickUp : InteractElement
 
     }
 
-    public IEnumerator Timer(float lockTime)
+    public IEnumerator Timer(float lockTime, GameObject ligth = null)
     {
         IsLocked = true;
+
+        if (ligth != null)
+        {
+            ligth.SetActive(true);
+        }
+
         yield return new WaitForSeconds(lockTime);
         Instantiate(_ifLocked_ChangeToObject,gameObject.transform.position,gameObject.transform.rotation);
         gameObject.SetActive(false);
         IsLocked = false;
+
+        if (ligth != null)
+        {
+            ligth.SetActive(false);
+        }
         Debug.Log($"{gameObject.name} unlocked");
     }
 }
