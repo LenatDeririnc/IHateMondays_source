@@ -44,7 +44,7 @@ public class InteractProp : InteractElement
 
                 if (_isLockerProp && obj.GetComponent<PickUp>().IsLockedForTime)
                 {
-                    StartCoroutine(obj.GetComponent<PickUp>().Timer(_lockTime,_light));
+                    StartCoroutine(obj.GetComponent<PickUp>().Timer(_lockTime,_light,PropName));
                     Debug.Log($"{ obj.name} locked for {_lockTime}");
                 }
                 if (obj.IsPickUpOff)

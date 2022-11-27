@@ -389,6 +389,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2102909088}
     - target: {fileID: -2963326041800009657, guid: 61c9fa259fe60434a956c6c78c1ee360, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2963326041800009657, guid: 61c9fa259fe60434a956c6c78c1ee360, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
+    - target: {fileID: -2963326041800009657, guid: 61c9fa259fe60434a956c6c78c1ee360, type: 3}
       propertyPath: _ifLocked_ChangeToObject
       value: 
       objectReference: {fileID: 7673628391604028896}
@@ -1557,6 +1565,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 8077438277961547156, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077438277961547156, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 8213664764401238858, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
       propertyPath: m_Name
       value: Sausage Slise
@@ -3140,6 +3156,8 @@ MonoBehaviour:
   IsThrowFromInventory: 1
   IsLockedForTime: 1
   _inventory: {fileID: 2102909088}
+  _soundsContainer: {fileID: 2087223304}
+  _soundIndex: 4
   _sprite: {fileID: 21300000, guid: d55e60bdee4d4884882383b4352e61df, type: 3}
   _ifLocked_ChangeToObject: {fileID: 743120078}
   _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
@@ -3611,6 +3629,7 @@ GameObject:
   - component: {fileID: 1228008636}
   - component: {fileID: 1228008635}
   - component: {fileID: 1228008634}
+  - component: {fileID: 1228008637}
   m_Layer: 0
   m_Name: Shell Up Big  (3)
   m_TagString: Untagged
@@ -3705,6 +3724,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228008632}
   m_Mesh: {fileID: 6349497404779363362, guid: 58b8612375a6e9f40b565c87f623f701, type: 3}
+--- !u!114 &1228008637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228008632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!1 &1242867253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3808,7 @@ GameObject:
   - component: {fileID: 1268325290}
   - component: {fileID: 1268325289}
   - component: {fileID: 1268325288}
+  - component: {fileID: 1268325291}
   m_Layer: 0
   m_Name: Shell Up Big  (4)
   m_TagString: Untagged
@@ -3870,6 +3903,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268325286}
   m_Mesh: {fileID: 6349497404779363362, guid: 58b8612375a6e9f40b565c87f623f701, type: 3}
+--- !u!114 &1268325291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268325286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!1 &1281495695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,6 +4137,7 @@ MonoBehaviour:
   _restartButton: {fileID: 1695530278}
   _animator: {fileID: 3469287837633481583}
   _sceneLink: {fileID: 0}
+  _soundHub: {fileID: 3469287837633481586}
 --- !u!65 &1299580936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4819,6 +4866,8 @@ MonoBehaviour:
   IsThrowFromInventory: 1
   IsLockedForTime: 0
   _inventory: {fileID: 2102909088}
+  _soundsContainer: {fileID: 0}
+  _soundIndex: 0
   _sprite: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
   _ifLocked_ChangeToObject: {fileID: 0}
   _thisItemOffsetPosition: {x: 0, y: -0.15, z: 0}
@@ -6570,6 +6619,7 @@ GameObject:
   - component: {fileID: 2083061503}
   - component: {fileID: 2083061502}
   - component: {fileID: 2083061501}
+  - component: {fileID: 2083061504}
   m_Layer: 0
   m_Name: Shell Up Short (3)
   m_TagString: Untagged
@@ -6663,6 +6713,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083061499}
   m_Mesh: {fileID: -4311590563084782676, guid: 4a5a434db282c654eb9d0440109a0fff, type: 3}
+--- !u!114 &2083061504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083061499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!1 &2087223303
 GameObject:
   m_ObjectHideFlags: 0
@@ -6692,7 +6755,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f069c8f37124f39458abad23ed21ab7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSources: []
+  AudioSources:
+  - {fileID: 8300000, guid: 1359895c901c47041a3a21c5e447767b, type: 3}
+  - {fileID: 8300000, guid: 21008855a00bec048895766734f911c7, type: 3}
+  - {fileID: 8300000, guid: 7b4dca3aaeaec8c4c900b243a8110f99, type: 3}
+  - {fileID: 8300000, guid: e44a736573c8ccb4a86d5342f38fcca4, type: 3}
+  - {fileID: 8300000, guid: 91f197f1124aa7b47bef74c1e2209f07, type: 3}
+  - {fileID: 8300000, guid: 1a45e620f90cdd4499565abffad99f7d, type: 3}
+  - {fileID: 8300000, guid: 5b06bfa0f1f5f224a9b61726060ee268, type: 3}
+  - {fileID: 8300000, guid: a132f0ec2f5c50643b8497df7eea0e84, type: 3}
+  - {fileID: 8300000, guid: c0c227ee62a8fba41aee9d308ce16876, type: 3}
+  - {fileID: 8300000, guid: 53feb29d97d2c3e40b047002ac85ff2a, type: 3}
+  - {fileID: 8300000, guid: e56a07b139ad3154a9e9c2d0bb6927f2, type: 3}
+  - {fileID: 8300000, guid: 0fb1c72243eb1764880e1891e64c0f2f, type: 3}
 --- !u!4 &2087223305
 Transform:
   m_ObjectHideFlags: 0
@@ -6743,6 +6818,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 6933780226692550023, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933780226692550023, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 9064327944137221345, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7160,6 +7243,7 @@ GameObject:
   - component: {fileID: 3999316760649728626}
   - component: {fileID: 1181238526329222840}
   - component: {fileID: 3999316760649728629}
+  - component: {fileID: 3999316760649728630}
   m_Layer: 0
   m_Name: 'Shell Up Big '
   m_TagString: Untagged
@@ -7250,6 +7334,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 900273680800574673, guid: b099c070bfa32734aac626f1b00e317b, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 900273680800574673, guid: b099c070bfa32734aac626f1b00e317b, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 1999597708337298731, guid: b099c070bfa32734aac626f1b00e317b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7270,6 +7362,7 @@ GameObject:
   - component: {fileID: 3469287837633481583}
   - component: {fileID: 3469287837633481585}
   - component: {fileID: 3469287837633481584}
+  - component: {fileID: 3469287837633481586}
   m_Layer: 0
   m_Name: MicroVape
   m_TagString: Untagged
@@ -7364,6 +7457,7 @@ GameObject:
   - component: {fileID: 1711813855980046175}
   - component: {fileID: 3469287836754686870}
   - component: {fileID: 3469287836754686871}
+  - component: {fileID: 3469287836754686872}
   m_Layer: 0
   m_Name: Toster
   m_TagString: Untagged
@@ -7401,6 +7495,7 @@ GameObject:
   - component: {fileID: 3469287837567141781}
   - component: {fileID: 1711813855720846175}
   - component: {fileID: 3469287837567141782}
+  - component: {fileID: 3469287837567141783}
   m_Layer: 0
   m_Name: Kitchen_Selfs_keys (1)
   m_TagString: Untagged
@@ -8057,6 +8152,8 @@ MonoBehaviour:
   IsThrowFromInventory: 1
   IsLockedForTime: 0
   _inventory: {fileID: 2102909088}
+  _soundsContainer: {fileID: 2087223304}
+  _soundIndex: 4
   _sprite: {fileID: 21300000, guid: 6c01e80d8797b2445892c99734f34672, type: 3}
   _ifLocked_ChangeToObject: {fileID: 0}
   _thisItemOffsetPosition: {x: 0, y: -0.15, z: 0}
@@ -8218,6 +8315,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1007590508, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: _soundIndex
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007590508, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
       propertyPath: _switchToGO
       value: 
       objectReference: {fileID: 2094656488}
@@ -8238,6 +8339,10 @@ PrefabInstance:
       value: -0.205
       objectReference: {fileID: 0}
     - target: {fileID: 1007590508, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
+    - target: {fileID: 1007590508, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
       propertyPath: <PropName>k__BackingField
       value: 
       objectReference: {fileID: 0}
@@ -8249,6 +8354,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
       propertyPath: _thisItemOffsetPosition.y
       value: 0
@@ -8464,6 +8577,19 @@ MonoBehaviour:
   _microStartButton: {fileID: 0}
   _thisItemOffsetPosition: {x: -0.17, y: 0, z: 0}
   _thisItemRotation: {x: 0, y: -76.83, z: 0}
+--- !u!114 &3469287836754686872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148851009162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!33 &3469287836804527192
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8516,6 +8642,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3469287837567141783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149112279690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!33 &3469287837633481582
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8585,6 +8724,19 @@ MonoBehaviour:
   _microStartButton: {fileID: 1299580935}
   _thisItemOffsetPosition: {x: 0, y: 0.2, z: 0}
   _thisItemRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &3469287837633481586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147963747953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!33 &3469287837639058982
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8720,6 +8872,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3999316760649728630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820893587384588141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!33 &4048201930980012789
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9012,6 +9177,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2095774352, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: _soundIndex
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095774352, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
       propertyPath: _switchToGO
       value: 
       objectReference: {fileID: 646025837}
@@ -9036,6 +9205,10 @@ PrefabInstance:
       value: -76.31
       objectReference: {fileID: 0}
     - target: {fileID: 2095774352, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
+    - target: {fileID: 2095774352, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
       propertyPath: <PropName>k__BackingField
       value: 
       objectReference: {fileID: 0}
@@ -9051,6 +9224,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
       propertyPath: _thisItemOffsetPosition.y
       value: 0.1
@@ -9113,6 +9294,7 @@ GameObject:
   - component: {fileID: 7900883301725845649}
   - component: {fileID: 5350668648778288219}
   - component: {fileID: 7900883301725845650}
+  - component: {fileID: 7900883301725845651}
   m_Layer: 0
   m_Name: Shell Up Short (1)
   m_TagString: Untagged
@@ -9199,6 +9381,14 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
+    - target: {fileID: 7680249232880045855, guid: 6b8b3fd4613131540b648bb930287656, type: 3}
+      propertyPath: _soundIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680249232880045855, guid: 6b8b3fd4613131540b648bb930287656, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8b3fd4613131540b648bb930287656, type: 3}
 --- !u!4 &6701789343441466755
@@ -9223,6 +9413,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1493352062, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: _soundIndex
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1493352062, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: _switchToGO
       value: 
@@ -9251,6 +9445,10 @@ PrefabInstance:
       propertyPath: RotationOffset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1493352062, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
     - target: {fileID: 1493352062, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: <PropName>k__BackingField
       value: 
@@ -9312,6 +9510,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2102909088}
     - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: _soundIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: _soundsContainer
+      value: 
+      objectReference: {fileID: 2087223304}
+    - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: _thisItemOffsetPosition.y
       value: 0.15
       objectReference: {fileID: 0}
@@ -9331,6 +9537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996601663346230477}
   - component: {fileID: 7996601663346230478}
+  - component: {fileID: 7996601663346230479}
   m_Layer: 0
   m_Name: Fridge (1)
   m_TagString: Untagged
@@ -9751,6 +9958,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7900883301725845651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855128912229592462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!4 &7996601663346230477
 Transform:
   m_ObjectHideFlags: 0
@@ -9789,6 +10009,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7996601663346230479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328045389594795639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb56d068b6e8f418c6c9d4970bfaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundsContainer: {fileID: 2087223304}
 --- !u!33 &8087507432434628215
 MeshFilter:
   m_ObjectHideFlags: 0
