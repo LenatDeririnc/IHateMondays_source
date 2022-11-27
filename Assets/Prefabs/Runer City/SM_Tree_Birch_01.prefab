@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 3050611193287358583}
   materialProperty: _Color
+  onlyOnSpecificMaterials:
+  - {fileID: 2100000, guid: 23319cd82d267bc42934d61e9b4bd884, type: 2}
   palette:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.32941177, g: 0.6901961, b: 0.41568628, a: 1}

@@ -23,6 +23,8 @@ namespace Player
 
         private int _currentRoadIndex = 0;
         private float _splinePosition = 0f;
+
+        private bool _isLineSwitchInProgress;
         
         private InputBridgeService _inputBridgeService;
         private RunnerService _runnerService;
@@ -59,22 +61,41 @@ namespace Player
 
         private void MoveLeft()
         {
-            if (_currentRoadIndex < 0)
+            if (_currentRoadIndex < 0 || _isLineSwitchInProgress)
                 return;
+
+            _isLineSwitchInProgress = true;
             
             _animator.SetTrigger(Jump);
             _currentRoadIndex -= 1;
-            _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
+            _characterTransform.bodyTransform
+                .DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.25f)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => _isLineSwitchInProgress = false);
+            
+            DOTween.Kill(_animator.transform);
+            _animator.transform.localRotation = Quaternion.Euler(0, -60, 0);
+            _animator.transform.DOLocalRotate(Vector3.zero, 0.25f).SetDelay(0.25f);
         }
 
         private void MoveRight()
         {
-            if (_currentRoadIndex > 0)
+            if (_currentRoadIndex > 0 || _isLineSwitchInProgress)
                 return;
+            
+            _isLineSwitchInProgress = true;
             
             _animator.SetTrigger(Jump);
             _currentRoadIndex += 1;
-            _characterTransform.bodyTransform.DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.1f);
+
+            _characterTransform.bodyTransform
+                .DOLocalMoveX(_runnerService.MoveDistance * _currentRoadIndex, 0.25f)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => _isLineSwitchInProgress = false);
+            
+            DOTween.Kill(_animator.transform);
+            _animator.transform.localRotation = Quaternion.Euler(0, 60, 0);
+            _animator.transform.DOLocalRotate(Vector3.zero, 0.25f).SetDelay(0.25f);
         }
     }
 }
