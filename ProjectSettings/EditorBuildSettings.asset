@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/JRPG/JRPG_segment.unity
     guid: 119254d8688991b4a8fe49391baebaf8
   - enabled: 1
-    path: Assets/Scenes/FPS Horror/FPS Horror.unity
+    path: Assets/Scenes/FPS Horror/FPS Horror 2.unity
     guid: 63d95126cec7a5044b88751b9244e632
   m_configObjects: {}

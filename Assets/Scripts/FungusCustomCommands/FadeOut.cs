@@ -1,5 +1,6 @@
 ﻿using Fungus;
 using Plugins.ServiceLocator;
+using SceneManager;
 using Services;
 using UnityEngine;
 
@@ -12,8 +13,8 @@ namespace FungusCustomCommands
 
         public override void OnEnter()
         {
-            var fadeCanvas = ServiceLocator.Get<SceneLoadingService>().LoadingCurtain;
-            fadeCanvas.Hide(fadeSpeed, Continue);
+            var loadingCurtainManager = ServiceLocator.Get<SceneLoadingService>().LoadingCurtain;
+            loadingCurtainManager.GetCurtain(CurtainType.AlphaTransition).Hide(fadeSpeed, Continue);
         }
         
         public override string GetSummary()

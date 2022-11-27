@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public List<GameObject> Buttons;
 
     [SerializeField] private MouseTarget _mouseTarget;
+    [SerializeField] private StateTracker _stateTracker;
      public Sprite _spriteDefault;
 
     public void PickItemFromInventory(int index)
@@ -25,6 +26,8 @@ public class Inventory : MonoBehaviour
 
     public void InventoryPanelUpdate(bool isTrow = false, InteractElement interact = null)
     {
+        _stateTracker.StateUpdate(interactElements);
+
         if (!isTrow)
         {
             InventUp();

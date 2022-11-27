@@ -14,6 +14,26 @@ public class NextIngridient : InteractElement
 
     public override void Use()
     {
+        if (_target.InventoryPicked.PropName == _ingridient.PropName)
+        {
+            var obj = Instantiate(_ingridient, transform.position, Quaternion.identity);
+            int i = 0;
+            foreach (var item in _inventory.interactElements.ToArray())
+            {
+                if (obj.PropName == item.PropName)
+                {
+                    _inventory.Buttons[i].GetComponent<Image>().sprite = _inventory._spriteDefault;
+                    if (!_isFinal)
+                    {
+                        _target.InventoryPicked = null;
+                    }
+                    _inventory.InventoryPanelUpdate(true, item);
+                }
+                i++;
+            }
+            obj.gameObject.AddComponent<Deletion>();
+        }
+
         if (_isFinal)
         {
             if (_target.InventoryPicked.PropName == _ingridient.PropName)
@@ -21,29 +41,10 @@ public class NextIngridient : InteractElement
                 Instantiate(_result, transform.position + new Vector3(0, 0.35f, 0), Quaternion.identity);
             }
             var delete = FindObjectsOfType<Deletion>();
+
             foreach (var obj in delete)
             {
                 Destroy(obj.gameObject);
-            }
-        }
-        else
-        {
-            if (_target.InventoryPicked.PropName == _ingridient.PropName)
-            {
-                var obj = Instantiate(_ingridient, transform.position, Quaternion.identity);
-                int i = 0;
-                foreach (var item in _inventory.interactElements.ToArray())
-                {
-                    if (obj.PropName == item.PropName)
-                    {
-                        _inventory.Buttons[i].GetComponent<Image>().sprite = _inventory._spriteDefault;
-                        _target.InventoryPicked = null;
-                        _inventory.InventoryPanelUpdate(true, item);
-                    }
-                    i++;
-                }
-                Destroy(obj.GetComponent<PickUp>());
-                obj.gameObject.AddComponent<Deletion>();
             }
         }
     }

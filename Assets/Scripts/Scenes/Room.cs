@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Services;
 using UnityEngine;
@@ -14,22 +15,17 @@ namespace Scenes
 
         public int ID => _id;
         private RoomsService _service;
-        private List<Material> _materials = new List<Material>();
+        private MeshRenderer[] _renderers;
+        private MaterialPropertyBlock _block;
 
         public bool isActive { get; private set; } = false;
 
         public void Construct(RoomsService service, bool isActive)
         {
             _service = service;
-            var renderers = parentMesh.GetComponentsInChildren<MeshRenderer>();
+            _renderers = parentMesh.GetComponentsInChildren<MeshRenderer>();
 
-            foreach (MeshRenderer r in renderers) {
-                foreach (Material mat in r.materials) {
-                    if (!mat.HasFloat(Cutoff))
-                        continue;
-                    _materials.Add(mat);
-                }
-            }
+            _block = new MaterialPropertyBlock();
 
             this.isActive = isActive;
             if (!isActive)
@@ -56,30 +52,39 @@ namespace Scenes
 
         private void Hide()
         {
-            foreach (var m in _materials) {
-                m.SetFloat(Cutoff, 1);
-            }
+            _block.SetFloat(Cutoff, 1);
+            UpdateMaterials();
         }
 
         private void EnterRoom()
         {
-            foreach (var m in _materials) {
-                DOTween.To(
-                    () => m.GetFloat(Cutoff), 
-                    value => { m.SetFloat(Cutoff, value); }, 
-                    0,
-                    _service.RoomEnterDuration).SetEase(_service.RoomEnterEase);
-            }
+            DOTween.To(
+                () => _block.GetFloat(Cutoff), 
+                value => { 
+                    _block.SetFloat(Cutoff, value);
+                    UpdateMaterials();
+                }, 
+                0,
+                _service.RoomEnterDuration)
+                .SetEase(_service.RoomEnterEase);
         }
 
         private void ExitRoom()
         {
-            foreach (var m in _materials) {
-                DOTween.To(
-                    () => m.GetFloat(Cutoff), 
-                    value => { m.SetFloat(Cutoff, value); }, 
-                    1,
-                    _service.RoomEnterDuration).SetEase(_service.RoomExitEase);
+            DOTween.To(
+                () => _block.GetFloat(Cutoff), 
+                value => { 
+                    _block.SetFloat(Cutoff, value); 
+                    UpdateMaterials(); }, 
+                1,
+                _service.RoomEnterDuration)
+                .SetEase(_service.RoomExitEase);
+        }
+
+        private void UpdateMaterials()
+        {
+            foreach (var r in _renderers) {
+                r.SetPropertyBlock(_block);
             }
         }
     }

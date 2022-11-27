@@ -5,9 +5,11 @@ using UnityEngine;
 public class MicroStartButton : InteractElement
 {
     [SerializeField] private Open _microDoor;
+    [SerializeField] private GameObject _restartButton;
     public override void Use()
     {
         _microDoor.isLocked = true;
+        _restartButton.SetActive(false);
         StartCoroutine(LoadNextScene());
     }
 

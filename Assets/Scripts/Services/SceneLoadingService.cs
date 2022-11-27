@@ -11,18 +11,19 @@ namespace Services
     public class SceneLoadingService : Service, IAwakeService
     {
         [SerializeField] private SceneLoader _sceneLoader;
-        [SerializeField] private LoadingCurtain _loadingCurtain;
+        [SerializeField] private LoadingCurtainManager _loadingCurtain;
         
         private PlayerSpawnPointInfo _currentSpawnInfo;
         
         public SceneLoader SceneLoader => _sceneLoader;
-        public LoadingCurtain LoadingCurtain => _loadingCurtain;
+        public LoadingCurtainManager LoadingCurtain => _loadingCurtain;
         public PlayerSpawnPointInfo CurrentSpawnInfo => _currentSpawnInfo;
 
         public Action OnLoadingStart;
 
         public void AwakeService()
         {
+            _loadingCurtain.Construct();
             _sceneLoader.Construct(_loadingCurtain);
         }
 

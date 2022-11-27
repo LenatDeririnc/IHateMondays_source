@@ -15,6 +15,10 @@ namespace Characters.Components
         private GameService GameService;
         private InputBridgeService InputBridgeService;
 
+
+        private bool _isInteractable = false;
+        public bool FoundInteractable => _isInteractable;
+
         private void Awake()
         {
             ServiceLocator.Get(ref GameService);
@@ -23,15 +27,14 @@ namespace Characters.Components
 
         protected override void SentUpdate()
         {
+            _isInteractable = false;
+            
             if (!enabled)
                 return;
             
             if (GameService.IsPaused)
                 return;
             
-            if (!InputBridgeService.IsActionDown)
-                return;
-
             var isRaycast = Physics.Raycast(
                 _raycastForward.position, 
                 _raycastForward.forward, 
@@ -41,7 +44,7 @@ namespace Characters.Components
             
             if (!isRaycast)
                 return;
-
+            
             var interactable = hit.collider.GetComponent<IInteractable>();
             
             if (interactable == null)
@@ -49,7 +52,12 @@ namespace Characters.Components
 
             if (!interactable.IsAvailableToInteract())
                 return;
-            
+
+            _isInteractable = true;
+
+            if (!InputBridgeService.IsActionDown)
+                return;
+
             interactable.Interact();
         }
     }

@@ -8,31 +8,34 @@ namespace SceneManager
 {
     public class SceneLoader : MonoBehaviour
     {
-        private LoadingCurtain _curtain;
+        private LoadingCurtainManager _curtainManager;
         private CancellationTokenSource cts;
 
         public bool isLoadDone { get; private set; } = false;
-        
-        public void Construct(LoadingCurtain curtain)
+
+        public Action OnStartLoad;
+        public Action OnCompleteLoad;
+        public Action OnEntireCompleteLoad;
+
+        public void Construct(LoadingCurtainManager curtainManager)
         {
-            _curtain = curtain;
+            _curtainManager = curtainManager;
         }
 
-        public void LoadScene(SceneLink sceneLink, bool fastLoad = false, Action onLoad = null)
+        public void LoadScene(SceneLink sceneLink, bool fastLoad = false, CurtainType curtainType = CurtainType.AlphaTransition)
         {
             isLoadDone = false;
+            OnStartLoad?.Invoke();
             if (fastLoad)
             {
                 LoadSceneAsync(sceneLink, () => {
-                    _curtain.Hide();
-                    onLoad?.Invoke();
+                    _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
                 });
                 return;
             }
-            _curtain.Show(() => LoadSceneAsync(sceneLink, () =>
+            _curtainManager.GetCurtain(curtainType).Show(() => LoadSceneAsync(sceneLink, () =>
             {
-                _curtain.Hide();
-                onLoad?.Invoke();
+                _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
             }));
         }
 
@@ -53,6 +56,7 @@ namespace SceneManager
 
             onLoaded?.Invoke();
             isLoadDone = true;
+            OnCompleteLoad?.Invoke();
         }
     }
 }

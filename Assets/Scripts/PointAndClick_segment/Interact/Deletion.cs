@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Deletion : MonoBehaviour
 {
-    void Start()
+    void OnEnable()
     {
         var g = gameObject.GetComponent<PickUp>();
         g.IsPickUpOff = true;
         g.enabled = false;
+        Destroy(gameObject.GetComponent<PickUp>());
     }
 }
