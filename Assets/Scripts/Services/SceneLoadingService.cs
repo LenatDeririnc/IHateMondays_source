@@ -19,8 +19,6 @@ namespace Services
         public LoadingCurtainManager LoadingCurtain => _loadingCurtain;
         public PlayerSpawnPointInfo CurrentSpawnInfo => _currentSpawnInfo;
 
-        public Action OnLoadingStart;
-
         public void AwakeService()
         {
             _loadingCurtain.Construct();
@@ -29,14 +27,12 @@ namespace Services
 
         public void LoadScene(PlayerSpawnPointInfo playerSpawn)
         {
-            OnLoadingStart?.Invoke();
             _sceneLoader.LoadScene(playerSpawn.Scene);
             _currentSpawnInfo = playerSpawn;
         }
 
         public void LoadScene(SceneLink scene)
         {
-            OnLoadingStart?.Invoke();
             _sceneLoader.LoadScene(scene);
             _currentSpawnInfo = null;
         }

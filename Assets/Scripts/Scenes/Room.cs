@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Services;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scenes
@@ -9,6 +8,7 @@ namespace Scenes
     public class Room : MonoBehaviour
     {
         private static readonly int Cutoff = Shader.PropertyToID("_Cutoff");
+        private static readonly int ColorProperty = Shader.PropertyToID("_Color");
         
         [SerializeField] private int _id;
         [SerializeField] private Transform parentMesh;
@@ -16,7 +16,9 @@ namespace Scenes
         public int ID => _id;
         private RoomsService _service;
         private MeshRenderer[] _renderers;
-        private MaterialPropertyBlock _block;
+        private SpriteRenderer[] _spriteRenderers;
+        private MaterialPropertyBlock _rendererBlock;
+        private Color _spriteColor = Color.white;
 
         public bool isActive { get; private set; } = false;
 
@@ -24,8 +26,9 @@ namespace Scenes
         {
             _service = service;
             _renderers = parentMesh.GetComponentsInChildren<MeshRenderer>();
+            _spriteRenderers = parentMesh.GetComponentsInChildren<SpriteRenderer>();
 
-            _block = new MaterialPropertyBlock();
+            _rendererBlock = new MaterialPropertyBlock();
 
             this.isActive = isActive;
             if (!isActive)
@@ -52,18 +55,20 @@ namespace Scenes
 
         private void Hide()
         {
-            _block.SetFloat(Cutoff, 1);
+            _rendererBlock.SetFloat(Cutoff, 1);
+            _spriteColor = Color.clear;
             UpdateMaterials();
         }
 
         private void EnterRoom()
         {
             DOTween.To(
-                () => _block.GetFloat(Cutoff), 
+                () => _rendererBlock.GetFloat(Cutoff), 
                 value => { 
-                    _block.SetFloat(Cutoff, value);
+                    _rendererBlock.SetFloat(Cutoff, value);
+                    _spriteColor = new Color(1, 1, 1, 1 - value);
                     UpdateMaterials();
-                }, 
+                },
                 0,
                 _service.RoomEnterDuration)
                 .SetEase(_service.RoomEnterEase);
@@ -72,10 +77,12 @@ namespace Scenes
         private void ExitRoom()
         {
             DOTween.To(
-                () => _block.GetFloat(Cutoff), 
+                () => _rendererBlock.GetFloat(Cutoff), 
                 value => { 
-                    _block.SetFloat(Cutoff, value); 
-                    UpdateMaterials(); }, 
+                    _rendererBlock.SetFloat(Cutoff, value);
+                    _spriteColor = new Color(1,1,1, 1 - value);
+                    UpdateMaterials();
+                }, 
                 1,
                 _service.RoomEnterDuration)
                 .SetEase(_service.RoomExitEase);
@@ -84,7 +91,11 @@ namespace Scenes
         private void UpdateMaterials()
         {
             foreach (var r in _renderers) {
-                r.SetPropertyBlock(_block);
+                r.SetPropertyBlock(_rendererBlock);
+            }
+
+            foreach (var r in _spriteRenderers) {
+                r.color = _spriteColor;
             }
         }
     }

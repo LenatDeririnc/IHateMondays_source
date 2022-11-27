@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using Player;
 using Plugins.ServiceLocator;
@@ -24,6 +24,8 @@ namespace Services
         [SerializeField] private float _damageSwitchInterval = 0.5f;
         [SerializeField] private Timer _timer;
         [SerializeField] private RunnerEndTrigger _runnerEndTrigger;
+
+        [SerializeField] private CinemachineVirtualCamera _playerCamera;
 
         public float MoveDistance => _moveDistance;
 
@@ -55,6 +57,10 @@ namespace Services
             
             _timer.OnEndTimer += _runnerEndTrigger.PlayEnding;
             _timer.StartTimer();
+
+            var player = (RunnerController) _playerService.Player;
+            _playerCamera.Follow = player.RenderersGameObject.transform;
+            _playerCamera.LookAt = player.RenderersGameObject.transform;
         }
 
         public void SetDefaultSpeed()
