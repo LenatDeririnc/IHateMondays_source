@@ -14,6 +14,7 @@ public class InteractProp : InteractElement
     [SerializeField] protected MouseTarget _mouseTarget;
     [SerializeField] private Sprite _defaultPanelKey;
     [SerializeField] bool IsOverrideOffsetsByProp;
+    [SerializeField] private GameObject _light;
     [Header("Only for microwave")]
     [SerializeField] private MicroStartButton _microStartButton;
     public Vector3 _thisItemOffsetPosition;
@@ -43,7 +44,7 @@ public class InteractProp : InteractElement
 
                 if (_isLockerProp && obj.GetComponent<PickUp>().IsLockedForTime)
                 {
-                    StartCoroutine(obj.GetComponent<PickUp>().Timer(_lockTime));
+                    StartCoroutine(obj.GetComponent<PickUp>().Timer(_lockTime,_light));
                     Debug.Log($"{ obj.name} locked for {_lockTime}");
                 }
                 if (obj.IsPickUpOff)
