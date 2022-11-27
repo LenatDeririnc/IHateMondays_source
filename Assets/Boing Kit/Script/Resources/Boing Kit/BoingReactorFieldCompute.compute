@@ -1,0 +1,520 @@
+﻿/******************************************************************************/
+/*
+  Project   - Boing Kit
+  Publisher - Long Bunny Labs
+              http://LongBunnyLabs.com
+  Author    - Ming-Lun "Allen" Chou
+              http://AllenChou.net
+*/
+/******************************************************************************/
+
+#pragma kernel Init
+#pragma kernel Move
+#pragma kernel WrapX
+#pragma kernel WrapY
+#pragma kernel WrapZ
+#pragma kernel Execute
+
+#include "../../../Shader/Internal/Math.cginc"
+#include "../../../Shader/Internal/Vector.cginc"
+#include "../../../Shader/Internal/Quaternion.cginc"
+
+#include "../../../Shader/Internal/BoingKitCore.cginc"
+
+float4 moveParams;
+int4 wrapParams;
+RWStructuredBuffer<Effector> aEffector;
+RWStructuredBuffer<int> aEffectorIndex;
+RWStructuredBuffer<ReactorParams> reactorParams;
+RWStructuredBuffer<FieldParams> fieldParams;
+RWStructuredBuffer<InstanceData> aCell;
+float4 propagationParams; // (positionPropagation, rotationPropagation, kPropagationFactor, *)
+
+static int s_aiAdjDelta[4][7] = 
+{
+  {  0,  0,  0,  0,  0,  0,  0 }, 
+  { -1,  0, +1,  0,  0,  0,  0 }, 
+  { -2, -1,  0, +1, +2,  0,  0 }, 
+  { -3, -2, -1,  0, +1, +2, +3 }, 
+};
+static float s_aSqrtInv[] = { 0.00000f, 1.00000f, 0.70711f, 0.57735f, 0.50000f, 0.44721f, 0.40825f, 0.37796f, 0.35355f, 0.33333f, 0.31623f, 0.30151f, 0.28868f, 0.27735f, 0.26726f, 0.25820f, 0.25000f, 0.24254f, 0.23570f, 0.22942f, 0.22361f, 0.21822f, 0.21320f, 0.20851f, 0.20412f, 0.20000f, 0.19612f, 0.19245f };
+
+inline float3 GetCellCenterOffset(int3 index)
+{
+  return fieldParams[0].floatData.y * (-0.5f * (fieldParams[0].nums.xyz - 1) + index);
+}
+
+inline int3 ResolveCellIndex(int3 index, int baseMult)
+{
+  // modulo
+  float3 m = fmod(index + baseMult * fieldParams[0].cellData.xyz, fieldParams[0].nums.xyz);
+  return int3(floor(m + step(m, -0.5f) * fieldParams[0].nums.xyz + 0.001f));
+}
+
+inline int FlattenCellIndex(int3 index)
+{
+  return
+      index.z * fieldParams[0].nums.y * fieldParams[0].nums.x
+    + index.y * fieldParams[0].nums.x
+    + index.x;
+}
+
+[numthreads(1, 1, 1)]
+void Init(uint3 id : SV_DispatchThreadId)
+{
+  int3 iRes = ResolveCellIndex(int3(id), -1);
+  int idFlat = FlattenCellIndex(int3(id));
+
+  InstanceData cell = aCell[idFlat];
+  cell.intData = 0;
+  cell.upWs = 0.0f;
+  cell.positionSpring.value = float4(fieldParams[0].gridCenter.xyz + GetCellCenterOffset(iRes), 0.0f);
+  cell.positionSpring.velocity = 0.0f;
+  cell.rotationSpring.value = quat_identity();
+  cell.rotationSpring.velocity = 0.0f;
+  cell.positionOrigin = cell.positionSpring.value;
+  cell.rotationOrigin = cell.rotationSpring.value;
+  cell.positionTarget = 0.0f;
+  cell.rotationTarget = 0.0f;
+  cell.positionPropagationWorkData = 0.0f;
+  cell.rotationPropagationWorkData = 0.0f;
+  aCell[idFlat] = cell;
+}
+
+[numthreads(1, 1, 1)]
+void Move(uint3 id : SV_DispatchThreadId)
+{
+  int iFlat = FlattenCellIndex(int3(id));
+  aCell[iFlat].positionSpring.value += moveParams;
+}
+
+inline void WrapCell(int3 index)
+{
+  int3 iWrapRes = ResolveCellIndex(index, 1);
+  int3 iResetRes = ResolveCellIndex(iWrapRes - wrapParams.xyz, -1);
+  int iWrapResFlat = FlattenCellIndex(iWrapRes);
+
+  InstanceData cell = aCell[iWrapResFlat];
+  cell.positionSpring.value = float4(fieldParams[0].gridCenter.xyz + GetCellCenterOffset(iResetRes), 0.0f);
+  cell.positionSpring.velocity = 0.0f;
+  cell.rotationSpring.value = quat_identity();
+  cell.rotationSpring.velocity = 0.0f;
+  cell.scaleSpring.value = 1.0f;
+  cell.scaleSpring.velocity = 0.0f;
+  cell.intData.y = 1;
+  cell.positionOrigin = cell.positionSpring.value;
+  cell.rotationOrigin = quat_identity();
+  cell.positionTarget = 0.0f;
+  cell.rotationTarget = 0.0f;
+  cell.scaleTarget = 1.0f;
+  aCell[iWrapResFlat] = cell;
+}
+
+[numthreads(1, 1, 1)]
+void WrapX(uint3 id : SV_DispatchThreadId)
+{
+  int deltaX = wrapParams.x;
+  int cellsX = fieldParams[0].nums.x;
+  int itDirX = -sign(deltaX);
+  for (int x = deltaX > 0 ? deltaX - 1 : cellsX + deltaX; x >= 0 && x < cellsX; x += itDirX)
+    WrapCell(int3(x, id.y, id.z));
+}
+
+[numthreads(1, 1, 1)]
+void WrapY(uint3 id : SV_DispatchThreadId)
+{
+  int deltaY = wrapParams.y;
+  int cellsY = fieldParams[0].nums.y;
+  int itDirY = -sign(deltaY);
+  for (int y = deltaY > 0 ? deltaY - 1 : cellsY + deltaY; y >= 0 && y < cellsY; y += itDirY)
+    WrapCell(int3(id.x, y, id.z));
+}
+
+[numthreads(1, 1, 1)]
+void WrapZ(uint3 id : SV_DispatchThreadId)
+{
+  int deltaZ = wrapParams.z;
+  int cellsZ = fieldParams[0].nums.z;
+  int itDirZ = -sign(deltaZ);
+  for (int z = deltaZ > 0 ? deltaZ - 1 : cellsZ + deltaZ; z >= 0 && z < cellsZ; z += itDirZ)
+    WrapCell(int3(id.x, id.y, z));
+}
+
+[numthreads(1, 1, 1)]
+void Execute(uint3 id : SV_DispatchThreadId)
+{
+  FieldParams fp = fieldParams[0];
+  ReactorParams rp = reactorParams[0];
+
+  int iRawFlat = FlattenCellIndex(int3(id));
+  int3 iRes = ResolveCellIndex(int3(id), -1);
+  int iResFlat = FlattenCellIndex(iRes);
+  int numEffectors = fp.nums.w;
+  float dt = fp.floatData.z;
+  float cellSize = fp.floatData.y;
+
+  InstanceData cell = aCell[iRawFlat];
+
+
+  // prepare execute
+  //---------------------------------------------------------------------------
+
+  cell.positionOrigin = float4(fp.gridCenter.xyz + GetCellCenterOffset(iRes), 0.0f);
+  cell.rotationOrigin = quat_identity();
+  cell.positionTarget = 0.0f;
+  cell.rotationTarget = 0.0f;
+  cell.intData.x = 0; // cell.intData.y is "instantAccumulation" and can't be cleared!
+  cell.upWs = float4(fp.upWs.xyz, 0.0f);
+
+  //---------------------------------------------------------------------------
+  // end: prepare execute
+
+
+  // propagation
+  //---------------------------------------------------------------------------
+
+  if (rp.bits & kReactorFlagEnablePropagation)
+  {
+    // reset work data
+    cell.positionPropagationWorkData = 0.0f;
+    cell.rotationPropagationWorkData = 0.0f;
+
+    // store average delta in work data
+    
+    float weightSum = 0.0f;
+    int propagationDepth = fp.intData.z;
+    int adjWindowWidth = 2 * propagationDepth + 1;
+    for (int iAdjDeltaZ = 0; iAdjDeltaZ < adjWindowWidth; ++iAdjDeltaZ)
+      for (int iAdjDeltaY = 0; iAdjDeltaY < adjWindowWidth; ++iAdjDeltaY)
+        for (int iAdjDeltaX = 0; iAdjDeltaX < adjWindowWidth; ++iAdjDeltaX)
+        {
+          int3 adjDelta = int3(s_aiAdjDelta[propagationDepth][iAdjDeltaX], s_aiAdjDelta[propagationDepth][iAdjDeltaY], s_aiAdjDelta[propagationDepth][iAdjDeltaZ]);
+          int deltaSqrSum = dot(adjDelta, adjDelta);
+
+          // self?
+          if (deltaSqrSum == 0)
+            continue;
+
+          float weight = s_aSqrtInv[deltaSqrSum];
+          weightSum += weight;
+
+          // at border?
+          if (any(fp.nums.xyz >= 2 && ((iRes == 0 && adjDelta < 0) || (iRes == fp.nums.xyz - 1 && adjDelta > 0))))
+            continue;
+
+          // accumulate weighted neighbor delta from origin
+          float3 fiAdj = fmod(int3(id) + adjDelta, fp.nums.xyz);
+          int3 iResAdj = int3(floor(fiAdj + step(fiAdj, -0.5f) * fp.nums.xyz + 0.001f)); // modulo
+          int iResAdjFlat = FlattenCellIndex(iResAdj);
+          cell.positionPropagationWorkData.xyz += weight * (aCell[iResAdjFlat].positionSpring.value.xyz - aCell[iResAdjFlat].positionOrigin.xyz);
+          cell.rotationPropagationWorkData += weight * (aCell[iResAdjFlat].rotationSpring.value - aCell[iResAdjFlat].rotationOrigin);
+        }
+
+    // gather propagation
+    if (weightSum > 0.0f)
+    {
+      // average neighbor delta from origin -> delta error v.s. cell delta from origin
+      cell.positionPropagationWorkData.xyz = (cell.positionPropagationWorkData.xyz / weightSum) - (cell.positionSpring.value.xyz - cell.positionOrigin.xyz);
+      cell.rotationPropagationWorkData = (cell.rotationPropagationWorkData / weightSum) - (cell.rotationSpring.value - cell.rotationOrigin);
+    }
+
+    // anchor border
+    if (rp.bits & kReactorFlagAnchorPropagationAtBorder)
+    {
+      // at border?
+      if (any(((iRes == 0 || iRes == fp.nums.xyz - 1) && fp.nums.xyz > 2)))
+      {
+        cell.positionPropagationWorkData = 0.0f;
+        cell.rotationPropagationWorkData = 0.0f;
+      }
+    }
+
+    // propagation
+    // neighbor average -> target position/rotation delta
+    cell.positionSpring.velocity += propagationParams.z * propagationParams.x * cell.positionPropagationWorkData * dt;
+    cell.rotationSpring.velocity += propagationParams.z * propagationParams.y * cell.rotationPropagationWorkData * dt;
+  }
+
+  //---------------------------------------------------------------------------
+  // end: propagation
+
+
+  // accumulate targets
+  //---------------------------------------------------------------------------
+
+  for (int iEffectorIndex = 0; iEffectorIndex < numEffectors; ++iEffectorIndex)
+  {
+    Effector effector = aEffector[aEffectorIndex[iEffectorIndex]];
+
+    float3 effectRefPos = 
+      (effector.bits & kEffectorFlagContinuousMotion) 
+        ? closest_point_on_segment(cell.positionOrigin.xyz, effector.prevPosition.xyz, effector.currPosition.xyz) 
+        : effector.currPosition.xyz;
+
+    float3 deltaPos = cell.positionOrigin.xyz - effectRefPos;
+
+    float3 deltaPos3D = deltaPos;
+    if (rp.bits & kReactorFlagTwoDDistanceCheck)
+    {
+      switch (rp.twoDPlane)
+      {
+        case kPlaneXY: deltaPos.z = 0.0f; break;
+        case kPlaneXZ: deltaPos.y = 0.0f; break;
+        case kPlaneYZ: deltaPos.x = 0.0f; break;
+      }
+    }
+
+    bool inRange =
+         abs(deltaPos.x) <= effector.radius
+      && abs(deltaPos.y) <= effector.radius
+      && abs(deltaPos.z) <= effector.radius
+      && dot(deltaPos, deltaPos) <= effector.radius * effector.radius;
+
+    if (!inRange)
+      continue;
+
+    float deltaDist = length(deltaPos);
+    float tDeltaDist =
+      effector.radius - effector.fullEffectRadius > kEpsilon
+      ? 1.0f - saturate((deltaDist - effector.fullEffectRadius) / (effector.radius - effector.fullEffectRadius))
+      : 1.0f;
+
+    float3 upWsPos = cell.upWs.xyz;
+    float3 upWsRot = upWsPos;
+    float3 deltaDirPos = normalize_safe(deltaPos3D, cell.upWs.xyz);
+    float3 deltaDirRot = deltaDirPos;
+
+    if (rp.bits & kReactorFlagTwoDPositionInfluence)
+    {
+      switch (rp.twoDPlane)
+      {
+        case kPlaneXY: deltaDirPos.z = 0.0f; upWsPos.z = 0.0f; break;
+        case kPlaneXZ: deltaDirPos.y = 0.0f; upWsPos.y = 0.0f; break;
+        case kPlaneYZ: deltaDirPos.x = 0.0f; upWsPos.x = 0.0f; break;
+      }
+
+      if (dot(upWsPos, upWsPos) < kEpsilon)
+      {
+        switch (rp.twoDPlane)
+        {
+          case kPlaneXY: upWsPos.xyz = unit_y(); break;
+          case kPlaneXZ: upWsPos.xyz = unit_z(); break;
+          case kPlaneYZ: upWsPos.xyz = unit_y(); break;
+        }
+      }
+      else
+      {
+        upWsPos = normalize(upWsPos);
+      }
+
+      deltaDirPos = normalize_safe(deltaDirPos, upWsPos);
+    }
+
+    if (rp.bits & kReactorFlagTwoDRotationInfluence)
+    {
+      switch (rp.twoDPlane)
+      {
+        case kPlaneXY: deltaDirRot.z = 0.0f; upWsRot.z = 0.0f; break;
+        case kPlaneXZ: deltaDirRot.y = 0.0f; upWsRot.y = 0.0f; break;
+        case kPlaneYZ: deltaDirRot.x = 0.0f; upWsRot.x = 0.0f; break;
+      }
+
+      if (dot(upWsRot, upWsRot) < kEpsilon)
+      {
+        switch (rp.twoDPlane)
+        {
+          case kPlaneXY: upWsRot.xyz = unit_y(); break;
+          case kPlaneXZ: upWsRot.xyz = unit_z(); break;
+          case kPlaneYZ: upWsRot.xyz = unit_y(); break;
+        }
+      }
+      else
+      {
+        upWsRot = normalize(upWsRot);
+      }
+
+      deltaDirRot = normalize_safe(deltaDirRot, upWsRot);
+    }
+
+    if (rp.bits & kReactorFlagEnablePositionEffect)
+    {
+      float3 moveVec = tDeltaDist * rp.moveReactionMultiplier * effector.moveDistance * deltaDirPos;
+      cell.positionTarget.xyz += moveVec;
+
+      cell.positionSpring.velocity.xyz += tDeltaDist * rp.linearImpulseMultiplier * effector.linearImpulse * effector.linearVelocityDir.xyz * (60.0f * dt);
+    }
+
+    if (rp.bits & kReactorFlagEnableRotationEffect)
+    {
+      float3 rotAxis = normalize_safe(cross(upWsRot, deltaDirRot), find_ortho(upWsRot));
+      float3 rotVec = tDeltaDist * rp.rotationReactionMultiplier * effector.rotateAngle * rotAxis;
+      cell.rotationTarget += quat_angular_vec(rotVec);
+
+      float3 angularImpulseDir = normalize_safe(cross(effector.linearVelocityDir.xyz, deltaDirRot - 0.01f * unit_y()), rotAxis);
+      float angularImpulseMag = tDeltaDist * rp.angularImpulseMultiplier * effector.angularImpulse * (60.0f * dt);
+      float4 angularImpulseDirQuat = quat_angular_vec(angularImpulseDir);
+      cell.rotationSpring.velocity += angularImpulseMag * angularImpulseDirQuat;
+    }
+
+    ++cell.intData.x;
+  }
+
+  //---------------------------------------------------------------------------
+  // end: accumulate target
+
+
+  // end accumulate target
+  //---------------------------------------------------------------------------s
+
+  if (cell.intData.x == 0)
+  {
+    cell.positionTarget = cell.positionOrigin;
+    cell.rotationTarget = cell.rotationOrigin;
+  }
+  else
+  {
+    cell.positionTarget /= cell.intData.x;
+    cell.positionTarget += cell.positionOrigin;
+
+    cell.rotationTarget /= cell.intData.x;
+    cell.rotationTarget = quat_concat(normalize_safe(cell.rotationTarget, quat_identity()), cell.rotationOrigin);
+  }
+
+  //---------------------------------------------------------------------------
+  // end: end accumulate target
+
+
+  // execute work
+  //---------------------------------------------------------------------------
+
+  float4 positionSpringDelta = cell.positionSpring.value - cell.positionTarget;
+  bool positionSpringNeedsUpdate = 
+    dot(cell.positionSpring.velocity, cell.positionSpring.velocity) > kEpsilon 
+    || dot(positionSpringDelta, positionSpringDelta) > kEpsilon;
+  float4 rotationSpringDelta = cell.rotationSpring.value - cell.rotationTarget;
+  bool rotationSpringNeedsUpdate = 
+    dot(cell.rotationSpring.velocity, cell.rotationSpring.velocity) > kEpsilon 
+    || dot(rotationSpringDelta, rotationSpringDelta) > kEpsilon;
+  bool scaleSpringNeedsUpdate = 
+    dot(cell.scaleSpring.velocity, cell.scaleSpring.velocity) > kEpsilon;
+
+  // DirectX doesn't like this branch!
+  /*
+  if (cell.intData.x == 0)
+  {
+    bool earlyOut = true;
+
+    if (positionSpringNeedsUpdate)
+    {
+      earlyOut = false;
+    }
+    else
+    {
+      cell.positionSpring.value = cell.positionTarget;
+      cell.positionSpring.velocity = 0.0f;
+    }
+
+    if (rotationSpringNeedsUpdate)
+    {
+      earlyOut = false;
+    }
+    else
+    {
+      cell.rotationSpring.value = cell.rotationTarget;
+      cell.rotationSpring.velocity = 0.0f;
+    }
+
+    if (earlyOut)
+    {
+      aCell[iRawFlat] = cell;
+      return;
+    }
+  }
+  */
+
+  // instant accumulation?
+  if (cell.intData.y != 0)
+  {
+    cell.positionSpring.value = cell.positionTarget;
+    cell.rotationSpring.value = cell.rotationTarget;
+    cell.scaleSpring.value = cell.scaleTarget;
+    cell.intData.y = 0;
+  }
+  else
+  {
+    if (positionSpringNeedsUpdate)
+    {
+      switch (rp.positionParameterMode)
+      {
+        case kParameterModeExponential:
+          cell.positionSpring = TrackExponential(cell.positionSpring, cell.positionTarget, rp.positionExponentialHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByHalfLife:
+          cell.positionSpring = TrackHalfLife(cell.positionSpring, cell.positionTarget, rp.positionOscillationFrequency, rp.positionOscillationHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByDampingRatio:
+          cell.positionSpring = TrackDampingRatio(cell.positionSpring, cell.positionTarget, rp.positionOscillationFrequency * kTwoPi, rp.positionOscillationDampingRatio, dt);
+          break;
+      }
+    }
+    else
+    {
+        cell.positionSpring.value = cell.positionTarget;
+        cell.positionSpring.velocity = 0.0f;
+    }
+
+    if (rotationSpringNeedsUpdate)
+    {
+      switch (rp.rotationParameterMode)
+      {
+        case kParameterModeExponential:
+          cell.rotationSpring = TrackExponential(cell.rotationSpring, cell.rotationTarget, rp.rotationExponentialHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByHalfLife:
+          cell.rotationSpring = TrackHalfLife(cell.rotationSpring, cell.rotationTarget, rp.rotationOscillationFrequency, rp.rotationOscillationHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByDampingRatio:
+          cell.rotationSpring = TrackDampingRatio(cell.rotationSpring, cell.rotationTarget, rp.rotationOscillationFrequency * kTwoPi, rp.rotationOscillationDampingRatio, dt);
+          break;
+      }
+    }
+    else
+    {
+      cell.rotationSpring.value = cell.rotationTarget;
+      cell.rotationSpring.velocity = 0.0f;
+    }
+
+    if (scaleSpringNeedsUpdate)
+    {
+      switch (rp.scaleParameterMode)
+      {
+        case kParameterModeExponential:
+          cell.scaleSpring = TrackExponential(cell.scaleSpring, cell.scaleTarget, rp.scaleExponentialHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByHalfLife:
+          cell.scaleSpring = TrackHalfLife(cell.scaleSpring, cell.scaleTarget, rp.scaleOscillationFrequency, rp.scaleOscillationHalfLife, dt);
+          break;
+
+        case kParameterModeOscillationByDampingRatio:
+          cell.scaleSpring = TrackDampingRatio(cell.scaleSpring, cell.scaleTarget, rp.scaleOscillationFrequency * kTwoPi, rp.scaleOscillationDampingRatio, dt);
+          break;
+      }
+    }
+    else
+    {
+      cell.scaleSpring.value = cell.scaleTarget;
+      cell.scaleSpring.velocity = 0.0f;
+    }
+  }
+
+  //---------------------------------------------------------------------------
+  // end: execute work
+
+  
+  aCell[iRawFlat] = cell;
+}
