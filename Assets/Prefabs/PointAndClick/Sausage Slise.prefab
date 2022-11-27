@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af87a68f72ddc0047a3e03e8dbad8255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PropName>k__BackingField: 
+  <PropName>k__BackingField: sausage
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
   _inventory: {fileID: 0}

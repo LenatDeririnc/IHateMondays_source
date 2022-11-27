@@ -4119,8 +4119,6 @@ GameObject:
   - component: {fileID: 1638094609}
   - component: {fileID: 1638094613}
   - component: {fileID: 1638094612}
-  - component: {fileID: 1638094611}
-  - component: {fileID: 1638094610}
   m_Layer: 0
   m_Name: Bread  Slice Zharenii (1)
   m_TagString: Untagged
@@ -4143,41 +4141,6 @@ Transform:
   m_Father: {fileID: 1100352020}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!65 &1638094610
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638094608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2494974, y: 0.2918151, z: 0.059624687}
-  m_Center: {x: 0.0015890077, y: 0.0056705414, z: -0.16619803}
---- !u!114 &1638094611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638094608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff73a7a76b88e44886316df42df3f99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <PropName>k__BackingField: breadZhar
-  <IsUsed>k__BackingField: 0
-  IsPickUpOff: 0
-  IsThrowFromInventory: 1
-  IsLockedForTime: 0
-  _inventory: {fileID: 2102909088}
-  _sprite: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
-  _ifLocked_ChangeToObject: {fileID: 0}
-  _thisItemOffsetPosition: {x: 0, y: -0.15, z: 0}
-  _thisItemRotation: {x: 90, y: 0, z: 0}
 --- !u!23 &1638094612
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6860,8 +6823,8 @@ MonoBehaviour:
   <PropName>k__BackingField: Micro
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
-  _isLockerProp: 0
-  _lockTime: 0
+  _isLockerProp: 1
+  _lockTime: 100
   _inventory: {fileID: 2102909088}
   _interactArray:
   - sammic
