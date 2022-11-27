@@ -252,7 +252,6 @@ MonoBehaviour:
   _currentText: {fileID: 993968004}
   _inventory: {fileID: 2102909088}
   _interactElements: []
-  _statesArray: []
   _statesGroupArray:
   - {fileID: 1102076751}
   - {fileID: 1521660610}
@@ -3762,6 +3761,7 @@ MonoBehaviour:
   <IsUsed>k__BackingField: 0
   IsPickUpOff: 0
   _microDoor: {fileID: 5243874653650004657}
+  _restartButton: {fileID: 1695530278}
 --- !u!65 &1299580936
 BoxCollider:
   m_ObjectHideFlags: 0
