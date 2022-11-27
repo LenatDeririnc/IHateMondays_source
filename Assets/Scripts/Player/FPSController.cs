@@ -23,14 +23,14 @@ namespace Characters.Components
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             _fungusService = ServiceLocator.Get<FungusService>();
             
-            _sceneLoadingService.OnLoadingStart += OnLoadingStart;
+            _sceneLoadingService.SceneLoader.OnStartLoad += OnLoadingStart;
             _fungusService.OnBlockStart += OnBlockStart;
             _fungusService.OnBlockEnd += OnBlockEnd;
         }
 
         private void OnDestroy()
         {
-            _sceneLoadingService.OnLoadingStart -= OnLoadingStart;
+            _sceneLoadingService.SceneLoader.OnStartLoad -= OnLoadingStart;
             _fungusService.OnBlockStart -= OnBlockStart;
             _fungusService.OnBlockEnd -= OnBlockEnd;
         }
