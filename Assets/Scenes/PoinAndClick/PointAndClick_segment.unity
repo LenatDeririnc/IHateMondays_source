@@ -381,6 +381,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2963326041800009657, guid: 61c9fa259fe60434a956c6c78c1ee360, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 02db3c77934151a4580a6872cbc67c70, type: 3}
+    - target: {fileID: -2963326041800009657, guid: 61c9fa259fe60434a956c6c78c1ee360, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
@@ -1545,6 +1549,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8077438277961547156, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bbcb183e4ac9c74bbd3deee7f8297c1, type: 3}
+    - target: {fileID: 8077438277961547156, guid: 6a2b77ec43c7ce748b18141014e5e914, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
@@ -1909,7 +1917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2834167, y: 0}
   m_AnchorMax: {x: 0.71752083, y: 0.17483144}
-  m_AnchoredPosition: {x: -0.76013184, y: -1.9120483}
+  m_AnchoredPosition: {x: -0.76013184, y: -1.9119873}
   m_SizeDelta: {x: -1.903595, y: -0.1760006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751879791
@@ -1951,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2039,7 +2047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateText: 'Cook sandwitch:
 
-    Bread
+    Toast
 
     Cheez
 
@@ -2338,8 +2346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000082254, y: 0.000030041}
-  m_SizeDelta: {x: 471.1313, y: 370.0696}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 420, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993968004
 MonoBehaviour:
@@ -2363,15 +2371,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ed574d8ee5d01374cb4a004e63dcac0a, type: 2}
-  m_sharedMaterial: {fileID: 3889824003628937289, guid: ed574d8ee5d01374cb4a004e63dcac0a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4287496186
+  m_fontColor: {r: 0.98223287, g: 1, b: 0.5518868, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2612,6 +2620,90 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1031359762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031359764}
+  - component: {fileID: 1031359763}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1031359763
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031359762}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0.6226415, b: 0.0808256, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1031359764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031359762}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -4.709, y: 4.05, z: 0.9453595}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1036768194
 GameObject:
   m_ObjectHideFlags: 3
@@ -2859,7 +2951,7 @@ MonoBehaviour:
   IsThrowFromInventory: 1
   IsLockedForTime: 1
   _inventory: {fileID: 2102909088}
-  _sprite: {fileID: 21300000, guid: 11c1465344d894bf0b62fe226620a7ab, type: 3}
+  _sprite: {fileID: 21300000, guid: d55e60bdee4d4884882383b4352e61df, type: 3}
   _ifLocked_ChangeToObject: {fileID: 743120078}
   _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
   _thisItemRotation: {x: 0, y: 0, z: 0}
@@ -3453,7 +3545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdb83dd2ddad7442986a57e67d44993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateText: 'Find sandwithc ingridients:
+  StateText: 'Find sandwich ingridients:
 
     Bread
 
@@ -3887,7 +3979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdb83dd2ddad7442986a57e67d44993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateText: Cook bread in toster
+  StateText: Cook bread in toaster
   states:
   - <InteractElement>k__BackingField: {fileID: 1746971119340180002}
     IsGot: 0
@@ -4770,7 +4862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6187,6 +6279,10 @@ PrefabInstance:
       value: Cheze Slise
       objectReference: {fileID: 0}
     - target: {fileID: 6933780226692550023, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5f1740b33d13b043b213396610c0f16, type: 3}
+    - target: {fileID: 6933780226692550023, guid: 1aa4e46489bf089459deaeab276b256b, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
@@ -6687,6 +6783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.835
       objectReference: {fileID: 0}
+    - target: {fileID: 900273680800574673, guid: b099c070bfa32734aac626f1b00e317b, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f0e778824fc69b4e99f23139d7d5129, type: 3}
     - target: {fileID: 900273680800574673, guid: b099c070bfa32734aac626f1b00e317b, type: 3}
       propertyPath: _inventory
       value: 
@@ -7498,7 +7598,7 @@ MonoBehaviour:
   IsThrowFromInventory: 1
   IsLockedForTime: 0
   _inventory: {fileID: 2102909088}
-  _sprite: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
+  _sprite: {fileID: 21300000, guid: 6c01e80d8797b2445892c99734f34672, type: 3}
   _ifLocked_ChangeToObject: {fileID: 0}
   _thisItemOffsetPosition: {x: 0, y: -0.15, z: 0}
   _thisItemRotation: {x: 90, y: 0, z: 0}
@@ -7682,6 +7782,10 @@ PrefabInstance:
       propertyPath: <PropName>k__BackingField
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd4409c92dbb8ae409072b251244274b, type: 3}
     - target: {fileID: 1069049032273936243, guid: 9a5fd912a8d57bd429d69175435b8f32, type: 3}
       propertyPath: _inventory
       value: 
@@ -8069,7 +8173,7 @@ MonoBehaviour:
   - breadZhar
   _spawnAnchor: {fileID: 1133112626}
   _mouseTarget: {fileID: 376274319}
-  _defaultPanelKey: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  _defaultPanelKey: {fileID: 21300000, guid: 768770949c7a4c64ba1151597d6eeed1, type: 3}
   IsOverrideOffsetsByProp: 0
   _microStartButton: {fileID: 0}
   _thisItemOffsetPosition: {x: 0, y: 0, z: 0}
@@ -8478,6 +8582,10 @@ PrefabInstance:
       value: Sausage Full
       objectReference: {fileID: 0}
     - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b520fbf5c9a69d4c9acfc4cb3201674, type: 3}
+    - target: {fileID: 2431601686998720419, guid: b1b2bbdbfcb666b469fa79666d08adf4, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
@@ -8622,6 +8730,10 @@ PrefabInstance:
       value: 83.257
       objectReference: {fileID: 0}
     - target: {fileID: 7680249232880045855, guid: 6b8b3fd4613131540b648bb930287656, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 887494e4781977c40afc09508f148062, type: 3}
+    - target: {fileID: 7680249232880045855, guid: 6b8b3fd4613131540b648bb930287656, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 2102909088}
@@ -8729,6 +8841,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2685f9494375fa443a22496d27af2cb6, type: 3}
     - target: {fileID: 9014945503633317178, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: _inventory
       value: 
