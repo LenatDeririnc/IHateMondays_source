@@ -1,5 +1,6 @@
 ﻿using Plugins.ServiceLocator;
 using Plugins.ServiceLocator.Interfaces;
+using UnityEngine.Device;
 
 namespace Services
 {
@@ -25,6 +26,9 @@ namespace Services
 
         public void UpdateService()
         {
+            if (!Application.isEditor)
+                return;
+            
             if (_inputBridgeService.IsPauseButtonDown && CanPressPause) {
                 _isPaused = !_isPaused;
                 _inputBridgeService.SetCursorLocked(!_isPaused);

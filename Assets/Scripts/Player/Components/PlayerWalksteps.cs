@@ -21,13 +21,13 @@ namespace Characters.Components
 
         private Coroutine walkCoroutine;
         
-        private AudioSourcesService AudioSourcesService;
+        private SoundService _soundService;
         private GameService GameService;
 
         private void Awake()
         {
             GameService = ServiceLocator.Get<GameService>();
-            AudioSourcesService = ServiceLocator.Get<AudioSourcesService>();
+            _soundService = ServiceLocator.Get<SoundService>();
         }
 
         public void SetupDeps()
@@ -75,21 +75,21 @@ namespace Characters.Components
             if (shot == null)
                 return;
         
-            AudioSourcesService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveDirection.magnitude);
+            _soundService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveDirection.magnitude);
         }
 
         public void PlayJump()
         {
             if (!enabled)
                 return;
-            if (PlayerSound.Jump != null) AudioSourcesService.Sounds.PlayOneShot(PlayerSound.Jump, PlayerSound.volume);
+            if (PlayerSound.Jump != null) _soundService.Sounds.PlayOneShot(PlayerSound.Jump, PlayerSound.volume);
         }
 
         public void PlayGrounded()
         {
             if (!enabled)
                 return;
-            if (PlayerSound.Grounding != null) AudioSourcesService.Sounds.PlayOneShot(PlayerSound.Grounding,  PlayerSound.volume);
+            if (PlayerSound.Grounding != null) _soundService.Sounds.PlayOneShot(PlayerSound.Grounding,  PlayerSound.volume);
         }
 
         protected override void SentUpdate()

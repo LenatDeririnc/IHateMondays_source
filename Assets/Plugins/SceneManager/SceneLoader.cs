@@ -12,27 +12,30 @@ namespace SceneManager
         private CancellationTokenSource cts;
 
         public bool isLoadDone { get; private set; } = false;
-        
+
+        public Action OnStartLoad;
+        public Action OnCompleteLoad;
+        public Action OnEntireCompleteLoad;
+
         public void Construct(LoadingCurtainManager curtainManager)
         {
             _curtainManager = curtainManager;
         }
 
-        public void LoadScene(SceneLink sceneLink, bool fastLoad = false, Action onLoad = null, CurtainType curtainType = CurtainType.AlphaTransition)
+        public void LoadScene(SceneLink sceneLink, bool fastLoad = false, CurtainType curtainType = CurtainType.AlphaTransition)
         {
             isLoadDone = false;
+            OnStartLoad?.Invoke();
             if (fastLoad)
             {
                 LoadSceneAsync(sceneLink, () => {
-                    _curtainManager.GetCurtain(curtainType).Hide();
-                    onLoad?.Invoke();
+                    _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
                 });
                 return;
             }
             _curtainManager.GetCurtain(curtainType).Show(() => LoadSceneAsync(sceneLink, () =>
             {
-                _curtainManager.GetCurtain(curtainType).Hide();
-                onLoad?.Invoke();
+                _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
             }));
         }
 
@@ -53,6 +56,7 @@ namespace SceneManager
 
             onLoaded?.Invoke();
             isLoadDone = true;
+            OnCompleteLoad?.Invoke();
         }
     }
 }

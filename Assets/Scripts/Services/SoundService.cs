@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace Services
 {
-    public class AudioSourcesService : Service
+    public class SoundService : Service
     {
-        public AudioSource Music;
         public AudioSource Sounds;
     }
 }

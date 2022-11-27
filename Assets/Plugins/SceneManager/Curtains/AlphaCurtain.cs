@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SceneManager
@@ -7,10 +7,9 @@ namespace SceneManager
     public class AlphaCurtain : LoadingCurtainBase
     {
         public override CurtainType Type => CurtainType.AlphaTransition;
-        
+
         public CanvasGroup canvasGroup;
         public GameObject canvasGroupGameObject;
-        public float fadeSpeed = 1;
         public bool HideCurtainOnStart = true;
         public bool Enabled = true;
 
@@ -26,76 +25,30 @@ namespace SceneManager
             }
         }
 
-        public override void Hide(Action loadSceneAction = null)
+        public override void Show(float speed, Action entireEndLoadAction = null)
         {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeIn(fadeSpeed, loadSceneAction));
+            Enable(true);
+            canvasGroup.alpha = 0;
+            DOTween.To(() => canvasGroup.alpha, _ => canvasGroup.alpha = _, 1, speed).onComplete += () =>
+            {
+                entireEndLoadAction?.Invoke();
+            };
         }
 
-        public override void Show(Action loadSceneAction = null)
+        public override void Hide(float speed, Action entireEndLoadAction = null)
         {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeOut(fadeSpeed, loadSceneAction));
+            canvasGroup.alpha = 1;
+            DOTween.To(() => canvasGroup.alpha, _ => canvasGroup.alpha = _, 0, speed).onComplete += () =>
+            {
+                entireEndLoadAction?.Invoke();
+                Enable(false);
+            };
         }
 
-        public override void Hide(float speed, Action loadSceneAction = null)
-        {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeIn(speed, loadSceneAction));
-        }
-
-        public override void Show(float speed, Action loadSceneAction = null)
-        {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(FadeOut(speed, loadSceneAction));
-        }
-
-        public void SetTransparency(float value)
-        {
-            canvasGroup.alpha = value;
-        }
-
-        public void Enable(bool value)
+        private void Enable(bool value)
         {
             canvasGroupGameObject.SetActive(value);
             Enabled = value;
-        }
-
-        private IEnumerator FadeOut(float speed, Action loadSceneAction)
-        {
-            Enable(true);
-            
-            SetTransparency(0);
-            
-            while (canvasGroup.alpha < 1)
-            {
-                canvasGroup.alpha += speed * Time.deltaTime;
-                yield return null;
-            }
-
-            SetTransparency(1);
-
-            loadSceneAction?.Invoke();
-        }
-
-        private IEnumerator FadeIn(float speed, Action loadSceneAction)
-        {
-            SetTransparency(1);
-            
-            while (canvasGroup.alpha > 0)
-            {
-                canvasGroup.alpha -= speed * Time.deltaTime;
-                yield return null;
-            }
-            
-            SetTransparency(0);
-
-            loadSceneAction?.Invoke();
-            Enable(false);
         }
     }
 }
