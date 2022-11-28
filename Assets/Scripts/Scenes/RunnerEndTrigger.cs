@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Plugins.ServiceLocator;
+using SceneManager;
 using SceneManager.ScriptableObjects;
 using Services;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Scenes
         [SerializeField] private float _runEndDuration = 1;
         [SerializeField] private Ease _runEndEase;
         [SerializeField] private SceneLink _nextScene;
+        [SerializeField] private CurtainType _transitionCurtain;
         private SceneLoadingService _sceneLoadingService;
 
         private bool isPlayingEnding = false;
@@ -53,7 +55,10 @@ namespace Scenes
             runSequence.AppendInterval(0.5f);
             runSequence.Append(runSlowdown);
             runSequence.AppendInterval(2f);
-            runSequence.onComplete += () => _sceneLoadingService.LoadScene(_nextScene);
+            runSequence.onComplete += () =>
+            {
+                _sceneLoadingService.LoadScene(_nextScene, _transitionCurtain);
+            };
 
             busSequence.Join(runSequence);
         }

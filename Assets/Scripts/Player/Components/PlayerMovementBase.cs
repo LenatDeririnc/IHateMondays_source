@@ -39,9 +39,9 @@ namespace Characters.Components
         protected virtual Vector3 MovementInput()
         {
             if (_forwardVector == null)
-                return Vector3.forward * _movementInput.z + Vector3.right * _movementInput.x;
+                return Vector3.ClampMagnitude(Vector3.forward * _movementInput.z + Vector3.right * _movementInput.x, 1f);
 
-            return _forwardVector.forward * _movementInput.z + _forwardVector.right * _movementInput.x;
+            return Vector3.ClampMagnitude(_forwardVector.forward * _movementInput.z + _forwardVector.right * _movementInput.x, 1f);
         }
 
         public virtual void SetMovementInput(Vector3 movement)

@@ -1,25 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace SceneManager
 {
     public class LoadingCurtainManager : MonoBehaviour
     {
-        [SerializeField] private LoadingCurtainBase[] _curtainList;
-        
-        private readonly Dictionary<CurtainType, LoadingCurtainBase> _curtains 
-            = new Dictionary<CurtainType, LoadingCurtainBase>();
-
-        public void Construct()
-        {
-            foreach (var c in _curtainList) {
-                _curtains[c.Type] = c;
-            }
-        }
+        [SerializeField] private CurtainInfo[] _curtainList;
 
         public LoadingCurtainBase GetCurtain(CurtainType type)
         {
-            return _curtains[type];
+            foreach (var curtainInfo in _curtainList)
+            {
+                if (curtainInfo.type == type)
+                    return curtainInfo.curtain;
+            }
+
+            return null;
+        }
+        
+        [Serializable]
+        public struct CurtainInfo
+        {
+            public CurtainType type;
+            public LoadingCurtainBase curtain;
         }
     }
 }

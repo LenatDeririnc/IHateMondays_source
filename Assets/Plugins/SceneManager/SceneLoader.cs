@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Threading;
 using SceneManager.ScriptableObjects;
 using UnityEngine;
 
@@ -9,54 +8,38 @@ namespace SceneManager
     public class SceneLoader : MonoBehaviour
     {
         private LoadingCurtainManager _curtainManager;
-        private CancellationTokenSource cts;
-
-        public bool isLoadDone { get; private set; } = false;
 
         public Action OnStartLoad;
-        public Action OnCompleteLoad;
-        public Action OnEntireCompleteLoad;
+
+        private LoadingCurtainBase _currentCurtain;
+        private AsyncOperation _currentLoadingScene;
+        private bool _isSceneActivated;
 
         public void Construct(LoadingCurtainManager curtainManager)
         {
             _curtainManager = curtainManager;
         }
 
-        public void LoadScene(SceneLink sceneLink, bool fastLoad = false, CurtainType curtainType = CurtainType.AlphaTransition)
+        public void LoadScene(SceneLink sceneLink, CurtainType curtainType = CurtainType.AlphaTransition)
         {
-            isLoadDone = false;
+            _isSceneActivated = false;
             OnStartLoad?.Invoke();
-            if (fastLoad)
+
+            _currentCurtain = _curtainManager.GetCurtain(curtainType);
+            _currentCurtain.Show();
+            
+            _currentLoadingScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneLink.sceneName);
+            _currentLoadingScene.allowSceneActivation = false;
+        }
+
+        private void Update()
+        {
+            if (!_isSceneActivated && _currentCurtain && _currentCurtain.CanActivateScene)
             {
-                LoadSceneAsync(sceneLink, () => {
-                    _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
-                });
-                return;
+                _currentLoadingScene.allowSceneActivation = true;
+                _currentCurtain.Hide();
+                _isSceneActivated = true;
             }
-            _curtainManager.GetCurtain(curtainType).Show(() => LoadSceneAsync(sceneLink, () =>
-            {
-                _curtainManager.GetCurtain(curtainType).Hide(OnEntireCompleteLoad);
-            }));
-        }
-
-        private void LoadSceneAsync(SceneLink sceneLink, Action action)
-        {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(LoadSceneCoroutine(sceneLink, action));
-        }
-
-        private Coroutine _coroutine;
-        private IEnumerator LoadSceneCoroutine(SceneLink sceneLink, Action onLoaded = null)
-        {
-            AsyncOperation waitSceneAsync = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneLink.sceneName);
-
-            while (!waitSceneAsync.isDone)
-                yield return null;
-
-            onLoaded?.Invoke();
-            isLoadDone = true;
-            OnCompleteLoad?.Invoke();
         }
     }
 }

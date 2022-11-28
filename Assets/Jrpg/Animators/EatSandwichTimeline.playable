@@ -1956,7 +1956,7 @@ MonoBehaviour:
   m_Name: Show Status Message Marker
   m_EditorClassIdentifier: 
   m_Time: 0.11666666666666667
-  text: Tasty sandwich
+  text: 'Eaten: Sandwich'
   sfx: {fileID: 8300000, guid: fc071cfa9b74bc14189afb0e721cecb9, type: 3}
 --- !u!114 &7055246734140516009
 MonoBehaviour:

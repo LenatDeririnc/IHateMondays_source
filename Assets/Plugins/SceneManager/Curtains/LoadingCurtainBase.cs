@@ -5,8 +5,14 @@ namespace SceneManager
 {
     public abstract class LoadingCurtainBase : MonoBehaviour
     {
-        public abstract CurtainType Type { get; }
         [SerializeField] protected float _defaultSpeed;
+        
+        /// <summary>
+        /// Можно ли активировать сцену
+        /// Пока не завершен Transition на show, загруженная сцена будет висеть в памяти без активации
+        /// Только тогда когда завершен Transition, сцена может загрузиться
+        /// </summary>
+        public abstract bool CanActivateScene { get; }
         
         public abstract void Hide(float speed, Action entireEndLoadAction = null);
         public abstract void Show(float speed, Action entireEndLoadAction = null);

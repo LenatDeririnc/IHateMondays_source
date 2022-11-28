@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PoinAndClick/PointAndClick_segment.unity
     guid: 64e63474c6e8e8b4a8fe8b97b098b062
   - enabled: 1
-    path: Assets/Scenes/JRPG/JRPG_segment.unity
-    guid: 119254d8688991b4a8fe49391baebaf8
-  - enabled: 1
     path: Assets/Scenes/FPS Horror/FPS Horror 2.unity
     guid: 63d95126cec7a5044b88751b9244e632
+  - enabled: 1
+    path: Assets/Jrpg/Scenes/JrpgBossFight.unity
+    guid: 125695cc7df25de4db419208ed9dfd06
   m_configObjects: {}

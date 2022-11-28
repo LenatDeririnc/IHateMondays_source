@@ -6,14 +6,15 @@ namespace SceneManager
 {
     public class AlphaCurtain : LoadingCurtainBase
     {
-        public override CurtainType Type => CurtainType.AlphaTransition;
-
         public CanvasGroup canvasGroup;
         public GameObject canvasGroupGameObject;
         public bool HideCurtainOnStart = true;
         public bool Enabled = true;
 
+        public override bool CanActivateScene => _canActivateScene;
+
         private Coroutine _coroutine;
+        private bool _canActivateScene;
 
         private void Start()
         {
@@ -29,8 +30,10 @@ namespace SceneManager
         {
             Enable(true);
             canvasGroup.alpha = 0;
+            _canActivateScene = false;
             DOTween.To(() => canvasGroup.alpha, _ => canvasGroup.alpha = _, 1, speed).onComplete += () =>
             {
+                _canActivateScene = true;
                 entireEndLoadAction?.Invoke();
             };
         }
@@ -38,6 +41,7 @@ namespace SceneManager
         public override void Hide(float speed, Action entireEndLoadAction = null)
         {
             canvasGroup.alpha = 1;
+            _canActivateScene = false;
             DOTween.To(() => canvasGroup.alpha, _ => canvasGroup.alpha = _, 0, speed).onComplete += () =>
             {
                 entireEndLoadAction?.Invoke();
