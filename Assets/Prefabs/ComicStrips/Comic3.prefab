@@ -1463,6 +1463,7 @@ MonoBehaviour:
   background: {fileID: 4509641503650967254}
   fadeInDuration: 0.5
   stripShowDuration: 5
+  stripExplodeDuration: 0.5
 --- !u!225 &4509641503650967252
 CanvasGroup:
   m_ObjectHideFlags: 0
