@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Fungus;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -10,6 +11,8 @@ public class ComicStripAnimator : MonoBehaviour
     public Strip[] strips;
     public UnityEvent onComplete;
     public CanvasGroup finishGroup;
+
+    public bool isAllPagesShown;
     
     public Image overlayLines;
     public Image background;
@@ -22,13 +25,29 @@ public class ComicStripAnimator : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        DOTween.Kill(this);
+        gameObject.SetActive(true);
+
+        isAllPagesShown = false;
+        _currentStripIndex = 0;
+        
         foreach (var strip in strips)
         {
             strip.image.color = new Color(1f, 1f, 1f, 0f);
             strip.textGroup.alpha = 0f;
         }
-
+        
         ScheduleNext();
+    }
+
+    public void Hide()
+    {
+        Explode();
     }
 
     private void Update()
@@ -48,8 +67,7 @@ public class ComicStripAnimator : MonoBehaviour
     {
         if (_currentStripIndex >= strips.Length)
         {
-            finishGroup.DOFade(0f, fadeInDuration);
-            Explode();
+            isAllPagesShown = true;
             onComplete.Invoke();
             return;
         }
@@ -74,12 +92,18 @@ public class ComicStripAnimator : MonoBehaviour
 
     private void Explode()
     {
+        finishGroup.DOFade(0f, fadeInDuration)
+            .OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            });
+        
         foreach (var strip in strips)
         {
             strip.imageContainer.DOPivot(strip.explodeDirection, stripExplodeDuration)
                 .SetEase(Ease.OutCubic);
         }
-        
+
         overlayLines.color = Color.clear;
         background.color = Color.clear;
     }

@@ -2,6 +2,10 @@
 {
     public enum CurtainType
     {
-        AlphaTransition
+        AlphaTransition,
+        Comic1,
+        Comic2,
+        Comic3,
+        Comic4,
     }
 }

@@ -21,7 +21,6 @@ namespace Services
 
         public void AwakeService()
         {
-            _loadingCurtain.Construct();
             _sceneLoader.Construct(_loadingCurtain);
         }
 
@@ -31,9 +30,9 @@ namespace Services
             _currentSpawnInfo = playerSpawn;
         }
 
-        public void LoadScene(SceneLink scene)
+        public void LoadScene(SceneLink scene, CurtainType curtainType = CurtainType.AlphaTransition)
         {
-            _sceneLoader.LoadScene(scene);
+            _sceneLoader.LoadScene(scene, curtainType);
             _currentSpawnInfo = null;
         }
     }
