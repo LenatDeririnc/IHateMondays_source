@@ -68,7 +68,7 @@ namespace Services
                 Volume1(durationExit);
             }
 
-            if (_currentPlaying.isPlaying) {
+            if (_currentPlaying != null && _currentPlaying.isPlaying) {
                 var seq = Volume0(durationEnter);
                 seq.onComplete += OnSeqOnComplete;
             }
