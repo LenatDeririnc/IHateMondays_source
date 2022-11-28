@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using SceneManager.ScriptableObjects;
 using UnityEngine;
 
@@ -37,8 +38,13 @@ namespace SceneManager
             if (!_isSceneActivated && _currentCurtain && _currentCurtain.CanActivateScene)
             {
                 _currentLoadingScene.allowSceneActivation = true;
-                _currentCurtain.Hide();
                 _isSceneActivated = true;
+                
+                // Короткая задержка, так как если сделать hide в тот же момент что и активация сцены,
+                // анимация будет очень дёрганная из за Lag Spike'а во время активации
+                DOTween.Sequence()
+                    .InsertCallback(0.1f, () => _currentCurtain.Hide())
+                    .SetUpdate(true);
             }
         }
     }
