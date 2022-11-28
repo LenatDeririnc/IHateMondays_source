@@ -1172,11 +1172,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   finishGroup: {fileID: 3088166010204199458}
+  isAllPagesShown: 0
   overlayLines: {fileID: 3088166010548898828}
   background: {fileID: 3088166010204199456}
   fadeInDuration: 0.5
   stripShowDuration: 5
-  stripExplodeDuration: 0.5
+  stripExplodeDuration: 1
 --- !u!225 &3088166010204199458
 CanvasGroup:
   m_ObjectHideFlags: 0
