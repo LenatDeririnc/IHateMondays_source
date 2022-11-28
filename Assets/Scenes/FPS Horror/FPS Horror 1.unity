@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00000013797356, g: 0.00014301101, b: 0.004791336, a: 1}
+  m_IndirectSpecularColor: {r: 0.00000013851252, g: 0.00014299678, b: 0.0047910693, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28337,8 +28337,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2788441872730514660, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: _currentDialogIndex
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2788441872730514660, guid: c0210408f653a554c91911de1200fea4, type: 3}
+      propertyPath: _sayDialogPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788441872730514660, guid: c0210408f653a554c91911de1200fea4, type: 3}
+      propertyPath: _sayDialogPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 188902, guid: 7af3c22dc9ddb1449a7145f879ce6524, type: 3}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 80.50916
