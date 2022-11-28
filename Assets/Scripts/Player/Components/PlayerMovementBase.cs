@@ -14,10 +14,12 @@ namespace Characters.Components
         public Vector3 Velocity { get; protected set; } = Vector3.zero;
 
         protected GameService _gameService;
+        private FungusService _fungusService;
 
         protected virtual void Awake()
         {
             _gameService = ServiceLocator.Get<GameService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
         }
         
         protected virtual void OnDisable()
@@ -29,8 +31,11 @@ namespace Characters.Components
         
         protected virtual void UpdateMovementInput()
         {
-            if (_gameService.IsPlayingDialogue)
+            if (_fungusService.IsDialogue) {
+                Velocity = Vector3.zero;
+                MoveDirection = Vector3.zero;
                 return;
+            }
             
             Velocity = MovementInput();
             MoveDirection = Velocity / _moveSpeed;

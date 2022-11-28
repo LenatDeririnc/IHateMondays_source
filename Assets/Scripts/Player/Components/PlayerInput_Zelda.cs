@@ -1,4 +1,5 @@
-﻿using Plugins.MonoBehHelpers;
+﻿using Fungus;
+using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
@@ -12,12 +13,27 @@ namespace Characters.Components
         private InputBridgeService _inputBridgeService;
         private GameService _gameService;
         private CameraService _cameraService;
+        private FungusService _fungusService;
 
         private void Awake()
         {
             _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
             _gameService = ServiceLocator.Get<GameService>();
             _cameraService = ServiceLocator.Get<CameraService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
+
+            _fungusService.OnMenuStart += OnDialogueStart;
+            _fungusService.OnMenuEnd += OnDialogueEnd;
+        }
+
+        private void OnDialogueStart()
+        {
+            _inputBridgeService.SetCursorLocked(false);
+        }
+
+        private void OnDialogueEnd()
+        {
+            _inputBridgeService.SetCursorLocked(true);
         }
 
         public void SetupDeps()
@@ -36,7 +52,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!_gameService.IsPlayingDialogue && !_cameraService.Brain.IsBlending)
+            if (!(_fungusService.IsDialogue || _cameraService.Brain.IsBlending))
             {
                 MovementInputUpdate();
             }
