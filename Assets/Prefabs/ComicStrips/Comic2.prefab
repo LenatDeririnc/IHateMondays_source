@@ -182,7 +182,7 @@ RectTransform:
   m_GameObject: {fileID: 6398778052602669262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6398778054126645688}
@@ -191,7 +191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 418.2, y: -100.5}
+  m_AnchoredPosition: {x: 455, y: -66}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6398778052602669268
@@ -748,7 +748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.11}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1511, y: -467}
+  m_AnchoredPosition: {x: 1252, y: -475}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6398778053246567531
@@ -953,7 +953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 634.475, y: 0}
+  m_AnchoredPosition: {x: 895.32, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6398778053501469270
@@ -984,8 +984,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "For some reason though, there was low\nlight in the park. Oh well, \ni
-    still have my flashlight"
+  m_text: "For some reason though, there was lowlight in the park. \nOh well, i still
+    have my flashlight"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
   m_sharedMaterial: {fileID: 91912189626833898, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
@@ -1107,7 +1107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 458, y: -950}
+  m_AnchoredPosition: {x: 987, y: -990}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6398778053654452125
@@ -1236,7 +1236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 618.955, y: 0}
+  m_AnchoredPosition: {x: 660.45, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6398778053675975143
@@ -1268,7 +1268,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Thankfully, I know a park on the way, \nthat would at least save me some
-    time \non the way back"
+    time on the way back"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
   m_sharedMaterial: {fileID: 91912189626833898, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
@@ -1295,8 +1295,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1511,7 +1511,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'After all of the paperwork, i had to go
 
-    back home by foot... Again'
+    back home by foot...Again'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
   m_sharedMaterial: {fileID: 91912189626833898, guid: 22fc3c42dba7049408fe8f4058dfd788, type: 2}
