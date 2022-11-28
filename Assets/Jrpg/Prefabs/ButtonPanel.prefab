@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -1732,10 +1732,8 @@ MonoBehaviour:
   - {fileID: 7007169295546619798}
   titleText: {fileID: 1082584672401624908}
   sfxSource: {fileID: 2646179020087518027}
-  clipSelect: {fileID: 8300000, guid: 9f7ad65d2b16d8346a0294d056a498f5, type: 3}
   clipMove: {fileID: 8300000, guid: 9f7ad65d2b16d8346a0294d056a498f5, type: 3}
   clipError: {fileID: 8300000, guid: ad42d83362c0a38419d851b6952ead24, type: 3}
-  clipBack: {fileID: 8300000, guid: 925db9bb2ea97fd45bf60f5bc7069f4f, type: 3}
 --- !u!225 &2901708056378284721
 CanvasGroup:
   m_ObjectHideFlags: 0
