@@ -46216,7 +46216,7 @@ MonoBehaviour:
   _runEndDuration: 3
   _runEndEase: 4
   _nextScene: {fileID: 11400000, guid: 7c0e3160b0a21824b86e475b32937b25, type: 2}
-  _transitionCurtain: 2
+  _transitionCurtain: 3
 --- !u!1001 &1918830066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48579,7 +48579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 2028742222}
-  m_PathPosition: 43.57626
+  m_PathPosition: 47.26802
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -49365,34 +49365,34 @@ PrefabInstance:
     - target: {fileID: 1657285272531935527, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_CustomBlends
       value: 
-      objectReference: {fileID: 11400000, guid: 81d4297ed0747554cb99104b1017f672, type: 2}
+      objectReference: {fileID: 11400000, guid: cf5399f5c25f32647b7e3db02fc29080, type: 2}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4813828
+      value: 1.2260985
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.999979
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2277646
+      value: -1.4569796
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.025413288
+      value: -0.045665924
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000046283053
+      value: 0.00000022229982
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.99967706
+      value: 0.9989568
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000023203743
+      value: 0.0000036837887
       objectReference: {fileID: 0}
     - target: {fileID: 3497837580462204732, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: antialiasingMode

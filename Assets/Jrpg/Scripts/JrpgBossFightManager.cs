@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Jrpg.Scripts.Timeline;
+using Plugins.ServiceLocator;
+using SceneManager;
+using SceneManager.ScriptableObjects;
+using Services;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -24,6 +28,9 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
 
     public int guyCurrentHp;
     public int guyMaxHp;
+
+    public SceneLink nextScene;
+    public CurtainType nextCurtain;
 
     public PlayableDirector startPlaybackDirector;
     public PlayableDirector bossAttackPlaybackDirector;
@@ -87,10 +94,9 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
     private void OnDirectorStopped(PlayableDirector director)
     {
         if (_isFightFinished)
-        {
-            // TODO: change scene
-        }
-        else if (_isAttack1Played && _isAttack2Played && _isAttack3Played && _isAttack4Played)
+            return;
+
+        if (_isAttack1Played && _isAttack2Played && _isAttack3Played && _isAttack4Played)
         {
             _isFightFinished = true;
             PlayFightTimeline(bossAttackPlaybackDirector);
@@ -127,7 +133,8 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
                 ApplyDamageToPlayer();
             
             PlaySfx(applyDamage.sfx);
-        } else if (notification is ChangeHealthVisibilityMarker showDamage)
+        } 
+        else if (notification is ChangeHealthVisibilityMarker showDamage)
         {
             if (showDamage.show)
             {
@@ -137,6 +144,10 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
             {
                 uiHealthPanel.Hide();
             }
+        } else if (notification is FightFinishedMarker)
+        {
+            ServiceLocator.Get<SceneLoadingService>()
+                .LoadScene(nextScene, nextCurtain);
         }
     }
 

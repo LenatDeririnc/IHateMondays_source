@@ -4085,6 +4085,8 @@ MonoBehaviour:
   clipMenuClose: {fileID: 8300000, guid: 925db9bb2ea97fd45bf60f5bc7069f4f, type: 3}
   guyCurrentHp: 200
   guyMaxHp: 250
+  nextScene: {fileID: 11400000, guid: 4d27137ed8da51c408093d428f37c8f5, type: 2}
+  nextCurtain: 2
   startPlaybackDirector: {fileID: 654862130}
   bossAttackPlaybackDirector: {fileID: 87261412}
   eatSandwichDirector: {fileID: 1457354578}
