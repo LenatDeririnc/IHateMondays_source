@@ -46,7 +46,7 @@ namespace Characters.Components
 
         public virtual void SetMovementInput(Vector3 movement)
         {
-            _movementInput = movement * _moveSpeed;
+            _movementInput = Vector3.ClampMagnitude(movement, 1f) * _moveSpeed;
         }
 
         public abstract void SetPosition(Vector3 position);

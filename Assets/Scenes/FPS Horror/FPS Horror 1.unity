@@ -6501,6 +6501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Info Box
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b27abb169de21ba44896e595f84efb41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b27abb169de21ba44896e595f84efb41, type: 3}
 --- !u!4 &457738947 stripped
@@ -13908,6 +13912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Info Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b27abb169de21ba44896e595f84efb41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b27abb169de21ba44896e595f84efb41, type: 3}
 --- !u!1001 &1155782070
@@ -16395,6 +16403,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 12055601826e7bd4d9bfc20f6f18fb3f, type: 3}
       propertyPath: m_Name
       value: Rake
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12055601826e7bd4d9bfc20f6f18fb3f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12055601826e7bd4d9bfc20f6f18fb3f, type: 3}

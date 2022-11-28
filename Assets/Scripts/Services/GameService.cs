@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Services
 {
-    public class GameService : Service, IAwakeService
+    public class GameService : Service, IAwakeService, ITerminateService
     {
         private InputBridgeService _inputBridgeService;
         [SerializeField] private bool _cursorEnabledInScene = true;
@@ -21,6 +21,11 @@ namespace Services
         public void SetDialogueState(bool value)
         {
             _isPlayingDialogue = value;
+        }
+
+        public void TerminateService()
+        {
+            _inputBridgeService.SetCursorLocked(false);
         }
     }
 }
