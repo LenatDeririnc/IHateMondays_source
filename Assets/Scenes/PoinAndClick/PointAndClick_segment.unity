@@ -8873,12 +8873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _servicesList:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 3971062865389281837}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &3971062864776583687
 GameObject:
   m_ObjectHideFlags: 0
