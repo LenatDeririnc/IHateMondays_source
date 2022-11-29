@@ -11,8 +11,9 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
+  - _EMISSION
   m_InvalidKeywords: []
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -101,13 +102,17 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EmissionScaleUI: 0
+    - _GlossMapScale: 1
     - _Glossiness: 1
+    - _GlossyReflections: 1
     - _Metallic: 1
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimAmount: 0
+    - _SmoothnessTextureChannel: 0
     - _SnowLevel: 0
+    - _SpecularHighlights: 1
     - _SpecularPower: 0.03
     - _SrcBlend: 1
     - _UVSec: 0

@@ -16,6 +16,7 @@ namespace Scenes
         [SerializeField] private Ease _runEndEase;
         [SerializeField] private SceneLink _nextScene;
         [SerializeField] private CurtainType _transitionCurtain;
+        [SerializeField] private AudioClip _musicOutro;
         private SceneLoadingService _sceneLoadingService;
 
         private bool isPlayingEnding = false;
@@ -52,7 +53,7 @@ namespace Scenes
                     .SetEase(_runEndEase);
             
             ServiceLocator.Get<AudioService>()
-                .StopBackgroundMusic(_runEndDuration);
+                .PlayBackgroundMusic(_musicOutro, null);
 
             var runSequence = DOTween.Sequence();
             runSequence.AppendInterval(0.5f);
