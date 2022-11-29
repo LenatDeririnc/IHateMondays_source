@@ -28,13 +28,13 @@ namespace Scenes
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other != _playerService.Player.Collider)
-                return;
-
-            PlayEnding();
-        }
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     if (other != _playerService.Player.Collider)
+        //         return;
+        //
+        //     PlayEnding();
+        // }
 
         public void PlayEnding()
         {
