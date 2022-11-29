@@ -14,6 +14,11 @@ namespace SceneManager
         /// </summary>
         public abstract bool CanActivateScene { get; }
         
+        /// <summary>
+        /// Можно ли начать загрузку сцены
+        /// </summary>
+        public virtual bool CanLoadScene { get; } = true;
+        
         public abstract void Hide(float speed, Action entireEndLoadAction = null);
         public abstract void Show(float speed, Action entireEndLoadAction = null);
 
