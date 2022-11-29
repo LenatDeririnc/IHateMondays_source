@@ -19,7 +19,7 @@ Material:
   - _NORMALMAP_TANGENT_SPACE
   - _THICKNESSMAP
   - _VERTEX_WIND
-  m_LightmapFlags: 4
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2450
