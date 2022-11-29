@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d2d9dde074219a5a7741751af8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 867c632ae67dcfb4c972604f0b5c2431, type: 3}
+  _clip: {fileID: 8300000, guid: 24dc8332c5b3be741a3932ed6d1bf07a, type: 3}
 --- !u!1102 &-7995849783553892899
 AnimatorState:
   serializedVersion: 6

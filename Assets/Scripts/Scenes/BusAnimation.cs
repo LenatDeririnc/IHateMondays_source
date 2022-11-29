@@ -12,6 +12,7 @@ namespace Scenes
         [SerializeField] [Range(0, 1)] private float _splinePosition;
         [SerializeField] private float _duration = 1;
         [SerializeField] private Ease _ease;
+        [SerializeField] private AudioSource _busSource;
 
         private void Update()
         {
@@ -22,6 +23,7 @@ namespace Scenes
 
         public Sequence StartMove()
         {
+            _busSource.Play();
             var sequence = DOTween.Sequence();
             sequence.Append(DOTween.To(() => _splinePosition, _ => _splinePosition = _, 1, _duration).SetEase(_ease));
             return sequence;
