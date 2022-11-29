@@ -20,6 +20,7 @@ public class ComicStripAnimator : MonoBehaviour
     public float fadeInDuration;
     public float stripShowDuration;
     public float stripExplodeDuration = 0.5f;
+    public float stripExplodeStaggerDuration = 0.1f;
 
     private int _currentStripIndex = 0;
 
@@ -33,6 +34,8 @@ public class ComicStripAnimator : MonoBehaviour
         DOTween.Kill(this);
         gameObject.SetActive(true);
 
+        finishGroup.blocksRaycasts = true;
+        finishGroup.interactable = true;
         isAllPagesShown = false;
         _currentStripIndex = 0;
         
@@ -47,6 +50,8 @@ public class ComicStripAnimator : MonoBehaviour
 
     public void Hide()
     {
+        finishGroup.blocksRaycasts = false;
+        finishGroup.interactable = false;
         Explode();
     }
 
@@ -92,18 +97,27 @@ public class ComicStripAnimator : MonoBehaviour
 
     private void Explode()
     {
-        finishGroup.DOFade(0f, fadeInDuration)
+        var delay = 0f;
+        foreach (var strip in strips)
+        {
+            strip.imageContainer.DOPivot(strip.explodeDirection, stripExplodeDuration)
+                .SetDelay(delay)
+                .SetEase(Ease.InQuart);
+            
+            strip.textGroup.DOFade(0f, fadeInDuration)
+                .SetEase(Ease.InQuart);
+
+            delay += stripExplodeStaggerDuration;
+        }
+
+        overlayLines.DOFade(0f, stripExplodeDuration)
+            .SetDelay(delay)
             .OnComplete(() =>
             {
                 gameObject.SetActive(false);
             });
-        
-        foreach (var strip in strips)
-        {
-            strip.imageContainer.DOPivot(strip.explodeDirection, stripExplodeDuration)
-                .SetEase(Ease.OutCubic);
-        }
 
+        finishGroup.blocksRaycasts = false;
         overlayLines.color = Color.clear;
         background.color = Color.clear;
     }

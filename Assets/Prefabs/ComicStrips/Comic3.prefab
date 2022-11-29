@@ -1393,7 +1393,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4509641503650967259}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &4509641503650967254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1464,7 +1464,8 @@ MonoBehaviour:
   background: {fileID: 4509641503650967254}
   fadeInDuration: 0.5
   stripShowDuration: 5
-  stripExplodeDuration: 1
+  stripExplodeDuration: 0.5
+  stripExplodeStaggerDuration: 0.1
 --- !u!225 &4509641503650967252
 CanvasGroup:
   m_ObjectHideFlags: 0

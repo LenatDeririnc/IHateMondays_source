@@ -1111,7 +1111,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7774159399578878273}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &7774159399578878284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   background: {fileID: 7774159399578878284}
   fadeInDuration: 0.5
   stripShowDuration: 5
-  stripExplodeDuration: 1
+  stripExplodeDuration: 0.5
 --- !u!225 &7774159399578878286
 CanvasGroup:
   m_ObjectHideFlags: 0
