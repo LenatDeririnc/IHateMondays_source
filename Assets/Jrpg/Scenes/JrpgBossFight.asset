@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: JrpgBossFight
   m_EditorClassIdentifier: 
   sceneAsset: {fileID: 102900000, guid: 125695cc7df25de4db419208ed9dfd06, type: 3}
-  scenePath: Assets\Jrpg\Scenes\JrpgBossFight
+  scenePath: Assets/Jrpg/Scenes/JrpgBossFight.unity
   sceneName: JrpgBossFight
