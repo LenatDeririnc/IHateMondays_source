@@ -144,7 +144,13 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
             {
                 uiHealthPanel.Hide();
             }
-        } else if (notification is FightFinishedMarker)
+        } 
+        else if (notification is FadeOutMusicMarker fadeOutMusicMarker)
+        {
+            ServiceLocator.Get<AudioService>()
+                .StopBackgroundMusic(fadeOutMusicMarker.duration);
+        }
+        else if (notification is FightFinishedMarker)
         {
             ServiceLocator.Get<SceneLoadingService>()
                 .LoadScene(nextScene, nextCurtain);

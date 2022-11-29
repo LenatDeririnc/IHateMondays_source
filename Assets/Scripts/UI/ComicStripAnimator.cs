@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using Fungus;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -57,10 +56,8 @@ public class ComicStripAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Submit"))
-        {
+        if (Input.GetButtonDown("Submit") || Input.GetMouseButtonDown(0))
             SkipToNext();
-        }
     }
 
     public void SkipToNext()
@@ -97,26 +94,22 @@ public class ComicStripAnimator : MonoBehaviour
 
     private void Explode()
     {
-        var delay = 0f;
         foreach (var strip in strips)
         {
             strip.imageContainer.DOPivot(strip.explodeDirection, stripExplodeDuration)
-                .SetDelay(delay)
                 .SetEase(Ease.InQuart);
             
             strip.textGroup.DOFade(0f, fadeInDuration)
                 .SetEase(Ease.InQuart);
-
-            delay += stripExplodeStaggerDuration;
         }
 
-        overlayLines.DOFade(0f, stripExplodeDuration)
-            .SetDelay(delay)
+        finishGroup.DOFade(0f, stripExplodeDuration)
             .OnComplete(() =>
             {
                 gameObject.SetActive(false);
             });
 
+        
         finishGroup.blocksRaycasts = false;
         overlayLines.color = Color.clear;
         background.color = Color.clear;

@@ -12,8 +12,10 @@ namespace SceneManager
 
         public Action OnStartLoad;
 
+        private SceneLink _nextScene;
         private LoadingCurtainBase _currentCurtain;
         private AsyncOperation _currentLoadingScene;
+        private bool _isSceneLoadingStarted;
         private bool _isSceneActivated;
 
         public void Construct(LoadingCurtainManager curtainManager)
@@ -26,15 +28,23 @@ namespace SceneManager
             _isSceneActivated = false;
             OnStartLoad?.Invoke();
 
+            _nextScene = sceneLink;
             _currentCurtain = _curtainManager.GetCurtain(curtainType);
             _currentCurtain.Show();
             
-            _currentLoadingScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneLink.sceneName);
-            _currentLoadingScene.allowSceneActivation = false;
+            _isSceneLoadingStarted = false;
         }
 
         private void Update()
         {
+            // Ожидание получения разрешения на загрузку от занавески, так как если запустить одновременно, то будет заметен лаг
+            if (_currentCurtain && _currentCurtain.CanLoadScene && !_isSceneLoadingStarted)
+            {
+                _isSceneLoadingStarted = true;
+                _currentLoadingScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(_nextScene.sceneName);
+                _currentLoadingScene.allowSceneActivation = false;
+            }
+            
             if (!_isSceneActivated && _currentCurtain && _currentCurtain.CanActivateScene)
             {
                 _currentLoadingScene.allowSceneActivation = true;

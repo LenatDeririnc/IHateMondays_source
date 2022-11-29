@@ -1064,7 +1064,6 @@ GameObject:
   - component: {fileID: 3088166010204199456}
   - component: {fileID: 3088166010204199471}
   - component: {fileID: 3088166010204199458}
-  - component: {fileID: 3088166010204199459}
   m_Layer: 5
   m_Name: Comic4
   m_TagString: Untagged
@@ -1191,35 +1190,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3088166010204199459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3088166010204199469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3088166010204199471}
-          m_TargetAssemblyTypeName: ComicStripAnimator, Assembly-CSharp
-          m_MethodName: SkipToNext
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &3088166010328518106
 GameObject:
   m_ObjectHideFlags: 0

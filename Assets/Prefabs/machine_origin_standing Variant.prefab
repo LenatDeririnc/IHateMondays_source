@@ -297,11 +297,9 @@ MonoBehaviour:
   materialProperty: _Color
   onlyOnSpecificMaterials: []
   palette:
-  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.0509078, g: 0.34401676, b: 0.9811321, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.8292453, b: 0.1462264, a: 1}
 --- !u!114 &7099253646280162722
 MonoBehaviour:
   m_ObjectHideFlags: 0
