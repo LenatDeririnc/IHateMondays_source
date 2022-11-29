@@ -49,7 +49,7 @@ namespace Services
         public bool IsEnding = false;
         private bool _isPlayingFail = false;
         
-        private MusicPlayerService _musicService;
+        private AudioService _musicService;
 
         private static readonly int ColorProperty = Shader.PropertyToID("_Color");
         private static Color DamagedColor => new Color(1,1,1,0.5f);
@@ -57,9 +57,9 @@ namespace Services
         public void AwakeService()
         {
             _playerService = ServiceLocator.Get<PlayerService>();
-            _musicService = ServiceLocator.Get<MusicPlayerService>();
+            _musicService = ServiceLocator.Get<AudioService>();
             
-            _musicService.PlayLoopWithIntro(_intro, _loop);
+            _musicService.PlayBackgroundMusic(_intro, _loop);
             
             _runnerController = (RunnerController)_playerService.Player;
             SetDefaultSpeed();

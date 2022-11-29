@@ -50,6 +50,9 @@ namespace Scenes
                         0,
                         _runEndDuration)
                     .SetEase(_runEndEase);
+            
+            ServiceLocator.Get<AudioService>()
+                .StopBackgroundMusic(_runEndDuration);
 
             var runSequence = DOTween.Sequence();
             runSequence.AppendInterval(0.5f);
