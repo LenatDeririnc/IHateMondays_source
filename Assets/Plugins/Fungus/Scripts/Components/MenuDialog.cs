@@ -1,6 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -29,6 +30,9 @@ namespace Fungus
         /// Currently active Menu Dialog used to display Menu options
         /// </summary>
         public static MenuDialog ActiveMenuDialog { get; set; }
+
+        public static event Action OnMenuDialogEnabled;
+        public static event Action OnMenuDialogDisabled;
 
         /// <summary>
         /// A cached list of button objects in the menu dialog.
@@ -122,6 +126,12 @@ namespace Fungus
             // The canvas may fail to update if the menu dialog is enabled in the first game frame.
             // To fix this we just need to force a canvas update when the object is enabled.
             Canvas.ForceUpdateCanvases();
+            OnMenuDialogEnabled?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            OnMenuDialogDisabled?.Invoke();
         }
 
         protected virtual IEnumerator WaitForTimeout(float timeoutDuration, Block targetBlock)

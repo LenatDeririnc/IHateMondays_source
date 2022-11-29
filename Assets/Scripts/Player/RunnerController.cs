@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
@@ -14,6 +16,7 @@ namespace Player
         [SerializeField] private Renderer[] _renderers;
         [SerializeField] private GameObject _renderersGameObject;
         [SerializeField] private ParticleSystem _stepParticles;
+        [SerializeField] private AudioSource _animatorAudioSource;
 
         public GameObject RenderersGameObject => _renderersGameObject;
 
@@ -32,6 +35,7 @@ namespace Player
         
         private Coroutine _damageCoroutine;
         private static readonly int Jump = Animator.StringToHash("Jump");
+        private Sequence _moveSoundStop;
 
         private void Awake()
         {
@@ -106,7 +110,31 @@ namespace Player
         {
             _stepParticles.Play();
         }
-        
+
+        public void PlayMoveSound(AudioClip clip)
+        {
+            _moveSoundStop.Kill();
+            _animatorAudioSource.Stop();
+            _animatorAudioSource.clip = clip;
+            _animatorAudioSource.loop = true;
+            _animatorAudioSource.volume = 1.0f;
+            _animatorAudioSource.Play();
+        }
+
+        public void StopMoveSound()
+        {
+            _moveSoundStop = DOTween.Sequence();
+
+            TweenerCore<float, float, FloatOptions> turnOffSound = DOTween.To(() => _animatorAudioSource.volume,
+                _ => _animatorAudioSource.volume = _,
+                0,
+                0.1f);
+
+            turnOffSound.onComplete += () => _animatorAudioSource.Stop();
+
+            _moveSoundStop.Append(turnOffSound);
+        }
+
         private class AnimatorSpy : MonoBehaviour
         {
             public RunnerController controller;

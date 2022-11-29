@@ -33575,6 +33575,8 @@ MonoBehaviour:
   _timer: {fileID: 1357324642}
   _runnerEndTrigger: {fileID: 1917774242}
   _playerCamera: {fileID: 1205298223}
+  _intro: {fileID: 8300000, guid: 03b91e4f0920dc34ba913371791b0c60, type: 3}
+  _loop: {fileID: 8300000, guid: 8c240bf42a190ca46a5ea26637e6143a, type: 3}
   IsEnding: 0
 --- !u!114 &1357324642
 MonoBehaviour:

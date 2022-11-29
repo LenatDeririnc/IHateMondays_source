@@ -180,7 +180,7 @@ Material:
     - _CullFarStart: 40
     - _CullMode: 0
     - _CullModeForward: 0
-    - _Cutoff: 0.381
+    - _Cutoff: 0.178
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalMapScale: 1
@@ -218,7 +218,7 @@ Material:
     - _EnableWind: 1
     - _EnergyConservingSpecularColor: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HdrpVersion: 1
     - _HeightAmplitude: 0.02
@@ -294,7 +294,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.3773585, g: 0.2669121, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _DryColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

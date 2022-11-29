@@ -55,7 +55,7 @@ namespace Player.Components
 
         private void Update()
         {
-            if (_gameService.IsPlayingDialogue || _fungusService.IsDialogue) {
+            if (_fungusService.IsDialogue) {
                 CrosshairState = CurrentCrosshairState.Disabled;
                 return;
             }

@@ -1,6 +1,4 @@
-﻿using Player.Components;
-using Player.Custom;
-using Plugins.MonoBehHelpers;
+﻿using Plugins.MonoBehHelpers;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
@@ -11,15 +9,14 @@ namespace Characters.Components
     {
         [SerializeField] private PlayerMovementBase _playerMovement;
         [SerializeField] private PlayerLook _playerLook;
-        [SerializeField] private Flashlight _flashlight;
-        
-        private InputBridgeService InputBridgeService;
-        private GameService GameService;
+
+        private InputBridgeService _inputBridgeService;
+        private FungusService _fungusService;
 
         private void Awake()
         {
-            InputBridgeService = ServiceLocator.Get<InputBridgeService>();
-            GameService = ServiceLocator.Get<GameService>();
+            _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
         }
 
         public void SetupDeps()
@@ -30,13 +27,13 @@ namespace Characters.Components
 
         private void MovementInputUpdate()
         {
-            var movement = InputBridgeService.Movement;
+            var movement = _inputBridgeService.Movement;
             _playerMovement.SetMovementInput(new Vector3(movement.x, 0, movement.y));
         }
 
         private void RotationInputUpdate()
         {
-            _playerLook.SetRotateDelta(new Vector3(InputBridgeService.Look.x, InputBridgeService.Look.y, 0));
+            _playerLook.SetRotateDelta(new Vector3(_inputBridgeService.Look.x, _inputBridgeService.Look.y, 0));
         }
 
         protected override void SentUpdate()
@@ -44,7 +41,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (!GameService.IsPlayingDialogue)
+            if (!_fungusService.IsDialogue)
             {
                 MovementInputUpdate();
                 RotationInputUpdate();

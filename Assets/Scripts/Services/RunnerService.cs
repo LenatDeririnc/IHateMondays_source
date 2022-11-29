@@ -27,6 +27,9 @@ namespace Services
 
         [SerializeField] private CinemachineVirtualCamera _playerCamera;
 
+        [SerializeField] private AudioClip _intro;
+        [SerializeField] private AudioClip _loop;
+
         public float MoveDistance => _moveDistance;
 
         public SplineContainer Spline => _spline;
@@ -45,6 +48,8 @@ namespace Services
         public RunnerController RunnerController => _runnerController;
         public bool IsEnding = false;
         private bool _isPlayingFail = false;
+        
+        private MusicPlayerService _musicService;
 
         private static readonly int ColorProperty = Shader.PropertyToID("_Color");
         private static Color DamagedColor => new Color(1,1,1,0.5f);
@@ -52,6 +57,10 @@ namespace Services
         public void AwakeService()
         {
             _playerService = ServiceLocator.Get<PlayerService>();
+            _musicService = ServiceLocator.Get<MusicPlayerService>();
+            
+            _musicService.PlayLoopWithIntro(_intro, _loop);
+            
             _runnerController = (RunnerController)_playerService.Player;
             SetDefaultSpeed();
             
@@ -109,6 +118,7 @@ namespace Services
         }
         
         private Sequence _sequence;
+
         private void StartBlink()
         {
             _sequence = DOTween.Sequence()

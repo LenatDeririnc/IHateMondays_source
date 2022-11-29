@@ -12,17 +12,18 @@ namespace Characters.Components
         [SerializeField] private float _maxDistance = 1f;
         [SerializeField] private LayerMask _layerMask;
 
-        private GameService GameService;
-        private InputBridgeService InputBridgeService;
+        private GameService _gameService;
+        private InputBridgeService _inputBridgeService;
 
 
         private bool _isInteractable = false;
+        private FungusService _fungusService;
         public bool FoundInteractable => _isInteractable;
 
         private void Awake()
         {
-            ServiceLocator.Get(ref GameService);
-            ServiceLocator.Get(ref InputBridgeService);
+            _inputBridgeService = ServiceLocator.Get<InputBridgeService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
         }
 
         protected override void SentUpdate()
@@ -32,7 +33,7 @@ namespace Characters.Components
             if (!enabled)
                 return;
             
-            if (GameService.IsPlayingDialogue)
+            if (_fungusService.IsDialogue)
                 return;
             
             var isRaycast = Physics.Raycast(
@@ -55,7 +56,7 @@ namespace Characters.Components
 
             _isInteractable = true;
 
-            if (!InputBridgeService.IsActionDown)
+            if (!_inputBridgeService.IsActionDown)
                 return;
 
             interactable.Interact();

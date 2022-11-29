@@ -22,12 +22,14 @@ namespace Characters.Components
         private Coroutine walkCoroutine;
         
         private SoundService _soundService;
-        private GameService GameService;
+        private GameService _gameService;
+        private FungusService _fungusService;
 
         private void Awake()
         {
-            GameService = ServiceLocator.Get<GameService>();
+            _gameService = ServiceLocator.Get<GameService>();
             _soundService = ServiceLocator.Get<SoundService>();
+            _fungusService = ServiceLocator.Get<FungusService>();
         }
 
         public void SetupDeps()
@@ -94,7 +96,7 @@ namespace Characters.Components
 
         protected override void SentUpdate()
         {
-            if (GameService.IsPlayingDialogue)
+            if (_fungusService.IsDialogue)
             {
                 EndWalkStepsCoroutine();
                 return;

@@ -10,42 +10,67 @@ namespace Services
     public class FungusService : Service, IAwakeService, ITerminateService
     {
         [SerializeField] private FungusFactoryService _factoryService;
-        private GameService _gameService;
         public event BlockSignals.BlockStartHandler OnBlockStart;
         public event BlockSignals.BlockEndHandler OnBlockEnd;
+
+        public event Action OnMenuStart;
+        public event Action OnMenuEnd;
         
         private bool _isDialogue = false;
+        private bool _isMenu = false;
 
-        public bool IsDialogue => _isDialogue;
+        public bool IsDialogue => _isDialogue || _isMenu;
 
         public void AwakeService()
         {
-            _gameService = ServiceLocator.Get<GameService>();
-
-            BlockSignals.OnBlockStart += OnBlockStart;
             BlockSignals.OnBlockStart += OnBlockStartAction;
-            BlockSignals.OnBlockEnd += OnBlockEnd;
             BlockSignals.OnBlockEnd += OnBlockEndAction;
             
+            BlockSignals.OnBlockStart += OnBlockStart;
+            BlockSignals.OnBlockEnd += OnBlockEnd;
+
+            MenuDialog.OnMenuDialogEnabled += OnMenuStart;
+            MenuDialog.OnMenuDialogDisabled += OnMenuEnd;
+
+            MenuDialog.OnMenuDialogEnabled += OnMenuDialogueStartAction;
+            MenuDialog.OnMenuDialogDisabled += OnMenuDialogueEndAction;
+
             SayDialog.Construct(_factoryService);
         }
-        
+
         public void TerminateService()
         {
+            BlockSignals.OnBlockStart -= OnBlockStartAction;
+            BlockSignals.OnBlockEnd -= OnBlockEndAction;
+            
             BlockSignals.OnBlockStart -= OnBlockStart;
             BlockSignals.OnBlockEnd -= OnBlockEnd;
+            
+            MenuDialog.OnMenuDialogEnabled -= OnMenuStart;
+            MenuDialog.OnMenuDialogDisabled -= OnMenuEnd;
+            
+            MenuDialog.OnMenuDialogEnabled -= OnMenuDialogueStartAction;
+            MenuDialog.OnMenuDialogDisabled -= OnMenuDialogueEndAction;
+        }
+
+        private void OnMenuDialogueStartAction()
+        {
+            _isMenu = true;
+        }
+
+        private void OnMenuDialogueEndAction()
+        {
+            _isMenu = false;
         }
 
         private void OnBlockStartAction(Block block)
         {
             _isDialogue = true;
-            _gameService.SetDialogueState(true);
         }
 
         private void OnBlockEndAction(Block block)
         {
             _isDialogue = false;
-            _gameService.SetDialogueState(false);
         }
     }
 }
