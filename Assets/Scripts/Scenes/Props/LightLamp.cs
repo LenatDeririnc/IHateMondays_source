@@ -9,15 +9,13 @@ namespace Scenes.Props
     public class LightLamp : MonoBehaviour
     {
         [SerializeField] private MeshRenderer _meshRenderer;
-        [SerializeField] private Light _light;
-        [SerializeField] private Light[] _additionalLights;
+        [SerializeField] private Light[] _light;
         [SerializeField] private SwitchLightTrigger _switchLightTrigger;
         [SerializeField] private HorrorPathTrigger _horrorPathTriggerToTurnOff;
         [SerializeField] public GameObject OnEnterTrigger;
 
         [Space] 
         [SerializeField] private float _maxLightValue;
-        [SerializeField] private float _maxAdditionalLightValue;
         [SerializeField][Range(0, 1)] private float _alpha = 1f;
         [SerializeField] private float _switchDuration;
 
@@ -35,6 +33,24 @@ namespace Scenes.Props
         
         MaterialPropertyBlock _block;
 
+        private float Alpha
+        {
+            get => _alpha;
+            set
+            {
+                if (IsAlphaSame(value))
+                    return;
+                
+                _alpha = value;
+                UpdateLight();
+            }
+        }
+
+        private bool IsAlphaSame(float value)
+        {
+            return Math.Abs(_alpha - value) < 0.001;
+        }
+
         private void Awake()
         {
             if (OnEnterTrigger != null)
@@ -42,7 +58,10 @@ namespace Scenes.Props
 
             _block = new MaterialPropertyBlock();
             _defaultColor = _meshRenderer.sharedMaterial.GetColor(EmissionColor);
+
+            _maxLightValue = _light[0].intensity;
             
+            Reset();
             UpdateLight();
         }
 
@@ -53,39 +72,29 @@ namespace Scenes.Props
             if (!_horrorPathTriggerToTurnOff.gameObject.activeSelf)
                 _horrorPathTriggerToTurnOff.SetActive(true);
         }
-
-        private float _previousAlpha;
-        private void Update()
-        {
-            if (Math.Abs(_previousAlpha - _alpha) < 0.01)
-                return;
-            
-            UpdateLight();
-        }
         
         private void UpdateLight()
         {
-            _light.intensity = _maxLightValue * _alpha;
-            foreach (var additionalLight in _additionalLights) {
-                additionalLight.intensity = _maxAdditionalLightValue * _alpha;
+            foreach (var l in _light) {
+                l.intensity = _maxLightValue * _alpha;
             }
-            
-            _block.SetColor(EmissionColor, _defaultColor * 0);
+
+            _block.SetColor(EmissionColor, _defaultColor * _alpha);
             _meshRenderer.SetPropertyBlock(_block);
-            _previousAlpha = _alpha;
         }
 
         public TweenerCore<float, float, FloatOptions> Switch(float endValue)
         {
-            if (Math.Abs(_alpha - endValue) < 0.01) {
+            if (IsAlphaSame(endValue)) {
                 return null;
             }
-            return DOTween.To(() => _alpha, _ => _alpha = _, endValue, _switchDuration);
+            
+            return DOTween.To(() => Alpha, _ => Alpha = _, endValue, _switchDuration);
         }
 
         public void HardSwitch(float value)
         {
-            _alpha = value;
+            Alpha = value;
         }
     }
 }
