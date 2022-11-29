@@ -920,7 +920,7 @@ PrefabInstance:
       objectReference: {fileID: 1752864190}
     - target: {fileID: 1564408238, guid: 1e22447bab8bd96459e37d29c896fd68, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 25
+      value: 34.62768
       objectReference: {fileID: 0}
     - target: {fileID: 1882272201, guid: 1e22447bab8bd96459e37d29c896fd68, type: 3}
       propertyPath: m_Lens.FieldOfView
