@@ -247,6 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSpeed: 0
   animator: {fileID: 5456748580426673394}
+  musicIntro: {fileID: 0}
+  musicLoop: {fileID: 8300000, guid: cba85d08509c06047bf7981d07695afb, type: 3}
 --- !u!1 &2846001114559205034
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSpeed: 0
   animator: {fileID: 2201097457719030451}
+  musicIntro: {fileID: 0}
+  musicLoop: {fileID: 8300000, guid: cba85d08509c06047bf7981d07695afb, type: 3}
 --- !u!1 &3308219978470328629
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +389,7 @@ GameObject:
   - component: {fileID: 2707268106244083594}
   - component: {fileID: 1372100914871061410}
   m_Layer: 0
-  m_Name: MusicPlayerService
+  m_Name: AudioService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,9 +424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0ef735c20e4ba780d84cc0a6ffc3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loopSource: {fileID: 4865901109531861766}
-  _intoSource: {fileID: 6334383563486470228}
-  _defaultVolume: 1
+  _musicLoopSource: {fileID: 4865901109531861766}
+  _musicIntroSource: {fileID: 6334383563486470228}
+  _audioMixer: {fileID: 24100000, guid: b0fe7ce03e335c8428ded3d5ae0a19a4, type: 2}
 --- !u!1 &4834350671179312980
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +478,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSpeed: 0
   animator: {fileID: 5035472404931227296}
+  musicIntro: {fileID: 0}
+  musicLoop: {fileID: 8300000, guid: cba85d08509c06047bf7981d07695afb, type: 3}
 --- !u!1 &4865901108357556650
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +537,7 @@ GameObject:
   - component: {fileID: 4865901109531861769}
   - component: {fileID: 4865901109531861766}
   m_Layer: 0
-  m_Name: Loop
+  m_Name: MusicLoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +567,7 @@ AudioSource:
   m_GameObject: {fileID: 4865901109531861768}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7439474422857345019, guid: b0fe7ce03e335c8428ded3d5ae0a19a4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -689,7 +695,7 @@ AudioSource:
   m_GameObject: {fileID: 4865901109566158633}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7193210161113938735, guid: b0fe7ce03e335c8428ded3d5ae0a19a4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1115,7 +1121,7 @@ GameObject:
   - component: {fileID: 506897195850651692}
   - component: {fileID: 6334383563486470228}
   m_Layer: 0
-  m_Name: Intro
+  m_Name: MusicIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1145,7 +1151,7 @@ AudioSource:
   m_GameObject: {fileID: 6547576859739647653}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7439474422857345019, guid: b0fe7ce03e335c8428ded3d5ae0a19a4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1575,6 +1581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSpeed: 0
   animator: {fileID: 6799182692825120136}
+  musicIntro: {fileID: 0}
+  musicLoop: {fileID: 8300000, guid: cba85d08509c06047bf7981d07695afb, type: 3}
 --- !u!1 &8909156237995351182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6398778053501469267, guid: b0aa136928bd72141ae431e9a394c780, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 634.475
+      value: 895.32
       objectReference: {fileID: 0}
     - target: {fileID: 6398778053501469267, guid: b0aa136928bd72141ae431e9a394c780, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1780,7 +1788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6398778053675975140, guid: b0aa136928bd72141ae431e9a394c780, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 618.955
+      value: 660.45
       objectReference: {fileID: 0}
     - target: {fileID: 6398778053675975140, guid: b0aa136928bd72141ae431e9a394c780, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1853,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088166008896232160, guid: e6e727100b430ab42a20e2154b59d8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 664.77
+      value: 460.255
       objectReference: {fileID: 0}
     - target: {fileID: 3088166008896232160, guid: e6e727100b430ab42a20e2154b59d8df, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2327,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4509641502340902422, guid: 39de3009334ad724298cda1b34e5f6bd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 475.315
+      value: 497.485
       objectReference: {fileID: 0}
     - target: {fileID: 4509641502340902422, guid: 39de3009334ad724298cda1b34e5f6bd, type: 3}
       propertyPath: m_AnchoredPosition.y
