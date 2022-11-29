@@ -1,6 +1,6 @@
 ﻿using SceneManager.ScriptableObjects;
 using UnityEditor;
-using UnityEditor.Callbacks;
+// using UnityEditor.Callbacks;
 // using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -71,7 +71,7 @@ namespace SceneManager.Editor
             Debug.Log($"SceneLink \"{asset.name}\" was updated!");
         }
         
-        [OnOpenAsset(1)]
+        // [OnOpenAsset(1)]
         private static bool UpdateLink(int instanceID, int line)
         {
             if (!ScriptableObjectAssetCreator.Validate<SceneLink>())

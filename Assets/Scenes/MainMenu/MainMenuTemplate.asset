@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 365bd0a50f58b494d86e4b5ff78d7d11, type: 3}
-  m_Name: Runner
+  m_Name: MainMenuTemplate
   m_EditorClassIdentifier: 
-  sceneAsset: {fileID: 102900000, guid: 14d516a2caab59a49b5db6e858c79467, type: 3}
-  scenePath: Assets/Scenes/Runner/Runner.unity
-  sceneName: Runner
+  sceneAsset: {fileID: 102900000, guid: 19feda2a4ba62424f8106947579e816b, type: 3}
+  scenePath: Assets\Scenes\MainMenu\MainMenuTemplate
+  sceneName: MainMenuTemplate

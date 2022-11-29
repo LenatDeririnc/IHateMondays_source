@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Plugins.ServiceLocator;
+using SceneManager;
 using SceneManager.ScriptableObjects;
 using Services;
 using UnityEngine;
@@ -25,12 +26,9 @@ public class MicroStartButton : InteractElement
         yield return new WaitForSeconds(1.5f);
         _soundHub.PlaySound(10);
         yield return new WaitForSeconds(5);
-
-        if (_sceneLink != null)
-        {
-            var sceneService = ServiceLocator.Get<SceneLoadingService>();
-            sceneService.LoadScene(_sceneLink);
-        }
+        
+        var sceneService = ServiceLocator.Get<SceneLoadingService>();
+        sceneService.LoadScene(_sceneLink, CurtainType.ComicZeldaToRunner);
         Debug.Log("Load next scene");
     }
 }
