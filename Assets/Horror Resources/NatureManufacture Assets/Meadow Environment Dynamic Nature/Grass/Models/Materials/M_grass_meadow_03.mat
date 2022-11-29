@@ -10,7 +10,7 @@ Material:
   m_Name: M_grass_meadow_03
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
-  - _ALPHABLEND_ON
+  - _ALPHATEST_ON
   - _NORMALMAP
   m_InvalidKeywords:
   - _DOUBLESIDED_ON
@@ -22,9 +22,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - DistortionVectors
   - TransparentDepthPrepass
@@ -179,7 +179,7 @@ Material:
     - _CullFarStart: 40
     - _CullMode: 0
     - _CullModeForward: 0
-    - _Cutoff: 0.2
+    - _Cutoff: 0.372
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalMapScale: 1
@@ -206,7 +206,7 @@ Material:
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
     - _Drag: 9.45
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveIntensity: 0
     - _EnableBlendModePreserveSpecularLighting: 1
@@ -235,7 +235,7 @@ Material:
     - _LinkDetailsWithBase: 1
     - _MaterialID: 5
     - _Metallic: 0
-    - _Mode: 2
+    - _Mode: 1
     - _NormalMapSpace: 0
     - _NormalScale: 0.998
     - _OcclusionStrength: 1
@@ -256,7 +256,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _Specular: 0.02
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefMV: 128
     - _StencilWriteMask: 7
@@ -283,14 +283,14 @@ Material:
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestModeDistortion: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _DryColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 1, g: 1, b: 1, a: 1}
     - _HealthyColor: {r: 0.875, g: 0.875, b: 0.875, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
