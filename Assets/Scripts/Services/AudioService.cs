@@ -15,6 +15,9 @@ namespace Services
         [FormerlySerializedAs("_intoSource")] 
         [FormerlySerializedAs("_introSource")] 
         private AudioSource _musicIntroSource;
+        
+        [SerializeField]
+        private AudioSource _ambientSource;
 
         [SerializeField] 
         private AudioMixer _audioMixer;
@@ -50,8 +53,8 @@ namespace Services
         {
             FadeMusicVolume(targetVolume, duration, null);
         }
-        
-        public void PlayBackgroundMusic(AudioClip intro, AudioClip loop, 
+
+        public void PlayBackgroundMusic(AudioClip intro, AudioClip loop, AudioClip ambient = null,
             float fadeOutDuration = 0, float fadeInDuration = 0f, 
             bool startFromBeginning = false)
         {
@@ -59,6 +62,7 @@ namespace Services
             {
                 _musicLoopSource.Stop();
                 _musicIntroSource.Stop();
+                _ambientSource.Stop();
                 _musicLoopSource.clip = loop;
 
                 if (intro)
@@ -70,6 +74,12 @@ namespace Services
                 else
                 {
                     _musicLoopSource.Play();
+                }
+
+                if (ambient) 
+                {
+                    _ambientSource.clip = ambient;
+                    _ambientSource.Play();
                 }
 
                 FadeMusicVolume(1f, fadeInDuration);
@@ -102,8 +112,8 @@ namespace Services
         
         private bool IsBackgroundMusicPlaying()
         {
-            var hasAnyVolume = _musicIntroSource.volume > 0f && _musicLoopSource.volume > 0f;
-            var isSomethingPlaying = _musicIntroSource.isPlaying || _musicLoopSource.isPlaying;
+            var hasAnyVolume = _musicIntroSource.volume > 0f && _musicLoopSource.volume > 0f && _ambientSource.volume > 0f;
+            var isSomethingPlaying = _musicIntroSource.isPlaying || _musicLoopSource.isPlaying || _ambientSource.isPlaying;
             return hasAnyVolume && isSomethingPlaying;
         }
         
@@ -116,6 +126,7 @@ namespace Services
                 _fadeSequence = DOTween.Sequence()
                     .Join(_musicIntroSource.DOFade(volume, duration))
                     .Join(_musicLoopSource.DOFade(volume, duration))
+                    .Join(_ambientSource.DOFade(volume, duration))
                     .SetTarget(this);
                 
                 Debug.Log($"Fade music to: {volume}");

@@ -12,5 +12,7 @@ namespace Player
         public virtual void SetRotation(Quaternion rotation) {}
 
         public virtual Vector3 GetPosition() => transform.position;
+
+        public virtual void TrySetFloorSteps(AudioClip[] clips) {}
     }
 }

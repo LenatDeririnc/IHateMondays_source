@@ -7,6 +7,7 @@ namespace Services
     {
         [SerializeField] private AudioClip _intro;
         [SerializeField] private AudioClip _loop;
+        [SerializeField] private AudioClip _ambient;
 
         [SerializeField] private float _fadeInDuration;
         [SerializeField] private float _oldMusicFadeOutDuration = 0.5f;
@@ -16,7 +17,7 @@ namespace Services
         public void Start()
         {
             _musicService = ServiceLocator.Get<AudioService>();
-            _musicService.PlayBackgroundMusic(_intro, _loop, _oldMusicFadeOutDuration, _fadeInDuration);
+            _musicService.PlayBackgroundMusic(_intro, _loop, _ambient, _oldMusicFadeOutDuration, _fadeInDuration);
         }
     }
 }

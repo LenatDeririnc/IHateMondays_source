@@ -1,100 +1,97 @@
-﻿using System;
-using System.Collections;
-using Plugins.MonoBehHelpers;
+﻿using Characters.Components;
+using DG.Tweening;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Characters.Components
+namespace Player.Components
 {
-    public class PlayerWalksteps : UpdateGetter, ISelfDeps
+    public class PlayerWalksteps : MonoBehaviour
     {
-        [SerializeField] private PlayerSound PlayerSound;
+        [SerializeField] AudioClip[] _defaultWalkSteps;
+        [SerializeField] AudioClip[] _parsedWalkSteps;
+        
+        [SerializeField] [Range(0, 1)] private float _maxVolume = 1;
+
         [SerializeField] private PlayerMovementBase  PlayerMovement;
         [SerializeField] private GroundCheckComponent groundCheckComponent;
+        [SerializeField] private AudioSource _walkstepsAudioSouece;
         
         [SerializeField] private float walkStepsTime = 1;
         [SerializeField] [Range(0, 1)] private float walkInputSoundOffsetMovement = 1f;
-        [SerializeField] private bool showDebugPlaySteps = false;
-        [SerializeField] private bool showDebugVelocityMagnitude = false;
+        
+        [SerializeField] private float _volumeDuration = 0.5f;
 
         private Coroutine walkCoroutine;
         
-        private SoundService _soundService;
-        private GameService _gameService;
         private FungusService _fungusService;
+        private Sequence _fadeSequence;
+        private float _fadeTargetAmount = -1;
+        private Sequence _walkstepsIntervalSequence;
+
+        private AudioClip[] CurrentWalkSteps => _parsedWalkSteps is not { Length: > 0 } ? _defaultWalkSteps : _parsedWalkSteps;
+
+        private int currentRandomIndex = 0;
+        private int[] randomIndexes;
 
         private void Awake()
         {
-            _gameService = ServiceLocator.Get<GameService>();
-            _soundService = ServiceLocator.Get<SoundService>();
             _fungusService = ServiceLocator.Get<FungusService>();
+            _walkstepsAudioSouece.volume = _maxVolume;
         }
 
-        public void SetupDeps()
+        private void WalkStepsStart(float time)
         {
-            PlayerSound = GetComponent<PlayerSound>();
-            PlayerMovement = GetComponent<PlayerMovementBase>();
-            groundCheckComponent = GetComponent<GroundCheckComponent>();
-        }
-
-        private void StartWalkStepsCoroutine()
-        {
-            if (walkCoroutine != null)
+            if (_walkstepsIntervalSequence != null)
                 return;
-            
-            walkCoroutine = StartCoroutine(WalkStepsCoroutine(walkStepsTime));
+
+            _walkstepsIntervalSequence = DOTween.Sequence();
+
+            _walkstepsIntervalSequence.AppendInterval(time / 2);
+            _walkstepsIntervalSequence.AppendCallback(PlayStep);
+            _walkstepsIntervalSequence.AppendInterval(time / 2);
+            _walkstepsIntervalSequence.SetLoops(-1);
         }
 
-        private void EndWalkStepsCoroutine()
+        private void RegenerateWalkstepsIndexes()
         {
-            if (walkCoroutine == null)
-                return;
+            if (randomIndexes == null) {
+                randomIndexes = new int[CurrentWalkSteps.Length];
+                for (int i = 0; i < CurrentWalkSteps.Length; i++) {
+                    randomIndexes[i] = i;
+                }
+            }
+
+            for (int i = 0; i < randomIndexes.Length; i++) {
+                var randomIndex = (int)Random.value * (randomIndexes.Length - 1);
+                (randomIndexes[i], randomIndexes[randomIndex]) = (randomIndexes[randomIndex], randomIndexes[i]);
+            }
             
-            StopCoroutine(walkCoroutine);
-            walkCoroutine = null;
+            currentRandomIndex = 0;
         }
 
-        private IEnumerator WalkStepsCoroutine(float time)
+        private AudioClip PeekRandomSound()
         {
-            yield return new WaitForSeconds(time / 2);
-            PlayStep();
-            yield return new WaitForSeconds(time / 2);
-            EndWalkStepsCoroutine();
+            if (randomIndexes == null || currentRandomIndex > randomIndexes.Length - 1) {
+                RegenerateWalkstepsIndexes();
+            }
+
+            return CurrentWalkSteps[randomIndexes[currentRandomIndex++]];
         }
 
         private void PlayStep()
         {
-            if (showDebugPlaySteps)
-                Debug.Log("Step");
-            
-            float floatrand = Random.value * (PlayerSound.walkSteps.Length - 1);
-            int rand = (int)floatrand;
+            var shot = PeekRandomSound();
 
-            var shot = PlayerSound.walkSteps[rand];
-            
             if (shot == null)
                 return;
         
-            _soundService.Sounds.PlayOneShot(shot, PlayerSound.volume * PlayerMovement.MoveDirection.magnitude);
+            _walkstepsAudioSouece.clip = shot;
+            _walkstepsAudioSouece.Play();
         }
 
-        public void PlayJump()
-        {
-            if (!enabled)
-                return;
-            if (PlayerSound.Jump != null) _soundService.Sounds.PlayOneShot(PlayerSound.Jump, PlayerSound.volume);
-        }
-
-        public void PlayGrounded()
-        {
-            if (!enabled)
-                return;
-            if (PlayerSound.Grounding != null) _soundService.Sounds.PlayOneShot(PlayerSound.Grounding,  PlayerSound.volume);
-        }
-
-        protected override void SentUpdate()
+        protected void Update()
         {
             if (_fungusService.IsDialogue)
             {
@@ -105,19 +102,40 @@ namespace Characters.Components
             var velocity = PlayerMovement.MoveDirection;
             velocity.y = 0;
 
-            if (showDebugVelocityMagnitude)
-            {
-                Debug.Log($"Player Velocity: {velocity.magnitude}, grounded: {groundCheckComponent.IsGrounded}");
-            }
-            
             if (velocity.magnitude > walkInputSoundOffsetMovement && groundCheckComponent.IsGrounded)
             {
-                StartWalkStepsCoroutine();
+                WalkStepsStart(walkStepsTime);
+                SetVolume(_maxVolume);
             }
             else
             {
-                EndWalkStepsCoroutine();
+                SetVolume(0, EndWalkStepsCoroutine);
             }
+        }
+
+        void SetVolume(float volume, TweenCallback onComplete = null)
+        {
+            if (!Mathf.Approximately(_fadeTargetAmount, volume)) {
+                _fadeSequence.Kill();
+                _fadeSequence = DOTween.Sequence()
+                    .Join(_walkstepsAudioSouece.DOFade(volume, _volumeDuration));
+                _fadeSequence.onComplete += onComplete;
+            }
+            
+            _fadeTargetAmount = volume;
+        }
+
+        private void EndWalkStepsCoroutine()
+        {
+            if (_walkstepsIntervalSequence != null)
+                _walkstepsIntervalSequence.Kill();
+
+            _walkstepsIntervalSequence = null;
+        }
+
+        public void SetFloorSteps(AudioClip[] clips)
+        {
+            _parsedWalkSteps = clips;
         }
     }
 }
