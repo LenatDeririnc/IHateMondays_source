@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2458,7 +2458,7 @@ MonoBehaviour:
 
     Toast
 
-    Cheez
+    Cheese
 
     Sausage'
   states:
@@ -4721,11 +4721,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdb83dd2ddad7442986a57e67d44993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateText: 'Find sandwich ingridients:
+  StateText: 'Find sandwich ingredients:
 
     Bread
 
-    Cheez
+    Cheese
 
     Sausage'
   states:
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdb83dd2ddad7442986a57e67d44993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateText: Slice ingridients
+  StateText: Slice the ingredients
   states:
   - <InteractElement>k__BackingField: {fileID: 227327301}
     IsGot: 0
@@ -5939,7 +5939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdb83dd2ddad7442986a57e67d44993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateText: Put sandwich in microwave
+  StateText: Put sandwich in the microwave
   states: []
   StateDone: 0
 --- !u!4 &1498503557
@@ -10905,7 +10905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.212
+      value: 0.1496
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10913,23 +10913,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.774
+      value: 8.8036
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9663313
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.2573014
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10937,7 +10937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 29.82
       objectReference: {fileID: 0}
     - target: {fileID: 3638849013975177167, guid: d2712387a86eb2845b8745bf190817a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
