@@ -147,8 +147,16 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
         } 
         else if (notification is FadeOutMusicMarker fadeOutMusicMarker)
         {
-            ServiceLocator.Get<AudioService>()
-                .StopBackgroundMusic(fadeOutMusicMarker.duration);
+            if (fadeOutMusicMarker.volume > 0f)
+            {
+                ServiceLocator.Get<AudioService>()
+                    .FadeMusicVolume(fadeOutMusicMarker.volume, fadeOutMusicMarker.duration);
+            }
+            else
+            {
+                ServiceLocator.Get<AudioService>()
+                    .StopBackgroundMusic(fadeOutMusicMarker.duration);
+            }
         }
         else if (notification is FightFinishedMarker)
         {

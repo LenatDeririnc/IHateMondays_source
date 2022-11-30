@@ -45,6 +45,11 @@ namespace Services
             get { _audioMixer.GetFloat("VoiceVolume", out var v); return v; }
             set => _audioMixer.SetFloat("VoiceVolume", value);
         }
+
+        public void FadeMusicVolume(float targetVolume, float duration)
+        {
+            FadeMusicVolume(targetVolume, duration, null);
+        }
         
         public void PlayBackgroundMusic(AudioClip intro, AudioClip loop, 
             float fadeOutDuration = 0, float fadeInDuration = 0f, 
@@ -67,7 +72,7 @@ namespace Services
                     _musicLoopSource.Play();
                 }
 
-                FadeVolume(1f, fadeInDuration);
+                FadeMusicVolume(1f, fadeInDuration);
             }
 
             if (IsBackgroundMusicPlaying()) 
@@ -78,7 +83,7 @@ namespace Services
                     _fadeTargetAmount > 0f)
                     return;
                 
-                FadeVolume(0f, fadeOutDuration, StartPlayback);
+                FadeMusicVolume(0f, fadeOutDuration, StartPlayback);
             }
             else 
             {
@@ -88,7 +93,7 @@ namespace Services
 
         public void StopBackgroundMusic(float fadeOutDuration)
         {
-            FadeVolume(0f, fadeOutDuration, () =>
+            FadeMusicVolume(0f, fadeOutDuration, () =>
             {
                 _musicIntroSource.Stop();
                 _musicLoopSource.Stop();
@@ -102,7 +107,7 @@ namespace Services
             return hasAnyVolume && isSomethingPlaying;
         }
         
-        private void FadeVolume(float volume, float duration, TweenCallback onComplete = null)
+        private void FadeMusicVolume(float volume, float duration, TweenCallback onComplete = null)
         {
             // Запускаем анимацию только в случае если target volume последнего fade не совпадает
             if (!Mathf.Approximately(_fadeTargetAmount, volume))
