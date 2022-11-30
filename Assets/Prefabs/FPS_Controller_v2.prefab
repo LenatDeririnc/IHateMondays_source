@@ -873,7 +873,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 2561959228807905420}
   _playerLook: {fileID: 1505441985290195444}
-  _flashlight: {fileID: 6868190257242918639}
 --- !u!114 &1505441985290195444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f83186e76024309a98fccc66e4326fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forwardVector: {fileID: 2561959228807905421}
+  _lookProvider: {fileID: 1505441985290195444}
   _moveSpeed: 5
   _transform: {fileID: 2561959228807905421}
   _rigidbody: {fileID: 2561959228807905458}

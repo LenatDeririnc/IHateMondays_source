@@ -21,16 +21,16 @@ namespace Player.Custom
             _index = cameraAnimator.GetLayerIndex(Movement);
         }
 
-        protected void FixedUpdate()
+        protected void LateUpdate()
         {
             cameraAnimator.SetFloat(Speed, _characterController.MoveDirection.magnitude);
             cameraAnimator.SetLayerWeight(_index, _characterController.MoveDirection.magnitude);
             
             _flashlightTransform.position = Vector3.Lerp(_flashlightTransform.position,
-                _flashlightTargetTransform.position, _lerpFlashlightAnimation * Time.fixedDeltaTime);
+                _flashlightTargetTransform.position, _lerpFlashlightAnimation * Time.deltaTime);
             
             _flashlightTransform.rotation = Quaternion.Lerp(_flashlightTransform.rotation,
-                _flashlightTargetTransform.rotation, _lerpFlashlightAnimation * Time.fixedDeltaTime);
+                _flashlightTargetTransform.rotation, _lerpFlashlightAnimation * Time.deltaTime);
         }
     }
 }

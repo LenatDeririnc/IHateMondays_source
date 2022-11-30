@@ -6,7 +6,7 @@ namespace Characters.Components
 {
     public abstract class PlayerMovementBase : MonoBehaviour
     {
-        [SerializeField] protected Transform _forwardVector;
+        [SerializeField] protected PlayerLook _lookProvider;
         [SerializeField] protected float _moveSpeed = 2f;
         
         protected Vector3 _movementInput;
@@ -43,10 +43,10 @@ namespace Characters.Components
 
         protected virtual Vector3 MovementInput()
         {
-            if (_forwardVector == null)
+            if (_lookProvider == null)
                 return Vector3.forward * _movementInput.z + Vector3.right * _movementInput.x;
 
-            return _forwardVector.forward * _movementInput.z + _forwardVector.right * _movementInput.x;
+            return _lookProvider.ForwardLook * _movementInput;
         }
 
         public virtual void SetMovementInput(Vector3 movement)

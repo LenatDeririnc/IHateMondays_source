@@ -11,7 +11,10 @@ namespace Characters.Components
         [SerializeField] private PlayerForwardTransform playerForwardTransform;
         [SerializeField] private CameraTransform CameraTransform;
         
+        public Quaternion ForwardLook => Quaternion.Euler(0, _yRotation, 0);
+        
         private float _xRotation = 0f;
+        private float _yRotation = 0f;
 
         private Vector3 _rotateDelta;
 
@@ -35,18 +38,17 @@ namespace Characters.Components
 
         private void RotateCamera(Vector3 rotateDelta)
         {
-            playerForwardTransform.Value.Rotate(Vector3.up, rotateDelta.x);
-
             _xRotation -= rotateDelta.y;
+            _yRotation += rotateDelta.x;
             _xRotation = Mathf.Clamp(_xRotation, -90, 90);
         
-            CameraTransform.Value.localRotation = Quaternion.Euler(_xRotation, 0, 0);
+            CameraTransform.Value.localRotation = Quaternion.Euler(_xRotation, _yRotation, 0);
         }
 
         public void SetRotation(float x, float y)
         {
-            playerForwardTransform.Value.rotation = Quaternion.AngleAxis(y, Vector3.up);
             _xRotation = x;
+            _yRotation = y;
             CameraTransform.Value.localRotation = Quaternion.Euler(_xRotation, 0, 0);
         }
 
