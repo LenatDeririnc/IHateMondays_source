@@ -94,5 +94,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1.7411011, g: 1.7411011, b: 1.7411011, a: 1}
+    - _EmissionColor: {r: 7.3772106, g: 7.3772106, b: 7.3772106, a: 1}
   m_BuildTextureStacks: []
