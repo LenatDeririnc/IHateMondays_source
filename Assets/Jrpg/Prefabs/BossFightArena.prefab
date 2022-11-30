@@ -4439,6 +4439,7 @@ MonoBehaviour:
   sfxSource: {fileID: 5281606245131870575}
   clipMenuOpen: {fileID: 8300000, guid: 9f7ad65d2b16d8346a0294d056a498f5, type: 3}
   clipMenuClose: {fileID: 8300000, guid: 925db9bb2ea97fd45bf60f5bc7069f4f, type: 3}
+  clipActionSelected: {fileID: 8300000, guid: 9f7ad65d2b16d8346a0294d056a498f5, type: 3}
   guyCurrentHp: 200
   guyMaxHp: 250
   nextScene: {fileID: 11400000, guid: 4d27137ed8da51c408093d428f37c8f5, type: 2}

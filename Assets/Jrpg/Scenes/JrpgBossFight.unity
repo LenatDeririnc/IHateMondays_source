@@ -888,7 +888,7 @@ PrefabInstance:
       objectReference: {fileID: 2038038663}
     - target: {fileID: 1564408238, guid: 1e22447bab8bd96459e37d29c896fd68, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 27.42851
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 90957581141604613, guid: 1e22447bab8bd96459e37d29c896fd68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3178,7 +3178,7 @@ Camera:
   far clip plane: 5000
   field of view: 30
   orthographic: 0
-  orthographic size: 9.3206415
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3227,7 +3227,7 @@ MonoBehaviour:
     m_Bits: 2147483647
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 1
-  antialiasingMode: 0
+  antialiasingMode: 3
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25

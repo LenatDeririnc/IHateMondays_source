@@ -25,6 +25,7 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
     public AudioSource sfxSource;
     public AudioClip clipMenuOpen;
     public AudioClip clipMenuClose;
+    public AudioClip clipActionSelected;
 
     public int guyCurrentHp;
     public int guyMaxHp;
@@ -218,6 +219,7 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
                 onClick = () =>
                 {
                     _isAttack1Played = true;
+                    PlaySfx(clipActionSelected);
                     PlayFightTimeline(attack1Director);
                 }
             });
@@ -231,6 +233,7 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
                 onClick = () =>
                 {
                     _isAttack2Played = true;
+                    PlaySfx(clipActionSelected);
                     PlayFightTimeline(attack2Director);
                 }
             });
@@ -244,6 +247,7 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
                 onClick = () =>
                 {
                     _isAttack3Played = true;
+                    PlaySfx(clipActionSelected);
                     PlayFightTimeline(attack3Director);
                 }
             });
@@ -257,6 +261,7 @@ public class JrpgBossFightManager : MonoBehaviour, INotificationReceiver
                 onClick = () =>
                 {
                     _isAttack4Played = true;
+                    PlaySfx(clipActionSelected);
                     PlayFightTimeline(attack4Director);
                 }
             });
