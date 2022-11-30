@@ -1,5 +1,6 @@
 ﻿using Fungus;
 using Player;
+using Player.Components;
 using Player.Custom;
 using Plugins.ServiceLocator;
 using Services;
@@ -17,6 +18,11 @@ namespace Characters.Components
 
         private SceneLoadingService _sceneLoadingService;
         private FungusService _fungusService;
+
+        public override void TrySetFloorSteps(AudioClip[] clips)
+        {
+            PlayerWalksteps.SetFloorSteps(clips);
+        }
 
         public void Awake()
         {
@@ -52,7 +58,6 @@ namespace Characters.Components
 
         public void Update()
         {
-            PlayerWalksteps.UpdateInvoke();
             playerInputFPS.UpdateInvoke();
             PlayerLook.UpdateInvoke();
             PlayerInteract.UpdateInvoke();

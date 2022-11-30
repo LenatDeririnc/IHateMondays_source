@@ -43,7 +43,7 @@ namespace SceneManager
             ServiceLocator.Get<InputBridgeService>()
                 .SetCursorLocked(false);
             ServiceLocator.Get<AudioService>()
-                .PlayBackgroundMusic(musicIntro, musicLoop, 1f);
+                .PlayBackgroundMusic(musicIntro, musicLoop, null, 1f);
         }
     }
 }
