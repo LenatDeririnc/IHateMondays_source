@@ -155,6 +155,7 @@ MonoBehaviour:
   _stage: {fileID: 1159668935}
   _flowchart: {fileID: 98336728}
   _blockNameStart: Start
+  _endScene: {fileID: 11400000, guid: 42a69b0cace3c264d8852460f376aeca, type: 2}
 --- !u!4 &91863487
 Transform:
   m_ObjectHideFlags: 0
@@ -269,6 +270,7 @@ GameObject:
   - component: {fileID: 98336807}
   - component: {fileID: 98336806}
   - component: {fileID: 98336805}
+  - component: {fileID: 98336822}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -316,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 124.35028, y: -386.3249}
+  scrollPos: {x: 173.1308, y: -388.7638}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -328,9 +330,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 98336765}
-  selectedCommands:
-  - {fileID: 98336755}
+  - {fileID: 98336774}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1005,7 +1006,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: d2e539d3b6939c842b62b8410fd10de2, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: a75d4163b5bbd9e479dfe92cfa3a0bc6, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1086,7 +1087,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: 81911df81585e074da9e17d649b2e006, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1221,6 +1222,7 @@ MonoBehaviour:
   - {fileID: 98336756}
   - {fileID: 98336805}
   - {fileID: 98336755}
+  - {fileID: 98336822}
   suppressAllAutoSelections: 0
 --- !u!114 &98336766
 MonoBehaviour:
@@ -1261,7 +1263,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: c48de40b958ff5b4185c8d7abff6d7ec, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1511,7 +1513,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: bd0f8c688b00d9c49a6e10daafb28910, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1538,7 +1540,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 952631356}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: 3a5c35d895627a646a966e48c256ffaf, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -2788,6 +2790,34 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 1
+--- !u!114 &98336822
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98336725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 104
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 91863485}
+  targetComponentAssemblyName: Services.VisualNovelService, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: VisualNovelService
+  targetMethod: NextScene
+  targetMethodText: 'NextScene (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &119900788
 GameObject:
   m_ObjectHideFlags: 0
