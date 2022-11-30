@@ -21,4 +21,9 @@ public class SoundsContainer : MonoBehaviour
             soundService.Sounds.PlayOneShot(AudioSources[soundIndex]);
         }
     }
+
+    public void StopPlay()
+    {
+        soundService.Sounds.Stop();
+    }
 }

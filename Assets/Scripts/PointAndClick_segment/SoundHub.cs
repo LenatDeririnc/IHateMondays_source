@@ -11,4 +11,8 @@ public class SoundHub : MonoBehaviour
         _soundsContainer.PlaySound(index);
     }
 
+    public void StopSound()
+    {
+        _soundsContainer.StopPlay();
+    }
 }
