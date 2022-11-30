@@ -9608,6 +9608,249 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9166528d988c78d4fa805641dbf5a682, type: 3}
   m_PrefabInstance: {fileID: 1379470070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &746551551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746551552}
+  - component: {fileID: 746551559}
+  - component: {fileID: 746551558}
+  - component: {fileID: 746551557}
+  - component: {fileID: 746551556}
+  - component: {fileID: 746551555}
+  - component: {fileID: 746551554}
+  - component: {fileID: 746551553}
+  - component: {fileID: 746551560}
+  m_Layer: 0
+  m_Name: Flowchart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &746551552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.0206246, y: -0.08905911, z: -13.239427}
+  m_LocalScale: {x: 0.29085848, y: 0.16492426, z: 0.17376855}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1783877509}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &746551553
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 6
+  indentLevel: 0
+  soundClip: {fileID: 8300000, guid: 84ec66381599d4340ac9253f269fd71b, type: 3}
+  volume: 1
+  waitUntilFinished: 1
+--- !u!114 &746551554
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1783877504}
+  targetComponentAssemblyName: Scenes.Props.SwitchSceneTrigger, Assembly-CSharp,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: SwitchSceneTrigger
+  targetMethod: LoadScene
+  targetMethodText: 'LoadScene (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &746551555
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 4
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 3
+  durationOLD: 0
+--- !u!114 &746551556
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 3
+  indentLevel: 0
+  storyText: Oh no, I lost my phone!
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &746551557
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53117edf97d6430b869254595f3981e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  fadeSpeed: 1
+--- !u!114 &746551558
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 67
+    y: 69
+    width: 77.2
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 0
+  blockName: Start
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 746551557}
+  - {fileID: 746551560}
+  - {fileID: 746551553}
+  - {fileID: 746551556}
+  - {fileID: 746551555}
+  - {fileID: 746551554}
+  suppressAllAutoSelections: 0
+--- !u!114 &746551559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  scrollPos: {x: 0, y: 0}
+  variablesScrollPos: {x: 0, y: 0}
+  variablesExpanded: 1
+  blockViewHeight: 400
+  zoom: 1
+  scrollViewRect:
+    serializedVersion: 2
+    x: -343
+    y: -340
+    width: 1114
+    height: 859
+  selectedBlocks:
+  - {fileID: 746551558}
+  selectedCommands:
+  - {fileID: 746551560}
+  variables: []
+  description: 
+  stepPause: 0
+  colorCommands: 1
+  hideComponents: 1
+  saveSelection: 1
+  localizationId: 
+  showLineNumbers: 0
+  hideCommands: []
+  luaEnvironment: {fileID: 0}
+  luaBindingName: flowchart
+--- !u!114 &746551560
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746551551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 7
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1783877504}
+  targetComponentAssemblyName: Scenes.Props.SwitchSceneTrigger, Assembly-CSharp,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: SwitchSceneTrigger
+  targetMethod: DisablePlayer
+  targetMethodText: 'DisablePlayer (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &747295663
 GameObject:
   m_ObjectHideFlags: 0
@@ -11886,7 +12129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: -56, y: -21}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -11927,7 +12170,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 260
     y: 171
-    width: 60
+    width: 77.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -11952,7 +12195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: Boxes! I can use boxes!
+  storyText: I guess I can use boxes to get to the other side.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -14192,7 +14435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1564298679}
+  selectedFlowchart: {fileID: 746551559}
 --- !u!4 &1154594827
 Transform:
   m_ObjectHideFlags: 1
@@ -18665,6 +18908,8 @@ GameObject:
   - component: {fileID: 1564298680}
   - component: {fileID: 1564298683}
   - component: {fileID: 1564298682}
+  - component: {fileID: 1564298685}
+  - component: {fileID: 1564298684}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -19265,7 +19510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 147
+    x: 146
     y: 97
     width: 77.2
     height: 40
@@ -19284,6 +19529,8 @@ MonoBehaviour:
   - {fileID: 1564298670}
   - {fileID: 1564298669}
   - {fileID: 1564298681}
+  - {fileID: 1564298685}
+  - {fileID: 1564298684}
   - {fileID: 1564298668}
   - {fileID: 1564298666}
   - {fileID: 1564298682}
@@ -19306,7 +19553,7 @@ MonoBehaviour:
   scrollPos: {x: 59, y: 52}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 155
+  blockViewHeight: 362.8
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -19317,7 +19564,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1564298678}
   selectedCommands:
-  - {fileID: 1564298668}
+  - {fileID: 1564298684}
   variables:
   - {fileID: 1564298675}
   description: 
@@ -19418,6 +19665,40 @@ MonoBehaviour:
   indentLevel: 0
   holder: {fileID: 11400000, guid: eb1ccf74ae15c524a81af8b664e0b9b5, type: 2}
   variable: {fileID: 1564298675}
+--- !u!114 &1564298684
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564298664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 20
+  indentLevel: 1
+  soundClip: {fileID: 8300000, guid: 92ee864fd6da12f40ba74fe1fd777267, type: 3}
+  volume: 1
+  waitUntilFinished: 0
+--- !u!114 &1564298685
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564298664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 19
+  indentLevel: 1
+  soundClip: {fileID: 8300000, guid: a0205b32bcf70c848aa348bed3e734c0, type: 3}
+  volume: 1
+  waitUntilFinished: 0
 --- !u!1001 &1564680999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22084,6 +22365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _switchScene: {fileID: 11400000, guid: d93c26cc484cb6c40a9068b4dfd977fc, type: 2}
+  _flowchart: {fileID: 746551559}
+  _blockName: Start
 --- !u!65 &1783877506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22158,7 +22441,8 @@ Transform:
   m_LocalPosition: {x: -20.6995, y: 0.54, z: 76.19}
   m_LocalScale: {x: 3.438098, y: 6.0633893, z: 5.754781}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 746551552}
   m_Father: {fileID: 1706075224}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

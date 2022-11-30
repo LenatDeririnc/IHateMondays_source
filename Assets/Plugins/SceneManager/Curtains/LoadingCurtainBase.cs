@@ -31,5 +31,8 @@ namespace SceneManager
         {
             Show(_defaultSpeed, entireEndLoadAction);
         }
+
+        public virtual void Reset() 
+        {}
     }
 }

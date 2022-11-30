@@ -17,6 +17,13 @@ namespace SceneManager
 
             return null;
         }
+
+        public void ResetAllCurtains()
+        {
+            foreach (var curtainInfo in _curtainList) {
+                curtainInfo.curtain.Reset();
+            }
+        }
         
         [Serializable]
         public struct CurtainInfo

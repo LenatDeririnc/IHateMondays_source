@@ -30,6 +30,7 @@ namespace SceneManager
 
             _nextScene = sceneLink;
             _currentCurtain = _curtainManager.GetCurtain(curtainType);
+            
             _currentCurtain.Show();
             
             _isSceneLoadingStarted = false;

@@ -7,5 +7,6 @@
         ComicJrpgToHorror,
         ComicRunnerToJrpg,
         ComicZeldaToRunner,
+        None,
     }
 }

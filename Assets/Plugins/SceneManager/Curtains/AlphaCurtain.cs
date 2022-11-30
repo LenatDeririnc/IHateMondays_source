@@ -26,6 +26,12 @@ namespace SceneManager
             }
         }
 
+        public override void Reset()
+        {
+            canvasGroup.alpha = 0;
+            Enable(false);
+        }
+
         public override void Show(float speed, Action entireEndLoadAction = null)
         {
             Enable(true);
