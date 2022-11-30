@@ -74,7 +74,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0
+    - _Amplitude: 0.3
     - _BumpScale: 1
     - _Cull: 0
     - _Cutoff: 0.5
@@ -98,7 +98,7 @@ Material:
     - _ZWrite: 1
     - _isToggled: 0
     m_Colors:
-    - _Color: {r: 0.26307857, g: 0.754717, b: 0.18796723, a: 1}
+    - _Color: {r: 0, g: 0.5540445, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowDirection: {r: 1, g: 0, b: 1, a: 0}
     - _FlowDirection1: {r: 0.05, g: 0, b: 0, a: 1}
