@@ -36,7 +36,7 @@ Shader "Ultimate 10+ Shaders/Dissolve"
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _NoiseTex ("Noise", 2D) = "white" {}
-        _Metalic ("Metalic", 2D) = "white" {}
+        _Metalic ("Metalic", 2D) = "black" {}
         _NormalMap ("NormalMap", 2D) = "bump" {}
 
         _Cutoff ("Cut off", Range(0, 1)) = 0.25
