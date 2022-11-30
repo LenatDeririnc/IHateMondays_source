@@ -26,7 +26,7 @@ public class MicroStartButton : InteractElement
         yield return new WaitForSeconds(1.5f);
         _soundHub.PlaySound(10);
         yield return new WaitForSeconds(5);
-        
+        _soundHub.StopSound();
         var sceneService = ServiceLocator.Get<SceneLoadingService>();
         sceneService.LoadScene(_sceneLink, CurtainType.ComicZeldaToRunner);
         Debug.Log("Load next scene");
