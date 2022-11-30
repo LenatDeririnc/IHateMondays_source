@@ -28,7 +28,7 @@ namespace Characters.Components
         {
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             _fungusService = ServiceLocator.Get<FungusService>();
-            
+
             _sceneLoadingService.SceneLoader.OnStartLoad += OnLoadingStart;
             _fungusService.OnBlockStart += OnBlockStart;
             _fungusService.OnBlockEnd += OnBlockEnd;
@@ -65,9 +65,16 @@ namespace Characters.Components
 
         public void SetActive(bool value)
         {
-            PlayerMovementBase.enabled = value;
-            PlayerInteract.enabled = value;
-            PlayerLook.enabled = value;
+            try
+            {
+                PlayerMovementBase.enabled = value;
+                PlayerInteract.enabled = value;
+                PlayerLook.enabled = value;
+            }
+            catch
+            {
+                Debug.Log("FPSController crash from set active - null ref components");
+            }
         }
 
         public override void SetPositionAndRotation(Transform positionToRespawn)
