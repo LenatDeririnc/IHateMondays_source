@@ -47,7 +47,7 @@ Shader "Ultimate 10+ Shaders/Dissolve"
     }
     SubShader
     {
-        Tags { "RenderType"="Geometry" "Queue"="Geometry" }
+        Tags { "RenderType"="Opaque" "Queue"="Geometry" }
         LOD 200
         Cull [_Cull]
 
