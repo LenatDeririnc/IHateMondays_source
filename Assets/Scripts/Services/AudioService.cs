@@ -56,8 +56,25 @@ namespace Services
 
         public void PlayBackgroundMusic(AudioClip intro, AudioClip loop, AudioClip ambient = null,
             float fadeOutDuration = 0, float fadeInDuration = 0f, 
-            bool startFromBeginning = false)
+            bool startFromBeginning = false, float stopMusicFade = 1f)
         {
+            if (intro == null && loop == null && ambient == null) {
+                if (IsBackgroundMusicPlaying()) 
+                {
+                    if (!startFromBeginning && 
+                        _musicLoopSource.clip == loop && 
+                        _musicIntroSource.clip == intro && 
+                        _fadeTargetAmount > 0f)
+                        return;
+                
+                    FadeMusicVolume(0f, fadeOutDuration, StartPlayback);
+                }
+                else
+                {
+                    StopBackgroundMusic(stopMusicFade);
+                }
+            }
+            
             void StartPlayback()
             {
                 _musicLoopSource.Stop();

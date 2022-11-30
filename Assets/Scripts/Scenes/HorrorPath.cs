@@ -41,7 +41,7 @@ namespace Scenes
         {
             Sequence sequence = DOTween.Sequence();
             foreach (var l in _lamps) {
-                var s = l.Switch(0);
+                var s = l.SwitchOff();
                 if (s != null)
                     sequence.Join(s);
             }

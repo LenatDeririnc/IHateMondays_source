@@ -13,6 +13,8 @@ namespace Scenes.Props
         [SerializeField] private SwitchLightTrigger _switchLightTrigger;
         [SerializeField] private HorrorPathTrigger _horrorPathTriggerToTurnOff;
         [SerializeField] public GameObject OnEnterTrigger;
+        [SerializeField] private AudioSource _source;
+        [SerializeField] private AudioClip _enableSound;
 
         [Space] 
         [SerializeField] private float _maxLightValue;
@@ -88,8 +90,19 @@ namespace Scenes.Props
             if (IsAlphaSame(endValue)) {
                 return null;
             }
-            
+
             return DOTween.To(() => Alpha, _ => Alpha = _, endValue, _switchDuration);
+        }
+
+        public TweenerCore<float, float, FloatOptions> SwitchOn()
+        {
+            _source.PlayOneShot(_enableSound);
+            return Switch(1);
+        }
+
+        public TweenerCore<float, float, FloatOptions> SwitchOff()
+        {
+            return Switch(0);
         }
 
         public void HardSwitch(float value)

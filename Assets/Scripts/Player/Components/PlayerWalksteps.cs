@@ -1,4 +1,5 @@
-﻿using Characters.Components;
+﻿using System;
+using Characters.Components;
 using DG.Tweening;
 using Plugins.ServiceLocator;
 using Services;
@@ -39,6 +40,14 @@ namespace Player.Components
         {
             _fungusService = ServiceLocator.Get<FungusService>();
             _walkstepsAudioSouece.volume = _maxVolume;
+        }
+
+        private void OnDisable()
+        {
+            if (_walkstepsIntervalSequence != null) {
+                _walkstepsIntervalSequence.Kill();
+                _walkstepsIntervalSequence = null;
+            }
         }
 
         private void WalkStepsStart(float time)

@@ -36,10 +36,10 @@ namespace Scenes
                 _originLamp.HorrorPathTriggerToTurnOff.SetActive(false);
             
             if (_originLamp.LampToTurnOn != null)
-                _originLamp.LampToTurnOn.Switch(1);
+                _originLamp.LampToTurnOn.SwitchOn();
             
             if (_originLamp.LampToTurnOff != null)
-                _originLamp.LampToTurnOff.Switch(0);
+                _originLamp.LampToTurnOff.SwitchOff();
             
             _isEntered = true;
         }

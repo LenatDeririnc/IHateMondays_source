@@ -25,7 +25,7 @@ namespace Scenes
                 return;
             
             if (_lampToTurnOn != null)
-                _lampToTurnOn.Switch(1);
+                _lampToTurnOn.SwitchOn();
 
             _isEntered = true;
         }
