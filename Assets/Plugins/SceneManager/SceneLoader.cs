@@ -53,7 +53,6 @@ namespace SceneManager
             {
                 // Короткая задержка, так как если сделать hide в тот же момент что и активация сцены,
                 // анимация будет очень дёрганная из за Lag Spike'а во время активации
-                _currentLoadingScene.allowSceneActivation = true;
                 _isSceneLoadingInitiated = false;
                 _isSceneLoadingStarted = false;
                 
@@ -67,6 +66,7 @@ namespace SceneManager
                         .SetUpdate(true);
                 };
                 
+                _currentLoadingScene.allowSceneActivation = true;
                 _currentCurtain = null;
             }
         }
