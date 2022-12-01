@@ -24,6 +24,7 @@ namespace SceneManager
         public override void Hide(float speed, Action entireEndLoadAction = null)
         {
             _canLoadScene = false;
+            animator.isAllPagesShown = false;
             fadeAnimator.Hide();
             animator.Hide();
         }
@@ -33,6 +34,7 @@ namespace SceneManager
             whooshSource.Play();
             
             _canLoadScene = false;
+            animator.isAllPagesShown = false;
             fadeAnimator.Show();
             DOTween.Sequence()
                 .InsertCallback(fadeAnimator.duration, () => _canLoadScene = true)

@@ -26,17 +26,24 @@ public class ComicStripAnimator : MonoBehaviour
     private void Awake()
     {
         gameObject.SetActive(false);
+
+        for(var i = 0; i < strips.Length; i++)
+            strips[i].initialDirection = strips[i].imageContainer.pivot;
     }
 
     public void Show()
     {
         DOTween.Kill(this);
+        DOTween.Kill(finishGroup);
         gameObject.SetActive(true);
 
+        finishGroup.alpha = 1f;
         finishGroup.blocksRaycasts = true;
         finishGroup.interactable = true;
         isAllPagesShown = false;
         _currentStripIndex = 0;
+        
+        overlayLines.color = Color.black;
         
         foreach (var strip in strips)
         {
@@ -89,6 +96,7 @@ public class ComicStripAnimator : MonoBehaviour
         strip.image.DOFade(1f, fadeInDuration);
         strip.image.rectTransform.anchoredPosition = strip.imageStartPosition;
         strip.image.rectTransform.DOAnchorPos(strip.imageEndPosition, stripShowDuration);
+        strip.imageContainer.pivot = strip.initialDirection;
 
         strip.textGroup.DOFade(1f, fadeInDuration);
     }
@@ -126,5 +134,6 @@ public class ComicStripAnimator : MonoBehaviour
         
         public RectTransform imageContainer;
         public Vector2 explodeDirection;
+        public Vector2 initialDirection;
     }
 }
