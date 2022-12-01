@@ -3,6 +3,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Fungus;
 using Plugins.ServiceLocator;
+using SceneManager;
 using SceneManager.ScriptableObjects;
 using Scenes.Props;
 using Services;
@@ -57,7 +58,7 @@ namespace Scenes
             _playerService.Player.gameObject.SetActive(false);
         }
 
-        private TweenerCore<float, float, FloatOptions> TurnOffLight()
+        private Tween TurnOffLight()
         {
             canUseReposition = false;
             return _lightLamp.SwitchOff();
@@ -65,9 +66,7 @@ namespace Scenes
 
         private void NextScene()
         {
-            var sequence = DOTween.Sequence();
-            sequence.AppendInterval(_loadSceneInterval);
-            sequence.onComplete += () => _sceneService.LoadScene(_nextScene);
+            _sceneService.LoadScene(_nextScene, CurtainType.None);
         }
 
         private void OnTriggerExit(Collider other)

@@ -1,7 +1,5 @@
 ﻿using System;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 namespace Scenes.Props
@@ -85,22 +83,22 @@ namespace Scenes.Props
             _meshRenderer.SetPropertyBlock(_block);
         }
 
-        public TweenerCore<float, float, FloatOptions> Switch(float endValue)
+        public Tween Switch(float endValue)
         {
             if (IsAlphaSame(endValue)) {
-                return null;
+                return DOTween.Sequence();
             }
 
             return DOTween.To(() => Alpha, _ => Alpha = _, endValue, _switchDuration);
         }
 
-        public TweenerCore<float, float, FloatOptions> SwitchOn()
+        public Tween SwitchOn()
         {
             _source.PlayOneShot(_enableSound);
             return Switch(1);
         }
 
-        public TweenerCore<float, float, FloatOptions> SwitchOff()
+        public Tween SwitchOff()
         {
             return Switch(0);
         }
