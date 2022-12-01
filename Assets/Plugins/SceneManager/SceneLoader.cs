@@ -49,22 +49,25 @@ namespace SceneManager
                 _currentLoadingScene.allowSceneActivation = false;
             }
             
-            if (_currentCurtain && _currentCurtain.CanActivateScene && _currentLoadingScene.progress >= 0.9)
+            if (_currentCurtain && _currentCurtain.CanActivateScene)
             {
                 // Короткая задержка, так как если сделать hide в тот же момент что и активация сцены,
                 // анимация будет очень дёрганная из за Lag Spike'а во время активации
-
-                var curtain = _currentCurtain;
-                DOTween.Kill(this);
-                DOTween.Sequence()
-                    .InsertCallback(0.1f, () => curtain.Hide())
-                    .SetTarget(this)
-                    .SetUpdate(true);
-
-                _currentCurtain = null;
                 _currentLoadingScene.allowSceneActivation = true;
                 _isSceneLoadingInitiated = false;
                 _isSceneLoadingStarted = false;
+                
+                var curtain = _currentCurtain;
+                _currentLoadingScene.completed += _ =>
+                {
+                    DOTween.Kill(this);
+                    DOTween.Sequence()
+                        .InsertCallback(0.1f, () => curtain.Hide())
+                        .SetTarget(this)
+                        .SetUpdate(true);
+                };
+                
+                _currentCurtain = null;
             }
         }
     }
