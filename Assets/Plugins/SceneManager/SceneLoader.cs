@@ -49,7 +49,7 @@ namespace SceneManager
                 _currentLoadingScene.allowSceneActivation = false;
             }
             
-            if (_currentCurtain && _currentCurtain.CanActivateScene)
+            if (_currentCurtain && _currentCurtain.CanActivateScene && _currentLoadingScene.progress > 0.89)
             {
                 // Короткая задержка, так как если сделать hide в тот же момент что и активация сцены,
                 // анимация будет очень дёрганная из за Lag Spike'а во время активации
