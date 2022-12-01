@@ -294,7 +294,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 64
     y: 27
-    width: 76.34146
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 173.1308, y: -388.7638}
+  scrollPos: {x: 281.66742, y: -108.27585}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -330,7 +330,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 98336774}
+  - {fileID: 98336765}
   selectedCommands: []
   variables: []
   description: 
@@ -374,7 +374,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 72
     y: 135
-    width: 87.073166
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 246
     y: 256.9
-    width: 79.26829
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 83
     y: 256.9
-    width: 76.34146
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -82
     y: 256.9
-    width: 75.365845
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   storyText: Thank you so much, you really saved the day just then.
   description: 
   character: {fileID: 448157533}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 03d0576532ef8d94aa6e8e6b427d90fd, type: 3}
   voiceOverClip: {fileID: 8300000, guid: 68c0bc6bcf362654daaeb9a92c96fbf4, type: 3}
   showAlways: 1
   showCount: 1
@@ -1114,7 +1114,7 @@ MonoBehaviour:
     to bring their phone back. "
   description: 
   character: {fileID: 448157533}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 03d0576532ef8d94aa6e8e6b427d90fd, type: 3}
   voiceOverClip: {fileID: 8300000, guid: 2d781aefa5544ea49a05f8bbb4367a7f, type: 3}
   showAlways: 1
   showCount: 1
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   storyText: Are you down to hang out sometime?
   description: 
   character: {fileID: 448157533}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 03d0576532ef8d94aa6e8e6b427d90fd, type: 3}
   voiceOverClip: {fileID: 8300000, guid: 40ceb19a0ecb8e943bac954f2827541f, type: 3}
   showAlways: 1
   showCount: 1
@@ -1209,7 +1209,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 72.70001
     y: 660.6
-    width: 89.02438
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1417,7 +1417,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 78.30002
     y: 521.6
-    width: 77.31707
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1450,7 +1450,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 251.30002
     y: 517.6
-    width: 78.29268
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1480,7 +1480,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -103
     y: 517.9
-    width: 76.34146
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1764,7 +1764,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 74.9011
     y: 385.9
-    width: 88.04877
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
