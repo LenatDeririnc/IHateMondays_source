@@ -16837,7 +16837,7 @@ MonoBehaviour:
   _group: {fileID: 40833617}
   _startIngerval: 1
   _duration: 1
-  _interval: 5
+  _interval: 1.75
 --- !u!114 &1969852231
 MonoBehaviour:
   m_ObjectHideFlags: 0
