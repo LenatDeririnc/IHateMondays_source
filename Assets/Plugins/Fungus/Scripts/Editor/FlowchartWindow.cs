@@ -343,7 +343,7 @@ namespace Fungus.EditorUtils
         {
             //an undo redo may have added or removed blocks so
             UpdateBlockCollection();
-            flowchart.UpdateSelectedCache();
+            flowchart?.UpdateSelectedCache();
             Repaint();
         }
 

@@ -1,7 +1,6 @@
 ﻿using Fungus;
 using Player;
 using Player.Components;
-using Player.Custom;
 using Plugins.ServiceLocator;
 using Services;
 using UnityEngine;
@@ -28,33 +27,27 @@ namespace Characters.Components
         {
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             _fungusService = ServiceLocator.Get<FungusService>();
+        }
 
+        private void OnEnable()
+        {
             _sceneLoadingService.SceneLoader.OnStartLoad += OnLoadingStart;
             _fungusService.OnBlockStart += OnBlockStart;
             _fungusService.OnBlockEnd += OnBlockEnd;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _sceneLoadingService.SceneLoader.OnStartLoad -= OnLoadingStart;
             _fungusService.OnBlockStart -= OnBlockStart;
             _fungusService.OnBlockEnd -= OnBlockEnd;
         }
 
-        private void OnBlockStart(Block block)
-        {
-            SetActive(false);
-        }
+        private void OnLoadingStart() => SetActive(false);
 
-        private void OnBlockEnd(Block block)
-        {
-            SetActive(true);
-        }
+        private void OnBlockStart(Block block) => SetActive(false);
 
-        private void OnLoadingStart()
-        {
-            SetActive(false);
-        }
+        private void OnBlockEnd(Block block) => SetActive(true);
 
         public void Update()
         {
@@ -65,16 +58,9 @@ namespace Characters.Components
 
         public void SetActive(bool value)
         {
-            try
-            {
-                PlayerMovementBase.enabled = value;
-                PlayerInteract.enabled = value;
-                PlayerLook.enabled = value;
-            }
-            catch
-            {
-                Debug.Log("FPSController crash from set active - null ref components");
-            }
+            PlayerMovementBase.enabled = value;
+            PlayerInteract.enabled = value;
+            PlayerLook.enabled = value;
         }
 
         public override void SetPositionAndRotation(Transform positionToRespawn)

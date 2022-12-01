@@ -25,12 +25,6 @@ namespace Services
         {
             BlockSignals.OnBlockStart += OnBlockStartAction;
             BlockSignals.OnBlockEnd += OnBlockEndAction;
-            
-            BlockSignals.OnBlockStart += OnBlockStart;
-            BlockSignals.OnBlockEnd += OnBlockEnd;
-
-            MenuDialog.OnMenuDialogEnabled += OnMenuStart;
-            MenuDialog.OnMenuDialogDisabled += OnMenuEnd;
 
             MenuDialog.OnMenuDialogEnabled += OnMenuDialogueStartAction;
             MenuDialog.OnMenuDialogDisabled += OnMenuDialogueEndAction;
@@ -42,13 +36,7 @@ namespace Services
         {
             BlockSignals.OnBlockStart -= OnBlockStartAction;
             BlockSignals.OnBlockEnd -= OnBlockEndAction;
-            
-            BlockSignals.OnBlockStart -= OnBlockStart;
-            BlockSignals.OnBlockEnd -= OnBlockEnd;
-            
-            MenuDialog.OnMenuDialogEnabled -= OnMenuStart;
-            MenuDialog.OnMenuDialogDisabled -= OnMenuEnd;
-            
+
             MenuDialog.OnMenuDialogEnabled -= OnMenuDialogueStartAction;
             MenuDialog.OnMenuDialogDisabled -= OnMenuDialogueEndAction;
         }
@@ -56,21 +44,25 @@ namespace Services
         private void OnMenuDialogueStartAction()
         {
             _isMenu = true;
+            OnMenuStart?.Invoke();
         }
 
         private void OnMenuDialogueEndAction()
         {
             _isMenu = false;
+            OnMenuEnd?.Invoke();
         }
 
         private void OnBlockStartAction(Block block)
         {
             _isDialogue = true;
+            OnBlockStart?.Invoke(block);
         }
 
         private void OnBlockEndAction(Block block)
         {
             _isDialogue = false;
+            OnBlockEnd?.Invoke(block);
         }
     }
 }
