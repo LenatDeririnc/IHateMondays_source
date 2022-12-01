@@ -17,6 +17,9 @@ namespace Characters.Components
 
         private SceneLoadingService _sceneLoadingService;
         private FungusService _fungusService;
+        private PlayerService _playerService;
+        private Transform _transform;
+        private float _startYPosition;
 
         public override void TrySetFloorSteps(AudioClip[] clips)
         {
@@ -25,8 +28,11 @@ namespace Characters.Components
 
         public void Awake()
         {
+            _startYPosition = transform.position.y;
+            _transform = transform;
             _sceneLoadingService = ServiceLocator.Get<SceneLoadingService>();
             _fungusService = ServiceLocator.Get<FungusService>();
+            _playerService = ServiceLocator.Get<PlayerService>();
         }
 
         private void OnEnable()
@@ -54,6 +60,11 @@ namespace Characters.Components
             playerInputFPS.UpdateInvoke();
             PlayerLook.UpdateInvoke();
             PlayerInteract.UpdateInvoke();
+
+            if (_transform.position.y < _startYPosition - 50f) {
+                SetPosition(_playerService.DefaultPlayerSpawn.transform.position);
+                SetRotation(_playerService.DefaultPlayerSpawn.transform.rotation);
+            }
         }
 
         public void SetActive(bool value)

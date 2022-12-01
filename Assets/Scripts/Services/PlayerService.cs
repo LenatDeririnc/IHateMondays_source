@@ -12,6 +12,9 @@ namespace Services
         public PlayerBase Player { get; private set; }
 
         [SerializeField] private PlayerSpawnPointComponent defaultPlayerSpawn;
+
+        public PlayerSpawnPointComponent DefaultPlayerSpawn => defaultPlayerSpawn;
+
         private GameFactoryService _factoryService;
 
         public void AwakeService()
