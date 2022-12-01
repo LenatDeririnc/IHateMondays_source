@@ -86,7 +86,7 @@ namespace Scenes.Props
         public Tween Switch(float endValue)
         {
             if (IsAlphaSame(endValue)) {
-                return DOTween.Sequence();
+                return null;
             }
 
             return DOTween.To(() => Alpha, _ => Alpha = _, endValue, _switchDuration);
@@ -95,6 +95,11 @@ namespace Scenes.Props
         public Tween SwitchOn()
         {
             _source.PlayOneShot(_enableSound);
+            return Switch(1);
+        }
+        
+        public Tween QuietSwitchOn()
+        {
             return Switch(1);
         }
 

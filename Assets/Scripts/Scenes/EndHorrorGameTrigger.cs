@@ -24,6 +24,8 @@ namespace Scenes
         private bool canUseReposition = true;
         private SceneLoadingService _sceneService;
 
+        private bool isEntered = false;
+
         private void Awake()
         {
             _playerService = ServiceLocator.Get<PlayerService>();
@@ -34,6 +36,11 @@ namespace Scenes
         {
             if (_playerService.Player.Collider != other)
                 return;
+            
+            if (isEntered)
+                return;
+
+            isEntered = true;
 
             var entireSequence = DOTween.Sequence();
             
@@ -41,7 +48,7 @@ namespace Scenes
             var soundSequence = DOTween.Sequence();
 
             turnOffLightSequence.AppendInterval(waitInterval);
-            turnOffLightSequence.Append(TurnOffLight());
+            turnOffLightSequence.Append(_lightLamp.SwitchOff().OnStart(() => canUseReposition = false));
             turnOffLightSequence.onComplete += TurnOffPlayer;
 
             soundSequence.AppendInterval(_startSoundSeconds);
@@ -56,12 +63,6 @@ namespace Scenes
         private void TurnOffPlayer()
         {
             _playerService.Player.gameObject.SetActive(false);
-        }
-
-        private Tween TurnOffLight()
-        {
-            canUseReposition = false;
-            return _lightLamp.SwitchOff();
         }
 
         private void NextScene()
@@ -88,7 +89,7 @@ namespace Scenes
             var direction = (_lightLamp.transform.position - currentposition) / 2;
             _playerService.Player.SetPosition(_lightLamp.transform.position + direction);
             _playerService.Player.SetRotation(Quaternion.LookRotation(direction, Vector3.up));
-            _lightLamp.SwitchOn();
+            _lightLamp.QuietSwitchOn();
         }
     }
 }
