@@ -45,5 +45,12 @@ namespace SceneManager
             ServiceLocator.Get<AudioService>()
                 .PlayBackgroundMusic(musicIntro, musicLoop, null, 1f);
         }
+
+        public override void Reset()
+        {
+            base.Reset();
+            _canLoadScene = false;
+            animator.isAllPagesShown = false;
+        }
     }
 }

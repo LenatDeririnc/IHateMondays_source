@@ -51,6 +51,7 @@ public class ComicStripAnimator : MonoBehaviour
     {
         finishGroup.blocksRaycasts = false;
         finishGroup.interactable = false;
+        isAllPagesShown = false;
         Explode();
     }
 

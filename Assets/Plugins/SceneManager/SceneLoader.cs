@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using DG.Tweening;
 using SceneManager.ScriptableObjects;
 using UnityEngine;
@@ -15,8 +14,9 @@ namespace SceneManager
         private SceneLink _nextScene;
         private LoadingCurtainBase _currentCurtain;
         private AsyncOperation _currentLoadingScene;
+
+        private bool _isSceneLoadingInitiated;
         private bool _isSceneLoadingStarted;
-        private bool _isSceneActivated;
 
         public void Construct(LoadingCurtainManager curtainManager)
         {
@@ -25,15 +25,18 @@ namespace SceneManager
 
         public void LoadScene(SceneLink sceneLink, CurtainType curtainType = CurtainType.AlphaTransition)
         {
-            _isSceneActivated = false;
+            if(_isSceneLoadingInitiated)
+                return;
+         
+            DOTween.Kill(this);
             OnStartLoad?.Invoke();
 
             _nextScene = sceneLink;
             _currentCurtain = _curtainManager.GetCurtain(curtainType);
-            
             _currentCurtain.Show();
             
             _isSceneLoadingStarted = false;
+            _isSceneLoadingInitiated = true;
         }
 
         private void Update()
@@ -46,16 +49,22 @@ namespace SceneManager
                 _currentLoadingScene.allowSceneActivation = false;
             }
             
-            if (!_isSceneActivated && _currentCurtain && _currentCurtain.CanActivateScene)
+            if (_currentCurtain && _currentCurtain.CanActivateScene)
             {
-                _currentLoadingScene.allowSceneActivation = true;
-                _isSceneActivated = true;
-                
                 // Короткая задержка, так как если сделать hide в тот же момент что и активация сцены,
                 // анимация будет очень дёрганная из за Lag Spike'а во время активации
+
+                var curtain = _currentCurtain;
+                DOTween.Kill(this);
                 DOTween.Sequence()
-                    .InsertCallback(0.1f, () => _currentCurtain.Hide())
+                    .InsertCallback(0.1f, () => curtain.Hide())
+                    .SetTarget(this)
                     .SetUpdate(true);
+
+                _currentCurtain = null;
+                _currentLoadingScene.allowSceneActivation = true;
+                _isSceneLoadingInitiated = false;
+                _isSceneLoadingStarted = false;
             }
         }
     }
