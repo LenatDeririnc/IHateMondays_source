@@ -21360,7 +21360,7 @@ MonoBehaviour:
     <size=50%>3D Artist, Technical Artist
 
     Level Artist,
-    Comics Artist </size>'
+    Photoshop Artist </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -28816,7 +28816,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PinEgoistic
 
-    <size=50%>Character Designer, 2D artist</size>'
+    <size=50%>Character Designer, 2D Artist</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36980,7 +36980,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Tihan
 
-    <size=50%>Project Lead, Design, Music, Sound design</size>'
+    <size=50%>Project Lead, Design, Music, Sound Design</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37209,7 +37209,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Lenat_1
 
-    <size=50%>Lead programmer</size>'
+    <size=50%>Lead Programmer</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -39999,31 +39999,31 @@ PrefabInstance:
       objectReference: {fileID: 188902, guid: 7af3c22dc9ddb1449a7145f879ce6524, type: 3}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.099998
+      value: 36.870003
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.47
+      value: 6.7799997
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.599998
+      value: -4.94
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5878474
+      value: 0.565357
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07269939
+      value: 0.015791887
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7996071
+      value: 0.8243736
       objectReference: {fileID: 0}
     - target: {fileID: 3323095577422893685, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09888788
+      value: -0.023026858
       objectReference: {fileID: 0}
     - target: {fileID: 3497837580462204732, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_ShowToolkit
@@ -40119,7 +40119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8698786597783193823, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: field of view
-      value: 27
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8698786597783193823, guid: c0210408f653a554c91911de1200fea4, type: 3}
       propertyPath: m_RenderingPath
