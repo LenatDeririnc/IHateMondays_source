@@ -12433,8 +12433,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks:
-  - {fileID: 947455729}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
@@ -12463,7 +12462,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 260
     y: 171
-    width: 77.2
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -12488,7 +12487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: I guess I can use boxes to get to the other side.
+  storyText: I guess I can use the boxes to get to the other side.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -14728,7 +14727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 746551559}
+  selectedFlowchart: {fileID: 947455728}
 --- !u!4 &1154594827
 Transform:
   m_ObjectHideFlags: 1
